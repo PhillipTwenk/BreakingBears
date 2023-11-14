@@ -26,13 +26,13 @@ public class MovementCharacter : MonoBehaviour
         //Direction Vector3
         Vector3 vectorOrientation = new Vector3(hz, 0, vt);
 
-        if(vectorOrientation.magnitude > Mathf.Abs(0.05f))
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(vectorOrientation), Time.deltaTime * speedRotation);
+        if(vectorOrientation.magnitude > Mathf.Abs(0.05f)){
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(vectorOrientation), Time.deltaTime * speedRotation);
+        }
 
         CharacterAnimator.SetFloat("speedMove", Vector3.ClampMagnitude(vectorOrientation, 1).magnitude);
-        
         rbCharacter.velocity = Vector3.ClampMagnitude(vectorOrientation, 1) * speed;
-        
+
         rbCharacter.angularVelocity = Vector3.zero;
     }
 }

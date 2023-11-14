@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
     public Transform transformPlayer;
     public Vector3 offset;
-    [SerializeField]private float speedChangePositionCam;
+    [SerializeField] private float speedChangePositionCam;
     void Start()
     {
         speedChangePositionCam = 5f;
