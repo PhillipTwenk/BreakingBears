@@ -7,10 +7,10 @@ public class UIController : MonoBehaviour
 {
     public GameObject[] ArrayButtonsMain;
     public GameObject[] ArrayMenus;
+    public Transform characterPosition;
+    public Transform[] CheckPointArrayPosition;
     private void Start()
     {
-        // ArrayButtonsMain = new GameObject[6];
-        // ArrayMenus = new GameObject[4]; 
     }
     #region Buttons Methods
     public void MapButtonOpen(){
@@ -74,6 +74,41 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[1].SetActive(true);
         ArrayButtonsMain[2].SetActive(true);
         ArrayButtonsMain[4].SetActive(true);
+    }
+    public void MarkOne(){
+        Vector3 newPositionCharacter = new Vector3(CheckPointArrayPosition[0].position.x, CheckPointArrayPosition[0].position.y, CheckPointArrayPosition[0].position.z + 20);
+        characterPosition.position = newPositionCharacter;
+        ArrayMenus[1].SetActive(false);
+    }
+    public void MarkTwo(){
+        Vector3 newPositionCharacter = new Vector3(CheckPointArrayPosition[1].position.x, CheckPointArrayPosition[1].position.y, CheckPointArrayPosition[1].position.z + 20);
+        characterPosition.position = newPositionCharacter;
+        ArrayMenus[1].SetActive(false);
+    }
+    public void MarkThree(){
+        Vector3 newPositionCharacter = new Vector3(CheckPointArrayPosition[2].position.x, CheckPointArrayPosition[2].position.y, CheckPointArrayPosition[2].position.z + 20);
+        characterPosition.position = newPositionCharacter;
+        ArrayMenus[1].SetActive(false);
+    }
+    public void MarkFour(){
+        Vector3 newPositionCharacter = new Vector3(CheckPointArrayPosition[3].position.x, CheckPointArrayPosition[3].position.y, CheckPointArrayPosition[3].position.z + 20);
+        characterPosition.position = newPositionCharacter;
+        ArrayMenus[1].SetActive(false);
+    }
+    public void MarkFive(){
+        Vector3 newPositionCharacter = new Vector3(CheckPointArrayPosition[4].position.x, CheckPointArrayPosition[4].position.y, CheckPointArrayPosition[4].position.z + 20);
+        characterPosition.position = newPositionCharacter;
+        ArrayMenus[1].SetActive(false);
+    }
+    public void MarkSix(){
+        Vector3 newPositionCharacter = new Vector3(CheckPointArrayPosition[5].position.x, CheckPointArrayPosition[5].position.y, CheckPointArrayPosition[5].position.z + 20);
+        characterPosition.position = newPositionCharacter;
+        ArrayMenus[1].SetActive(false);
+    }
+    public void MarkSeven(){
+        Vector3 newPositionCharacter = new Vector3(CheckPointArrayPosition[6].position.x, CheckPointArrayPosition[6].position.y, CheckPointArrayPosition[6].position.z + 20);
+        characterPosition.position = newPositionCharacter;
+        ArrayMenus[1].SetActive(false);
     }
     #endregion
 }
