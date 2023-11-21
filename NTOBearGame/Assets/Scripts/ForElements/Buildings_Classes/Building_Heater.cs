@@ -33,35 +33,34 @@ public static class Building_Heater
 
     // 0.1) Вывод результата реакции
     private static void Output(Dictionary <string, string> Element, string from, string to){
-        // if(from == to){
-        //     storages[to] = Element;
-        //     return;
-        // }
-        // temp_storages[to] = Element;
-
+        if(from == to){
+            storages[to] = Element;
+            return;
+        }
+        temp_storages[to] = Element;
     }
     // 0.2) Информация о элементе
     private static void ElementInfo(string element_name){
-        // DataTable element = DatabaseManager.GetTable($"SELECT * FROM elements_info WHERE name = {element_name}");
-        // Debug.Log(element);
-        // return;
+        DataTable element = DatabaseManager.GetTable($"SELECT * FROM elements_info WHERE name = {element_name}");
+        Debug.Log(element);
+        return;
     }
     // 0.3) Информация о действиях используемого агрегата
     private static void ActionsInfo(string building){
-        // string building_id = DatabaseManager.ExecuteQueryWithAnswer($"SELECT id FROM buildings WHERE building_name = {building}");
+        string building_id = DatabaseManager.ExecuteQueryWithAnswer($"SELECT id FROM buildings WHERE building_name = {building}");
     }
     
     // 1) НАГРЕВАТЕЛЬ
     // 1.1) Нагреть элемент до определенной температуры
     private static void Heat(Dictionary<string, string> Element, int Parameter, string Exit = "heater"){
-        // // string element_id = DatabaseManager.ExecuteQueryWithAnswer($"SELECT result FROM elements_reactions WHERE id_element1 = {Convert.ToInt32(Element["name"])} AND action = 1");
-        // if(element_id is not null){
-
-        // } else {
-        //     Element["temperature"] += Convert.ToInt32(Parameter);
-        // }
-        // Output(Element, "heater", Exit);
-        // return;
+        string element_id = DatabaseManager.ExecuteQueryWithAnswer($"SELECT result FROM elements_reactions WHERE id_element1 = {Convert.ToInt32(Element["name"])} AND action = 1");
+        if(element_id is not null){
+            // ---
+        } else {
+            Element["temperature"] += Convert.ToInt32(Parameter);
+        }
+        Output(Element, "heater", Exit);
+        return;
     }
     // 1.2) Смешать с элементом в storage
     private static void CombineWithPrevious(Dictionary <string, string> Element){

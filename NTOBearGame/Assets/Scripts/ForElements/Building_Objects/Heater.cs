@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mono.Data.Sqlite;
+using System.Data;
+using System;
 
 public class Heater : MonoBehaviour
 {
@@ -23,8 +26,8 @@ public class Heater : MonoBehaviour
         Debug.Log("Clicked");
         canvas.SetActive(true);
         isCanvas = true;
-        DatabaseManager.SetConnection();
-        // string building_id = DatabaseManager.ExecuteQueryWithAnswer($"SELECT id FROM buildings WHERE building_name = Нагреватель");
-        // Debug.Log(building_id);
+        string building = "heater";
+        string building_id = DatabaseManager.ExecuteQueryWithAnswer($"SELECT id_building FROM buildings WHERE building_name = '{building}'");
+        DataTable actions = DatabaseManager.GetTable($"SELECT ");
     }
 }
