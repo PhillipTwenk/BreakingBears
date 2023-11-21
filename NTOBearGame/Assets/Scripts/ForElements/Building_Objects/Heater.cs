@@ -28,6 +28,6 @@ public class Heater : MonoBehaviour
         isCanvas = true;
         string building = "heater";
         string building_id = DatabaseManager.ExecuteQueryWithAnswer($"SELECT id_building FROM buildings WHERE building_name = '{building}'");
-        DataTable actions = DatabaseManager.GetTable($"SELECT ");
+        Debug.Log(building_id);
     }
 }
