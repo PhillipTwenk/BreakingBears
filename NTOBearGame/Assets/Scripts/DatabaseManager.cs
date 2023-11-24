@@ -5,7 +5,7 @@ using Mono.Data.Sqlite;
 using System.Data;
 using System;
 
-public static class DatabaseManager
+public static class DBManager
 {
     private static string path = Application.dataPath + "/StreamingAssets/elements.bytes"; // путь к БД
     public static SqliteConnection dbconnection;
@@ -28,7 +28,7 @@ public static class DatabaseManager
 
 
     // Этот метод выполняет запрос query и возвращает ответ.
-    public static string ExecuteQueryWithAnswer(string query){
+    public static string ExecuteQuery(string query){
         OpenConnection();
         cmd.CommandText = query;
         var res = cmd.ExecuteScalar();
