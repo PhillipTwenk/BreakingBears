@@ -50,6 +50,7 @@ public static class Building
         string building_id = DBManager.ExecuteQuery($"SELECT id_building FROM buildings WHERE building_name = '{building}'");
         DataTable actions = DBManager.GetTable($"SELECT action_name FROM actions WHERE building = {building_id}");
         List<string> res_actions = new List<string>();
+        res_actions.Add(""); // добавляем пустой выбор для проверки в UI агрегата на полноту алгоритма
         for(int i = 0; i < actions.Rows.Count; i++){
             string value = actions.Rows[i][0].ToString();
             res_actions.Add(value);
@@ -63,6 +64,7 @@ public static class Building
     public static List<string> ElementsChoiceInfo(){
         DataTable elements = DBManager.GetTable($"SELECT name FROM elements_info");
         List<string> res_elements = new List<string>();
+        res_elements.Add(""); // добавляем пустой выбор для проверки в UI агрегата на полноту алгоритма
         for(int i = 0; i < elements.Rows.Count; i++){
             string value = elements.Rows[i][0].ToString();
             res_elements.Add(value);
@@ -76,6 +78,7 @@ public static class Building
     public static List<string> ExitsChoiceInfo(){
         DataTable buildings = DBManager.GetTable($"SELECT building_name FROM buildings");
         List<string> res_buildings = new List<string>();
+        res_buildings.Add(""); // добавляем пустой выбор для проверки в UI агрегата на полноту алгоритма
         for(int i = 0; i < buildings.Rows.Count; i++){
             string value = buildings.Rows[i][0].ToString();
             res_buildings.Add(value);
@@ -86,16 +89,21 @@ public static class Building
     // 5) Проведение реакции с веществом(-ами)
     // INPUT: название агрегата, действия, параметр, основное вещество с его хар-ками, *доп.вещество
     // OUTPUT: информация о получившемся элементе
-    public static Dictionary<string, string> Reaction(string building, string action, int parameter, Dictionary<string, string> Element1, Dictionary<string, string> Element2 = null){   
+    public static Dictionary<string, string> Reaction(string building, string action, int element_id_1, int parameter = 0, int element_id_2 = 0){   
         string building_reaction_id = DBManager.ExecuteQuery($"SELECT id_building FROM buildings WHERE building_name = '{building}'"); // получение id рабочего агрегата
+        Debug.Log(building_reaction_id);
         string action_id = DBManager.ExecuteQuery($"SELECT id_action FROM actions WHERE action_name = '{action}' AND building = {Convert.ToInt32(building_reaction_id)}"); // получение id действия через id рабочего агрегата и action
+        Debug.Log(action_id);
+        Debug.Log(element_id_2);
         string res_element_query = ""; // запрос в БД
-        if(Element2 == null){ // если в реакции только одно вещество
-            res_element_query = $"SELECT result FROM elements_reactions WHERE id_element1 = {Convert.ToInt32(Element1["element_id"])} AND action = {Convert.ToInt32(action_id)} AND parameter_for_action = {parameter}";
+        if(element_id_2 == 0){ // если в реакции только одно вещество
+            res_element_query = $"SELECT result FROM elements_reactions WHERE id_element1 = {element_id_1} AND action = '{Convert.ToInt32(action_id)}' AND parameter_for_action = {parameter}";
         } else{ // если в реакции два вещества
-            res_element_query = $"SELECT result FROM elements_reactions WHERE id_element1 = {Convert.ToInt32(Element1["element_id"])} AND id_element2 = {Convert.ToInt32(Element2["element_id"])} AND action = {Convert.ToInt32(action_id)} AND parameter_for_action = {parameter}";
+            res_element_query = $"SELECT result FROM elements_reactions WHERE id_element1 = {element_id_1} AND id_element2 = {element_id_2} AND action = '{Convert.ToInt32(action_id)}' AND parameter_for_action = {parameter}";
         }
+        Debug.Log(res_element_query);
         string res_element_id = DBManager.ExecuteQuery(res_element_query); // проведение нужного запроса в БД
+        Debug.Log(res_element_id);
         return ElementInfo(element_id: Convert.ToInt32(res_element_id)); // возвращение информации об итоговом элементе
     }
 
