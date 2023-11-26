@@ -89,7 +89,7 @@ public static class Building
     // 5) Проведение реакции с веществом(-ами)
     // INPUT: название агрегата, действия, параметр, основное вещество с его хар-ками, *доп.вещество
     // OUTPUT: информация о получившемся элементе
-    public static Dictionary<string, string> Reaction(string building, string action, int element_id_1, int parameter = 0, int element_id_2 = 0){   
+    public static List<Dictionary<string, string>> Reaction(string building, string action, int element_id_1, int parameter = 0, int element_id_2 = 0){   
         string building_reaction_id = DBManager.ExecuteQuery($"SELECT id_building FROM buildings WHERE building_name = '{building}'"); // получение id рабочего агрегата
         string action_id = DBManager.ExecuteQuery($"SELECT id_action FROM actions WHERE action_name = '{action}' AND building = {Convert.ToInt32(building_reaction_id)}"); // получение id действия через id рабочего агрегата и action
         
@@ -97,9 +97,14 @@ public static class Building
         res_element_query = $"SELECT result1, result2 FROM elements_reactions WHERE id_element1 = {element_id_1} AND id_element2 = {element_id_2} AND action = '{Convert.ToInt32(action_id)}' AND parameter_for_action = {parameter}";
         Debug.Log(res_element_query);
 
-        string res_element_id = DBManager.GetTable(res_element_query); // проведение нужного запроса в БД
-        List<string, string> 
-        return ElementInfo(element_id: Convert.ToInt32(res_element_id)); // возвращение информации об итоговом элементе
+        DataTable res_element_ids = DBManager.GetTable(res_element_query); // проведение нужного запроса в БД
+        List<Dictionary<string, string>> results = new List<Dictionary<string, string>>();
+        for(int i = 0; i < res_element_ids.Rows.Count; i++){
+            string value = res_element_ids.Rows[0][i].ToString();
+            Dictionary<string, string> info = ElementInfo(element_id: Convert.ToInt32(value));
+            results.Add(info);   
+        }
+        return results; // возвращение информации об итоговом элементе
     }
 
     // 6) Очищает temp_storage в рабочем агрегате
