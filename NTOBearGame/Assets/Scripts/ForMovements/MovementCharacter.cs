@@ -31,7 +31,7 @@ public class MovementCharacter : MonoBehaviour
         float vt = Input.GetAxis("Vertical");
 
         //Are we in air?
-        if(Physics.CheckSphere(RayCastEmpty.position, 0.3f, Default))
+        if(Physics.CheckSphere(RayCastEmpty.position, 0.4f))
         {
             CharacterAnimator.SetBool("IsInAir", false);
         }
@@ -87,7 +87,7 @@ public class MovementCharacter : MonoBehaviour
     private void JumpMethod()
     {
         //Raycast hit
-        if (Physics.Raycast(RayCastEmpty.position, Vector3.down, 0.2f)){
+        if (Physics.Raycast(RayCastEmpty.position, Vector3.down, 0.4f)){
             CharacterAnimator.SetTrigger("Jump");
             rbCharacter.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
@@ -95,7 +95,7 @@ public class MovementCharacter : MonoBehaviour
     private void LongJumpMethod()
     {
         //Raycast hit for long jump
-        if (Physics.Raycast(RayCastEmpty.position, Vector3.down, 0.2f)){
+        if (Physics.Raycast(RayCastEmpty.position, Vector3.down, 0.4f)){
             CharacterAnimator.SetTrigger("Jump");
             rbCharacter.AddForce(new Vector3(0f, 0.7f, 2f) * jumpForceForLongJump, ForceMode.Impulse);
         }
