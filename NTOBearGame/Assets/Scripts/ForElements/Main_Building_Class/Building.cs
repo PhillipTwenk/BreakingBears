@@ -62,7 +62,7 @@ public static class Building
     // INPUT: -
     // OUTPUT: все возможные вещества (позже те, которые находятся в инвентаре)
     public static List<string> ElementsChoiceInfo(){
-        DataTable elements = DBManager.GetTable($"SELECT name FROM elements_info");
+        DataTable elements = DBManager.GetTable($"SELECT name FROM elements_info WHERE element_id > 0");
         List<string> res_elements = new List<string>();
         res_elements.Add(""); // добавляем пустой выбор для проверки в UI агрегата на полноту алгоритма
         for(int i = 0; i < elements.Rows.Count; i++){
@@ -92,14 +92,13 @@ public static class Building
     public static Dictionary<string, string> Reaction(string building, string action, int element_id_1, int parameter = 0, int element_id_2 = 0){   
         string building_reaction_id = DBManager.ExecuteQuery($"SELECT id_building FROM buildings WHERE building_name = '{building}'"); // получение id рабочего агрегата
         string action_id = DBManager.ExecuteQuery($"SELECT id_action FROM actions WHERE action_name = '{action}' AND building = {Convert.ToInt32(building_reaction_id)}"); // получение id действия через id рабочего агрегата и action
+        
         string res_element_query = ""; // запрос в БД
-        if(element_id_2 == 0){ // если в реакции только одно вещество
-            res_element_query = $"SELECT result FROM elements_reactions WHERE id_element1 = {element_id_1} AND action = '{Convert.ToInt32(action_id)}' AND parameter_for_action = {parameter}";
-        } else{ // если в реакции два вещества
-            res_element_query = $"SELECT result FROM elements_reactions WHERE id_element1 = {element_id_1} AND id_element2 = {element_id_2} AND action = '{Convert.ToInt32(action_id)}' AND parameter_for_action = {parameter}";
-        }
+        res_element_query = $"SELECT result1, result2 FROM elements_reactions WHERE id_element1 = {element_id_1} AND id_element2 = {element_id_2} AND action = '{Convert.ToInt32(action_id)}' AND parameter_for_action = {parameter}";
         Debug.Log(res_element_query);
-        string res_element_id = DBManager.ExecuteQuery(res_element_query); // проведение нужного запроса в БД
+
+        string res_element_id = DBManager.GetTable(res_element_query); // проведение нужного запроса в БД
+        List<string, string> 
         return ElementInfo(element_id: Convert.ToInt32(res_element_id)); // возвращение информации об итоговом элементе
     }
 
