@@ -8,7 +8,7 @@ using System;
 public static class DBManager
 {
     private static string path = Application.dataPath + "/StreamingAssets/elements.bytes"; // путь к БД
-    public static SqliteConnection dbconnection;
+    private static SqliteConnection dbconnection;
     private static SqliteCommand cmd;
     
     // Этот метод открывает подключение к БД.

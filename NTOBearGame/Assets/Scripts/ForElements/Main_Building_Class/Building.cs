@@ -11,8 +11,7 @@ using System.Data;
 public static class Building
 {   
     // СТАТИЧНЫЕ ПЕРЕМЕННЫЕ В КЛАССЕ
-    private static Dictionary<string, Dictionary<string, string>> temp_storages; // хранилище для предыдущих элементов (в агрегате после алгоритма)
-    private static List<Dictionary<string, string>> player_storage; // хранилище игрока (soon)
+    public static List<Dictionary<string, string>> player_storage; // хранилище игрока (soon)
     
 
     // ОБЩИЕ МЕТОДЫ
@@ -33,10 +32,11 @@ public static class Building
             element_info_query = $"SELECT * FROM elements_info WHERE element_id = {element_id}";
         }
 
+        Debug.Log(element_info_query);
         DataTable element_info = DBManager.GetTable(element_info_query);
         Dictionary<string, string> res_element = new Dictionary<string, string>();
 
-        for(int i = 0; i <= 4; i++){
+        for(int i = 0; i < element_info.Columns.Count; i++){
             string value = element_info.Rows[0][i].ToString();
             res_element[$"{element_info.Columns[i]}"] = value;
         }
@@ -91,10 +91,7 @@ public static class Building
     // OUTPUT: информация о получившемся элементе
     public static Dictionary<string, string> Reaction(string building, string action, int element_id_1, int parameter = 0, int element_id_2 = 0){   
         string building_reaction_id = DBManager.ExecuteQuery($"SELECT id_building FROM buildings WHERE building_name = '{building}'"); // получение id рабочего агрегата
-        Debug.Log(building_reaction_id);
         string action_id = DBManager.ExecuteQuery($"SELECT id_action FROM actions WHERE action_name = '{action}' AND building = {Convert.ToInt32(building_reaction_id)}"); // получение id действия через id рабочего агрегата и action
-        Debug.Log(action_id);
-        Debug.Log(element_id_2);
         string res_element_query = ""; // запрос в БД
         if(element_id_2 == 0){ // если в реакции только одно вещество
             res_element_query = $"SELECT result FROM elements_reactions WHERE id_element1 = {element_id_1} AND action = '{Convert.ToInt32(action_id)}' AND parameter_for_action = {parameter}";
@@ -103,21 +100,21 @@ public static class Building
         }
         Debug.Log(res_element_query);
         string res_element_id = DBManager.ExecuteQuery(res_element_query); // проведение нужного запроса в БД
-        Debug.Log(res_element_id);
         return ElementInfo(element_id: Convert.ToInt32(res_element_id)); // возвращение информации об итоговом элементе
     }
 
-    // 6) Очищает temp_storages[агрегат] в рабочем агрегате
-    public static void RemoveRemains(string building){
-        temp_storages[building] = new Dictionary<string, string>();
+    // 6) Очищает temp_storage в рабочем агрегате
+    // INPUT: 
+    public static void RemoveRemains(string building, Dictionary<string, string> temp_storage){
+        temp_storage = new Dictionary<string, string>();
         return;
     }
 
     // 7) Вывод результата реакции в нужное место
     // INPUT: элемент, имя агрегата, в который нужно направить
-    // OUTPUT: - (помещает элемент в temp_storages[агрегат])
-    public static void Output(Dictionary <string, string> Element, string to){
-        temp_storages[to] = Element;
+    // OUTPUT: - (помещает элемент в temp_storage агрегата)
+    public static void Output(Dictionary <string, string> Element, Dictionary<string, string> temp_storage){
+        temp_storage = Element;
         return;
     }
 

@@ -8,14 +8,15 @@ using System;
 
 public class Heater : MonoBehaviour
 {
-    private static Dictionary<string, string> temp_storage;
-    public bool is_canvas_activated = false;
-    public string action;
-    public int parameter = 0;
-    public int heater_element_id;
-    public string heater_element_name;
-    public string building = "Печь";
-    public string exit;
+    private bool is_canvas_activated = false;
+    private string action;
+    private string heater_element_name;
+    private string building = "Печь";
+    private string exit;
+    private int parameter = 0;
+    private int heater_element_id;
+    private Dictionary<string, string> temp_storage; // хранилища агрегатов 
+
     [SerializeField] GameObject canvas;
     [SerializeField] Dropdown ActionsChoice;
     [SerializeField] Dropdown ElementsChoice;
@@ -97,8 +98,8 @@ public class Heater : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider coll){
+        temp_storage = Building.ElementInfo(0, coll.name);
         if(coll.name == PlayerPrefs.GetString("HeaterElementName")){ // если попадает вещество, которое является условием для начала алгоритма
-            Debug.Log("ok");
             Dictionary<string, string> result_element = Building.Reaction( // пример вызова функции для получения вещества по алгоритму
                 building, // строение
                 PlayerPrefs.GetString("HeaterAction"), // действие
