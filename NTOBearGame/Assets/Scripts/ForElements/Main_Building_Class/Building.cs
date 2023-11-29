@@ -1,7 +1,10 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Mono.Data.Sqlite;
 using System.Data;
+using System;
 
 
 // КЛАСС ДЛЯ РАБОТЫ С ВЕЩЕСТВАМИ И РЕАКЦИЯМИ
@@ -21,8 +24,8 @@ public static class Building
     // - Методы указаны в том порядке, в котором они (в основном) будут использоваться в коде
 
 
-    // 1) Информация о элементе
-    // INPUT: id элемента ИЛИ его название
+    // Информация о элементе
+    // INPUT: *id элемента ИЛИ *его название
     // OUTPUT: информация об элементе в виде словаря
     public static Dictionary<string, string> ElementInfo(int element_id = 0, string element_name = null){
         string element_info_query = "";
@@ -43,7 +46,7 @@ public static class Building
         return res_element;
     }
 
-    // 2) Информация о действиях используемого агрегата
+    // Информация о действиях используемого агрегата
     // INPUT: -
     // OUTPUT: все возможные действия в рабочем агрегате
     public static List<string> ActionsChoiceInfo(string building){
@@ -58,7 +61,7 @@ public static class Building
         return res_actions;
     }
 
-    // 3) Информация о всех элементах (позже внутри player_storage)
+    // Информация о всех элементах (позже внутри player_storage)
     // INPUT: -
     // OUTPUT: все возможные вещества (позже те, которые находятся в инвентаре)
     public static List<string> ElementsChoiceInfo(){
@@ -72,7 +75,7 @@ public static class Building
         return res_elements;
     }
 
-    // 4) Информация о всех агрегатах, куда можно вывести вещество
+    // Информация о всех агрегатах, куда можно вывести вещество
     // INPUT: -
     // OUTPUT: все возможные строения из БД
     public static List<string> ExitsChoiceInfo(){
@@ -86,35 +89,52 @@ public static class Building
         return res_buildings;
     }
 
-    // 5) Проведение реакции с веществом(-ами)
+    // Проведение реакции с веществом(-ами)
     // INPUT: название агрегата, действия, параметр, основное вещество с его хар-ками, *доп.вещество
     // OUTPUT: информация о получившемся элементе
-    public static List<Dictionary<string, string>> Reaction(string building, string action, int element_id_1, int parameter = 0, int element_id_2 = 0){   
+    public static List<Dictionary<string, string>> Reaction(string building, string action, List<int> element_ids, int parameter = 0){  
         string building_reaction_id = DBManager.ExecuteQuery($"SELECT id_building FROM buildings WHERE building_name = '{building}'"); // получение id рабочего агрегата
-        string action_id = DBManager.ExecuteQuery($"SELECT id_action FROM actions WHERE action_name = '{action}' AND building = {Convert.ToInt32(building_reaction_id)}"); // получение id действия через id рабочего агрегата и action
-        
+        DataTable action_info = DBManager.GetTable($"SELECT id_action, perm_output FROM actions WHERE action_name = '{action}' AND building = {Convert.ToInt32(building_reaction_id)}"); // получение id действия через id рабочего агрегата и action
+        int action_id = Convert.ToInt32(action_info.Rows[0][0]); // id действия
+        bool perm_output = Convert.ToBoolean(action_info.Rows[0][1]); // наличие вывода(true = есть; false = без выходного вещества)
+
         string res_element_query = ""; // запрос в БД
-        res_element_query = $"SELECT result1, result2 FROM elements_reactions WHERE id_element1 = {element_id_1} AND id_element2 = {element_id_2} AND action = '{Convert.ToInt32(action_id)}' AND parameter_for_action = {parameter}";
+        res_element_query = $"SELECT result1, result2 FROM elements_reactions WHERE id_element1 = {element_ids[0]} AND id_element2 = {element_ids[1]} AND action = '{action_id}' AND parameter_for_action = {parameter}";
         Debug.Log(res_element_query);
 
         DataTable res_element_ids = DBManager.GetTable(res_element_query); // проведение нужного запроса в БД
-        List<Dictionary<string, string>> results = new List<Dictionary<string, string>>();
-        for(int i = 0; i < res_element_ids.Rows.Count; i++){
-            string value = res_element_ids.Rows[0][i].ToString();
-            Dictionary<string, string> info = ElementInfo(element_id: Convert.ToInt32(value));
-            results.Add(info);   
+        if(res_element_ids == null){ 
+            return ReactionResultFormat(elementsList: element_ids); // если реакция отсутствует, возвращает изначальные элементы без изменений
+        } else if(!perm_output){
+            return null; // если реакция завязана на уничтожении элемента (исключение: при нагревании элемент расплавляется)
+        } 
+        
+        return ReactionResultFormat(elementsDT: res_element_ids); // возвращение информации об итоговом элементе
+    }
+
+    // Преобразование таблицы элементов/списка id элементов в список словарей информации об элементах для последующего вывода в функции Reaction
+    // INPUT: *таблица веществ ИЛИ *список id элементов
+    // OUTPUT: список словарей информации об элементах
+    private static List<Dictionary<string, string>> ReactionResultFormat(DataTable elementsDT = null, List<int> elementsList = null){
+        List<Dictionary<string, string>> results = new List<Dictionary<string, string>>(); // итоговый список информации о получившихся элементах
+        if(elementsList != null){
+            for(int i = 0; i < elementsList.Count; i++){
+                string value = elementsList[i].ToString(); 
+                Dictionary<string, string> info = ElementInfo(element_id: Convert.ToInt32(value)); // заполнение информации об элементе в словарь
+                results.Add(info); // пополнение итогового списка информацией об элементе
+            }
+        } else if(elementsDT != null){
+            for(int i = 0; i < elementsDT.Rows.Count; i++){
+                string value = elementsDT.Rows[0][i].ToString(); // получение id элемента из i столбца
+                Dictionary<string, string> info = ElementInfo(element_id: Convert.ToInt32(value)); // заполнение информации об элементе в словарь
+                results.Add(info); // пополнение итогового списка информацией об элементе
+            }
         }
-        return results; // возвращение информации об итоговом элементе
+
+        return results; // вывод списка словарей информации об элементах
     }
 
-    // 6) Очищает temp_storage в рабочем агрегате
-    // INPUT: 
-    public static void RemoveRemains(string building, Dictionary<string, string> temp_storage){
-        temp_storage = new Dictionary<string, string>();
-        return;
-    }
-
-    // 7) Вывод результата реакции в нужное место
+    // Вывод результата реакции в нужное место
     // INPUT: элемент, имя агрегата, в который нужно направить
     // OUTPUT: - (помещает элемент в temp_storage агрегата)
     public static void Output(Dictionary <string, string> Element, Dictionary<string, string> temp_storage){

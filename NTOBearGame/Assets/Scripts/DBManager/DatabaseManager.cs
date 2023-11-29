@@ -37,6 +37,7 @@ public static class DBManager
         if (res != null) return res.ToString();
         else return null;
     }
+    
     // Этот метод возвращает ответ таблицу, являющаяся результатом выборки запроса.
     public static DataTable GetTable(string query){
         OpenConnection();

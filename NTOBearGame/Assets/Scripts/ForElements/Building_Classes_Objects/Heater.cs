@@ -100,10 +100,11 @@ public class Heater : MonoBehaviour
     private void OnTriggerEnter(Collider coll){
         temp_storage = Building.ElementInfo(0, coll.name);
         if(coll.name == PlayerPrefs.GetString("HeaterElementName")){ // если попадает вещество, которое является условием для начала алгоритма
+            List<int> element_ids = new List<int>(){PlayerPrefs.GetInt("HeaterElementID"), 0};
             List<Dictionary<string, string>> result_element = Building.Reaction( // пример вызова функции для получения вещества по алгоритму
                 building, // строение
                 PlayerPrefs.GetString("HeaterAction"), // действие
-                PlayerPrefs.GetInt("HeaterElementID"), // ID элемента в БД
+                element_ids, // ID элемента в БД
                 parameter=PlayerPrefs.GetInt("HeaterParameter") // параметр действия
             );
             foreach(Dictionary<string, string> element in result_element){
