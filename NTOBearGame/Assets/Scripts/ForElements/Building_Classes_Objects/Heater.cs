@@ -17,6 +17,7 @@ public class Heater : MonoBehaviour
     public List<string> element_names;
     public List<string> temp_storage; // хранилище элементов для агрегата 
     public List<int> temp_element_ids;
+    public List<string> elementsInfo;
 
     [SerializeField] GameObject Canvas;
     [SerializeField] Dropdown ActionsChoice;
@@ -27,6 +28,7 @@ public class Heater : MonoBehaviour
     [SerializeField] ElementsPrefabs EP;
     [SerializeField] GameObject OutputPlace;
     [SerializeField] Text AlgorithmText;
+    [SerializeField] GameObject PlayerMenu;
     void Start()
     {
         for(int i = 1; i < 3; i++){
@@ -34,7 +36,7 @@ public class Heater : MonoBehaviour
             if(element_ids[i-1] != 0){
                 element_names.Add(PlayerPrefs.GetString($"HeaterElementName{i}"));
             } else{
-                element_names.Add("");
+                element_names.Add("-");
             }
         }
         action = PlayerPrefs.GetString("HeaterAction");
@@ -43,6 +45,7 @@ public class Heater : MonoBehaviour
 
         Canvas.gameObject.SetActive(false); // сразу отключаем канвас агрегата
         parameterInput.gameObject.SetActive(false);  // сразу отключаем поле ввода параметра действия
+        PlayerMenu.SetActive(true);
     }
 
     void Update()
@@ -54,12 +57,13 @@ public class Heater : MonoBehaviour
 
     void OnMouseDown(){
         if(is_canvas_activated == false){
+            PlayerMenu.SetActive(false);
             Canvas.gameObject.SetActive(true);
             is_canvas_activated = true;
             // Заполнение опций для выбора алгоритма          
             // - доступные элементы для 1 позиции
             ElementsChoice1.ClearOptions(); // очищаем опции выбора
-            List<string> elementsInfo = Building.ElementsChoiceInfo(); // заносим в список через функцию все элементы
+            elementsInfo = Building.ElementsChoiceInfo(); // заносим в список через функцию все элементы
             ElementsChoice1.AddOptions(elementsInfo); 
 
             // - доступные элементы для 2 позиции
@@ -111,6 +115,7 @@ public class Heater : MonoBehaviour
         parameterInput.gameObject.SetActive(false); // отключаем поле ввода для параметра
         Canvas.gameObject.SetActive(false); //отключаем канвас
         is_canvas_activated = false;
+        PlayerMenu.SetActive(true);
     }
 
     public void CheckChosenAction(){ // проверка при выборе действия (всегда в одном порядке: 1 - с параметром; 2 - без параметра; 3 - удалить остатки)
@@ -126,8 +131,12 @@ public class Heater : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider coll){
+        if(!elementsInfo.Contains(coll.name)){
+            return;
+        }
+
         string element_name = coll.name.ToString().Split('(')[0];
-        Debug.Log(coll.name);
+        Debug.Log(PlayerPrefs.GetString("HeaterElementName1"));
         temp_storage.Add(element_name);
         if((temp_storage.Contains(PlayerPrefs.GetString("HeaterElementName1")) || PlayerPrefs.GetString("HeaterElementName1") == "-") && (temp_storage.Contains(PlayerPrefs.GetString("HeaterElementName2")) || PlayerPrefs.GetString("HeaterElementName2") == "-") ){ // если попадает вещество, которое является условием для начала алгоритма
             temp_element_ids.Add(PlayerPrefs.GetInt("HeaterElementID1"));
@@ -151,6 +160,8 @@ public class Heater : MonoBehaviour
                 }
 
             }
+            parameter = 0;
+            action = "";
             element_ids.Clear();
             element_names.Clear();
             temp_storage.Clear();
