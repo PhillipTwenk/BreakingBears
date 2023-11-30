@@ -10,52 +10,66 @@ public class Heater : MonoBehaviour
 {
     private bool is_canvas_activated = false;
     private string action;
-    private string heater_element_name;
-    private string building = "Печь";
+    private string building_name = "Печь";
     private string exit;
     private int parameter = 0;
-    private int heater_element_id;
-    private Dictionary<string, string> temp_storage; // хранилища агрегатов 
+    public List<int> element_ids;
+    public List<string> element_names;
+    public List<string> temp_storage; // хранилище элементов для агрегата 
+    public List<int> temp_element_ids;
 
-    [SerializeField] GameObject canvas;
+    [SerializeField] GameObject Canvas;
     [SerializeField] Dropdown ActionsChoice;
-    [SerializeField] Dropdown ElementsChoice;
+    [SerializeField] Dropdown ElementsChoice1;
+    [SerializeField] Dropdown ElementsChoice2;
     [SerializeField] Dropdown ExitsChoice;
     [SerializeField] InputField parameterInput;
+    [SerializeField] ElementsPrefabs EP;
+    [SerializeField] GameObject OutputPlace;
+    [SerializeField] Text AlgorithmText;
     void Start()
     {
-        heater_element_id = PlayerPrefs.GetInt("HeaterElementID");
-        heater_element_name = PlayerPrefs.GetString("HeaterElementName");
+        for(int i = 1; i < 3; i++){
+            element_ids.Add(PlayerPrefs.GetInt($"HeaterElementID{i}"));
+            if(element_ids[i-1] != 0){
+                element_names.Add(PlayerPrefs.GetString($"HeaterElementName{i}"));
+            } else{
+                element_names.Add("");
+            }
+        }
         action = PlayerPrefs.GetString("HeaterAction");
         exit = PlayerPrefs.GetString("HeaterExit");
         parameter = PlayerPrefs.GetInt("HeaterParameter");
 
-        canvas.gameObject.SetActive(false); // сразу отключаем канвас агрегата
+        Canvas.gameObject.SetActive(false); // сразу отключаем канвас агрегата
         parameterInput.gameObject.SetActive(false);  // сразу отключаем поле ввода параметра действия
     }
 
     void Update()
     {
         if(is_canvas_activated && Input.GetKey(KeyCode.Escape)){ // нажимая Esc при открытом канвасе(UI агрегата) -> закрываем его с полем ввода параметра
-            parameterInput.gameObject.SetActive(false);
-            canvas.gameObject.SetActive(false);
-            is_canvas_activated = false;
+            BuildAlgorithm();
         }
     }
 
     void OnMouseDown(){
         if(is_canvas_activated == false){
-            canvas.gameObject.SetActive(true);
+            Canvas.gameObject.SetActive(true);
             is_canvas_activated = true;
             // Заполнение опций для выбора алгоритма          
-            // - доступные элементы (позже из инвентаря)
-            ElementsChoice.ClearOptions(); // очищаем опции выбора
+            // - доступные элементы для 1 позиции
+            ElementsChoice1.ClearOptions(); // очищаем опции выбора
             List<string> elementsInfo = Building.ElementsChoiceInfo(); // заносим в список через функцию все элементы
-            ElementsChoice.AddOptions(elementsInfo); 
+            ElementsChoice1.AddOptions(elementsInfo); 
+
+            // - доступные элементы для 2 позиции
+            ElementsChoice2.ClearOptions(); // очищаем опции выбора
+            elementsInfo = Building.ElementsChoiceInfo(); // заносим в список через функцию все элементы
+            ElementsChoice2.AddOptions(elementsInfo); 
 
             // - действия(зависят от строения)
             ActionsChoice.ClearOptions(); // очищаем опции выбора
-            List<string> actionsInfo = Building.ActionsChoiceInfo(building); // заносим в список через функцию все действия агрегата
+            List<string> actionsInfo = Building.ActionsChoiceInfo(building_name); // заносим в список через функцию все действия агрегата
             ActionsChoice.AddOptions(actionsInfo);
 
             // - доступные выходы
@@ -68,25 +82,39 @@ public class Heater : MonoBehaviour
 
     public void BuildAlgorithm(){
         // нахождение нужных переменных для последующего сохранения алгоритма
-        heater_element_id = Convert.ToInt32(ElementsChoice.value);
-        heater_element_name = ElementsChoice.options[ElementsChoice.value].text;
-        exit = ExitsChoice.options[ExitsChoice.value].text;
+        element_ids.Clear();
+        element_names.Clear();
 
+        exit = ExitsChoice.options[ExitsChoice.value].text;
+        element_ids.Add(ElementsChoice1.value);
+        element_ids.Add(ElementsChoice2.value);
+        element_names.Add(ElementsChoice1.options[ElementsChoice1.value].text);
+        element_names.Add(ElementsChoice2.options[ElementsChoice2.value].text);
         // сохраняем все части алгоритма в PlayerPrefs
-        PlayerPrefs.SetInt("HeaterElementID", heater_element_id);
-        PlayerPrefs.SetString("HeaterElementName", heater_element_name);
+        for(int i = 1; i < 3; i++){
+            PlayerPrefs.SetInt($"HeaterElementID{i}", element_ids[i-1]);
+            if(element_names[i-1] != ""){
+                PlayerPrefs.SetString($"HeaterElementName{i}", element_names[i-1]);
+            } else {
+                PlayerPrefs.SetString($"HeaterElementName{i}", "-");
+            }
+        }
         PlayerPrefs.SetString("HeaterAction", action);
         PlayerPrefs.SetString("HeaterExit", exit);
         PlayerPrefs.SetInt("HeaterParameter", parameter);
+        if(element_ids[1] == 0){
+            AlgorithmText.text = $"{action} {element_names[0]}, Параметр = {parameter}, Вывести в {exit}";
+        } else {
+            AlgorithmText.text = $"{action} {element_names[0]} и {element_names[1]}, Параметр = {parameter}, Вывести в {exit}";
+        }
 
         parameterInput.gameObject.SetActive(false); // отключаем поле ввода для параметра
-        canvas.gameObject.SetActive(false); //отключаем канвас
+        Canvas.gameObject.SetActive(false); //отключаем канвас
         is_canvas_activated = false;
     }
 
     public void CheckChosenAction(){ // проверка при выборе действия (всегда в одном порядке: 1 - с параметром; 2 - без параметра; 3 - удалить остатки)
         action = ActionsChoice.options[ActionsChoice.value].text;
-        Debug.Log(action);
         if(ActionsChoice.value == 1){
             parameterInput.gameObject.SetActive(true);
         } else {
@@ -98,20 +126,35 @@ public class Heater : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider coll){
-        temp_storage = Building.ElementInfo(0, coll.name);
-        if(coll.name == PlayerPrefs.GetString("HeaterElementName")){ // если попадает вещество, которое является условием для начала алгоритма
-            List<int> element_ids = new List<int>(){PlayerPrefs.GetInt("HeaterElementID"), 0};
+        string element_name = coll.name.ToString().Split('(')[0];
+        Debug.Log(coll.name);
+        temp_storage.Add(element_name);
+        if((temp_storage.Contains(PlayerPrefs.GetString("HeaterElementName1")) || PlayerPrefs.GetString("HeaterElementName1") == "-") && (temp_storage.Contains(PlayerPrefs.GetString("HeaterElementName2")) || PlayerPrefs.GetString("HeaterElementName2") == "-") ){ // если попадает вещество, которое является условием для начала алгоритма
+            temp_element_ids.Add(PlayerPrefs.GetInt("HeaterElementID1"));
+            temp_element_ids.Add(PlayerPrefs.GetInt("HeaterElementID2"));
+            Destroy(coll.gameObject);
             List<Dictionary<string, string>> result_element = Building.Reaction( // пример вызова функции для получения вещества по алгоритму
-                building, // строение
+                building_name, // строение
                 PlayerPrefs.GetString("HeaterAction"), // действие
-                element_ids, // ID элемента в БД
+                temp_element_ids, // ID элементов в БД
                 parameter=PlayerPrefs.GetInt("HeaterParameter") // параметр действия
             );
+
             foreach(Dictionary<string, string> element in result_element){
-                if(Convert.ToInt32(element["element_id"]) != 0){
-                    Debug.Log(element["name"]); // вывод имени элемента
+                if(Convert.ToInt32(element["element_id"]) == 0){
+                    continue;
                 }
+                Debug.Log(element["name"]); // вывод имени элемента
+                if(exit == building_name){
+                    PlayerPrefs.DeleteAll();
+                    Instantiate(EP.elements_prefabs[Convert.ToInt32(element["element_id"])-1], OutputPlace.transform.position, Quaternion.identity);
+                }
+
             }
+            element_ids.Clear();
+            element_names.Clear();
+            temp_storage.Clear();
+            temp_element_ids.Clear();
         } 
     }
 
