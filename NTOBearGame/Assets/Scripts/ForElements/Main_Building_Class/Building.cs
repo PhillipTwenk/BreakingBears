@@ -27,9 +27,9 @@ public static class Building
     // Информация о элементе
     // INPUT: *id элемента ИЛИ *его название
     // OUTPUT: информация об элементе в виде словаря
-    public static Dictionary<string, string> ElementInfo(int element_id = 0, string element_name = null){
+    public static Dictionary<string, string> ElementInfo(int element_id = -1, string element_name = null){
         string element_info_query = "";
-        if(element_id == 0){
+        if(element_id == -1){
             element_info_query = $"SELECT * FROM elements_info WHERE name = '{element_name}'";
         } else if(element_name == null){
             element_info_query = $"SELECT * FROM elements_info WHERE element_id = {element_id}";
@@ -103,8 +103,12 @@ public static class Building
         Debug.Log(res_element_query);
 
         DataTable res_element_ids = DBManager.GetTable(res_element_query); // проведение нужного запроса в БД
-        if(res_element_ids == null){ 
-            return ReactionResultFormat(elementsList: element_ids); // если реакция отсутствует, возвращает изначальные элементы без изменений
+        if(res_element_ids.Rows.Count == 0){ // если такой реакции нет
+            res_element_query = $"SELECT result1, result2 FROM elements_reactions WHERE id_element1 = {element_ids[1]} AND id_element2 = {element_ids[0]} AND action = '{action_id}' AND parameter_for_action = {parameter}";
+            res_element_ids = DBManager.GetTable(res_element_query); // проведение второго запроса в БД (если user решил провести реакцию соединения Cl и Na, а не Na и Cl, как положено в таблице)
+            if(res_element_ids.Rows.Count == 0){ // если реакция отсутствует
+                return ReactionResultFormat(elementsList: element_ids); // возвращает изначальные элементы без изменений
+            }
         } else if(!perm_output){
             return null; // если реакция завязана на уничтожении элемента (исключение: при нагревании элемент расплавляется)
         } 
