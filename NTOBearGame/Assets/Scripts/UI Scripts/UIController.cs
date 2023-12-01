@@ -13,6 +13,7 @@ public class UIController : MonoBehaviour
     public Transform[] CheckPointArrayPosition;
     private void Start()
     {
+
     }
     #region Buttons Methods
     public void MapButtonOpen(){

@@ -8,11 +8,12 @@ using System;
 
 public class Heater : MonoBehaviour
 {
-    private bool is_canvas_activated = false;
+    [SerializeField] string building_name;
+    [SerializeField] string sys_building_name;
     private string action;
-    private string building_name = "Печь";
     private string exit;
     private int parameter = 0;
+    private bool is_canvas_activated = false;
     public List<int> element_ids;
     public List<string> element_names;
     public List<string> temp_storage; // хранилище элементов для агрегата 
@@ -32,16 +33,16 @@ public class Heater : MonoBehaviour
     void Start()
     {
         for(int i = 1; i < 3; i++){
-            element_ids.Add(PlayerPrefs.GetInt($"HeaterElementID{i}"));
+            element_ids.Add(PlayerPrefs.GetInt($"{sys_building_name}ElementID{i}"));
             if(element_ids[i-1] != 0){
-                element_names.Add(PlayerPrefs.GetString($"HeaterElementName{i}"));
+                element_names.Add(PlayerPrefs.GetString($"{sys_building_name}ElementName{i}"));
             } else{
                 element_names.Add("-");
             }
         }
-        action = PlayerPrefs.GetString("HeaterAction");
-        exit = PlayerPrefs.GetString("HeaterExit");
-        parameter = PlayerPrefs.GetInt("HeaterParameter");
+        action = PlayerPrefs.GetString($"{sys_building_name}Action");
+        exit = PlayerPrefs.GetString($"{sys_building_name}Exit");
+        parameter = PlayerPrefs.GetInt($"{sys_building_name}Parameter");
 
         Canvas.gameObject.SetActive(false); // сразу отключаем канвас агрегата
         parameterInput.gameObject.SetActive(false);  // сразу отключаем поле ввода параметра действия
@@ -51,7 +52,15 @@ public class Heater : MonoBehaviour
     void Update()
     {
         if(is_canvas_activated && Input.GetKey(KeyCode.Escape)){ // нажимая Esc при открытом канвасе(UI агрегата) -> закрываем его с полем ввода параметра
-            BuildAlgorithm();
+            CheckChosenAction();
+            if(action != "" && (ElementsChoice1.value != 0 && ElementsChoice2.value != 0) && ExitsChoice.options[ExitsChoice.value].text != ""){
+                BuildAlgorithm();
+            } else {
+                parameterInput.gameObject.SetActive(false); // отключаем поле ввода для параметра
+                Canvas.gameObject.SetActive(false); //отключаем канвас
+                is_canvas_activated = false;
+                PlayerMenu.SetActive(true); // отключаем интерфейс игрока, чтобы не было наслоения
+            }
         }
     }
 
@@ -96,16 +105,17 @@ public class Heater : MonoBehaviour
         element_names.Add(ElementsChoice2.options[ElementsChoice2.value].text);
         // сохраняем все части алгоритма в PlayerPrefs
         for(int i = 1; i < 3; i++){
-            PlayerPrefs.SetInt($"HeaterElementID{i}", element_ids[i-1]);
+            PlayerPrefs.SetInt($"{sys_building_name}ElementID{i}", element_ids[i-1]);
             if(element_names[i-1] != ""){
-                PlayerPrefs.SetString($"HeaterElementName{i}", element_names[i-1]);
+                PlayerPrefs.SetString($"{sys_building_name}ElementName{i}", element_names[i-1]);
             } else {
-                PlayerPrefs.SetString($"HeaterElementName{i}", "-");
+                PlayerPrefs.SetString($"{sys_building_name}ElementName{i}", "-");
             }
         }
-        PlayerPrefs.SetString("HeaterAction", action);
-        PlayerPrefs.SetString("HeaterExit", exit);
-        PlayerPrefs.SetInt("HeaterParameter", parameter);
+        PlayerPrefs.SetString($"{sys_building_name}Action", action);
+        PlayerPrefs.SetString($"{sys_building_name}Exit", exit);
+        PlayerPrefs.SetInt($"{sys_building_name}Parameter", parameter);
+        parameterInput.text = "";
         if(element_ids[1] == 0){
             AlgorithmText.text = $"{action} {element_names[0]}, Параметр = {parameter}, Вывести в {exit}";
         } else {
@@ -115,7 +125,7 @@ public class Heater : MonoBehaviour
         parameterInput.gameObject.SetActive(false); // отключаем поле ввода для параметра
         Canvas.gameObject.SetActive(false); //отключаем канвас
         is_canvas_activated = false;
-        PlayerMenu.SetActive(true);
+        PlayerMenu.SetActive(true); // отключаем интерфейс игрока, чтобы не было наслоения
     }
 
     public void CheckChosenAction(){ // проверка при выборе действия (всегда в одном порядке: 1 - с параметром; 2 - без параметра; 3 - удалить остатки)
@@ -136,17 +146,17 @@ public class Heater : MonoBehaviour
         }
 
         string element_name = coll.name.ToString().Split('(')[0];
-        Debug.Log(PlayerPrefs.GetString("HeaterElementName1"));
+        Debug.Log(PlayerPrefs.GetString($"{sys_building_name}ElementName1"));
         temp_storage.Add(element_name);
-        if((temp_storage.Contains(PlayerPrefs.GetString("HeaterElementName1")) || PlayerPrefs.GetString("HeaterElementName1") == "-") && (temp_storage.Contains(PlayerPrefs.GetString("HeaterElementName2")) || PlayerPrefs.GetString("HeaterElementName2") == "-") ){ // если попадает вещество, которое является условием для начала алгоритма
-            temp_element_ids.Add(PlayerPrefs.GetInt("HeaterElementID1"));
-            temp_element_ids.Add(PlayerPrefs.GetInt("HeaterElementID2"));
+        if((temp_storage.Contains(PlayerPrefs.GetString($"{sys_building_name}ElementName1")) || PlayerPrefs.GetString($"{sys_building_name}ElementName1") == "-") && (temp_storage.Contains(PlayerPrefs.GetString($"{sys_building_name}ElementName2")) || PlayerPrefs.GetString($"{sys_building_name}ElementName2") == "-") ){ // если попадает вещество, которое является условием для начала алгоритма
+            temp_element_ids.Add(PlayerPrefs.GetInt($"{sys_building_name}ElementID1"));
+            temp_element_ids.Add(PlayerPrefs.GetInt($"{sys_building_name}ElementID2"));
             Destroy(coll.gameObject);
             List<Dictionary<string, string>> result_element = Building.Reaction( // пример вызова функции для получения вещества по алгоритму
                 building_name, // строение
-                PlayerPrefs.GetString("HeaterAction"), // действие
+                PlayerPrefs.GetString($"{sys_building_name}Action"), // действие
                 temp_element_ids, // ID элементов в БД
-                parameter=PlayerPrefs.GetInt("HeaterParameter") // параметр действия
+                parameter=PlayerPrefs.GetInt($"{sys_building_name}Parameter") // параметр действия
             );
 
             foreach(Dictionary<string, string> element in result_element){
@@ -155,11 +165,19 @@ public class Heater : MonoBehaviour
                 }
                 Debug.Log(element["name"]); // вывод имени элемента
                 if(exit == building_name){
-                    PlayerPrefs.DeleteAll();
+                    for(int i = 1; i < 3; i++){
+                        PlayerPrefs.DeleteKey($"{sys_building_name}ElementName{i}");
+                        PlayerPrefs.DeleteKey($"{sys_building_name}ElementID{i}");
+                    }
                     Instantiate(EP.elements_prefabs[Convert.ToInt32(element["element_id"])-1], OutputPlace.transform.position, Quaternion.identity);
                 }
 
             }
+
+            PlayerPrefs.DeleteKey($"{sys_building_name}Parameter");
+            PlayerPrefs.DeleteKey($"{sys_building_name}Action");
+            PlayerPrefs.DeleteKey($"{sys_building_name}Exit");
+
             parameter = 0;
             action = "";
             element_ids.Clear();
