@@ -232,18 +232,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1146584054054541787, guid: 3ea85f344a0077a4d9d1b7c31d9ec84b, type: 3}
-      propertyPath: m_margin.x
-      value: -1.6349168
-      objectReference: {fileID: 0}
-    - target: {fileID: 1146584054054541787, guid: 3ea85f344a0077a4d9d1b7c31d9ec84b, type: 3}
-      propertyPath: m_margin.z
-      value: -0.7148063
-      objectReference: {fileID: 0}
-    - target: {fileID: 1146584054054541787, guid: 3ea85f344a0077a4d9d1b7c31d9ec84b, type: 3}
-      propertyPath: m_renderer
-      value: 
-      objectReference: {fileID: 1001818524}
     - target: {fileID: 4887475470034810751, guid: 3ea85f344a0077a4d9d1b7c31d9ec84b, type: 3}
       propertyPath: m_Name
       value: ElementName
@@ -758,11 +746,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9893c79bba986984384ddc50b3707924, type: 3}
---- !u!23 &1001818524 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 6226308342267369221, guid: 3ea85f344a0077a4d9d1b7c31d9ec84b, type: 3}
-  m_PrefabInstance: {fileID: 308646072}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1098470875
 GameObject:
   m_ObjectHideFlags: 0
