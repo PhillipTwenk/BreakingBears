@@ -60,12 +60,23 @@ public static class Building
         return res_actions;
     }
 
-    // Информация о всех элементах (позже внутри player_storage)
-    // INPUT: -
+    // Информация о всех элементах (если)
+    // INPUT: все объекты или только те, что изучены?
     // OUTPUT: все возможные вещества (позже те, которые находятся в инвентаре)
-    public static List<string> ElementsChoiceInfo(){
-        DataTable elements = DBManager.GetTable($"SELECT name FROM elements_info WHERE element_id > 0");
+    public static List<string> ElementsChoiceInfo(bool is_in_inventory = false){
+        string query = "";
         List<string> res_elements = new List<string>();
+        if(is_in_inventory){
+            DataTable inventory_element_ids = DBManager.GetTable("SELECT element_id FROM inventory WHERE element_id > 0");
+            for(int i = 0; i < inventory_element_ids.Rows.Count; i++){
+                res_elements.Add(ElementInfo(element_id: Convert.ToInt32(inventory_element_ids.Rows[i][0].ToString()))["name"]);
+            }
+            return res_elements;
+
+        } else {
+            query = "SELECT name FROM elements_info WHERE element_id > 0";
+        }
+        DataTable elements = DBManager.GetTable(query);
         res_elements.Add(""); // добавляем пустой выбор для проверки в UI агрегата на полноту алгоритма
         for(int i = 0; i < elements.Rows.Count; i++){
             string value = elements.Rows[i][0].ToString();
@@ -99,8 +110,11 @@ public static class Building
 
         string res_element_query = ""; // запрос в БД
         res_element_query = $"SELECT result1, result2 FROM elements_reactions WHERE id_element1 = {element_ids[0]} AND id_element2 = {element_ids[1]} AND action = '{action_id}' AND parameter_for_action = {parameter}";
+        Debug.Log(res_element_query);
 
         DataTable res_element_ids = DBManager.GetTable(res_element_query); // проведение нужного запроса в БД
+        Debug.Log(res_element_ids.Rows[0][0]);
+        Debug.Log(res_element_ids.Rows[0][1]);
         if(res_element_ids.Rows.Count == 0){ // если такой реакции нет
             res_element_query = $"SELECT result1, result2 FROM elements_reactions WHERE id_element1 = {element_ids[1]} AND id_element2 = {element_ids[0]} AND action = '{action_id}' AND parameter_for_action = {parameter}";
             res_element_ids = DBManager.GetTable(res_element_query); // проведение второго запроса в БД (если user решил провести реакцию соединения Cl и Na, а не Na и Cl, как положено в таблице)
@@ -112,49 +126,6 @@ public static class Building
         } 
         
         return ReactionResultFormat(elementsDT: res_element_ids); // возвращение информации об итоговом элементе
-    }
-
-    public static List<string> ReactionsWithElement(int element_id){
-        List<string> output = new List<string>();
-        Debug.Log(element_id);
-        DataTable all_reactions = DBManager.GetTable($"SELECT * FROM elements_reactions WHERE id_element1 = {element_id} OR id_element2 = {element_id} OR result1 = {element_id} OR result2 = {element_id}");
-        for(int i = 0; i < all_reactions.Rows.Count; i++){
-            string reaction = "";
-            string element1 = ElementInfo(element_id: Convert.ToInt32(all_reactions.Rows[i]["id_element1"].ToString()))["name"];
-            string element2 = ElementInfo(element_id: Convert.ToInt32(all_reactions.Rows[i]["id_element2"].ToString()))["name"];
-            Debug.Log($"1 элемент: {element1}");
-            Debug.Log($"2 элемент: {element2}");
-
-            if(element2 == "0"){
-                element2 = "";
-                reaction += $"{element1} = ";
-            } else {
-                reaction += $"{element1} + {element2} = ";
-            }
-
-            string result_element1 = ElementInfo(element_id: Convert.ToInt32(all_reactions.Rows[i]["result1"].ToString()))["name"];
-            string result_element2 = ElementInfo(element_id: Convert.ToInt32(all_reactions.Rows[i]["result2"].ToString()))["name"];
-            Debug.Log($"1 итог: {result_element1}");
-            Debug.Log($"2 итог: {result_element2}");
-            if(result_element1 == "0" && result_element2 == "0"){
-                reaction += "(уничтожение)";
-            } else if (result_element1 == "0" && result_element2 != "0"){
-                reaction += result_element2;
-            } else if (result_element1 != "0" && result_element2 == "0"){
-                reaction += result_element1;
-            } else if (result_element1 != "0" && result_element2 != "0"){
-                reaction += $"{result_element1} + {result_element2}";
-            }
-
-            int temp_action_id = Convert.ToInt32(all_reactions.Rows[i]["action"].ToString());
-            string temp_action = DBManager.ExecuteQuery($"SELECT action_name FROM actions WHERE id_action = {temp_action_id}");
-            string parameter = all_reactions.Rows[i]["parameter_for_action"].ToString();
-            reaction += $" ({temp_action} при параметре {parameter})";
-            
-            output.Add(reaction);
-            reaction = "";
-        }
-        return output;
     }
 
     // Преобразование таблицы элементов/списка id элементов в список словарей информации об элементах для последующего вывода в функции Reaction
@@ -178,6 +149,49 @@ public static class Building
 
         return results; // вывод списка словарей информации об элементах
     }
+
+    // Нахождение всех известных реакций с данным веществом из БД
+    // INPUT: id элемента
+    // OUTPUT: список из строк самих реакций (e.g. Na + O = Na2O без учета коэффициентов)
+    public static List<string> ReactionsWithElement(int element_id){
+        List<string> output = new List<string>();
+        Debug.Log(element_id);
+        DataTable all_reactions = DBManager.GetTable($"SELECT * FROM elements_reactions WHERE id_element1 = {element_id} OR id_element2 = {element_id} OR result1 = {element_id} OR result2 = {element_id}");
+        for(int i = 0; i < all_reactions.Rows.Count; i++){
+            string reaction = "";
+            string element1 = ElementInfo(element_id: Convert.ToInt32(all_reactions.Rows[i]["id_element1"].ToString()))["name"];
+            string element2 = ElementInfo(element_id: Convert.ToInt32(all_reactions.Rows[i]["id_element2"].ToString()))["name"];
+
+            if(element2 == "0"){
+                element2 = "";
+                reaction += $"{element1} = ";
+            } else {
+                reaction += $"{element1} + {element2} = ";
+            }
+
+            string result_element1 = ElementInfo(element_id: Convert.ToInt32(all_reactions.Rows[i]["result1"].ToString()))["name"];
+            string result_element2 = ElementInfo(element_id: Convert.ToInt32(all_reactions.Rows[i]["result2"].ToString()))["name"];
+            if(result_element1 == "0" && result_element2 == "0"){
+                reaction += "(уничтожение)";
+            } else if (result_element1 == "0" && result_element2 != "0"){
+                reaction += result_element2;
+            } else if (result_element1 != "0" && result_element2 == "0"){
+                reaction += result_element1;
+            } else if (result_element1 != "0" && result_element2 != "0"){
+                reaction += $"{result_element1} + {result_element2}";
+            }
+
+            int temp_action_id = Convert.ToInt32(all_reactions.Rows[i]["action"].ToString());
+            string temp_action = DBManager.ExecuteQuery($"SELECT action_name FROM actions WHERE id_action = {temp_action_id}");
+            string parameter = all_reactions.Rows[i]["parameter_for_action"].ToString();
+            reaction += $" ({temp_action} при параметре {parameter})";
+            
+            output.Add(reaction);
+            reaction = "";
+        }
+        return output;
+    }
+
 
     // Вывод результата реакции в нужное место
     // INPUT: элемент, имя агрегата, в который нужно направить

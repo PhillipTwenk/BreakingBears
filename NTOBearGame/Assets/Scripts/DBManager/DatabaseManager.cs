@@ -26,6 +26,14 @@ public static class DBManager
         cmd.Dispose();
     }
 
+    // Этот метод выполняет запрос query, но не возвращает ответа (INSERT, DELETE и т.д.)
+    public static void ExecuteQueryWithoutAnswer(string query)
+    {
+        OpenConnection();
+        cmd.CommandText = query;
+        cmd.ExecuteNonQuery();
+        CloseConnection();
+    }
 
     // Этот метод выполняет запрос query и возвращает ответ.
     public static string ExecuteQuery(string query){

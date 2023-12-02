@@ -1006,6 +1006,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ElementsChoice1
       objectReference: {fileID: 0}
+    - target: {fileID: 5465553186574584657, guid: a86334a72b8e6e64bbf2bfb8591cff1c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 5465553186574584659, guid: a86334a72b8e6e64bbf2bfb8591cff1c, type: 3}
       propertyPath: m_Name
       value: Heater

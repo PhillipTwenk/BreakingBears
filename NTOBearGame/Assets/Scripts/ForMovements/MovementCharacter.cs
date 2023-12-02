@@ -66,6 +66,8 @@ public class MovementCharacter : MonoBehaviour
         //angularVelocity zeroing out
         rbCharacter.angularVelocity = Vector3.zero;
     }
+
+
     void Update()
     {
         //Jump
