@@ -9,12 +9,11 @@ using System;
 
 // КЛАСС ДЛЯ РАБОТЫ С ВЕЩЕСТВАМИ И РЕАКЦИЯМИ
 // - Создал: @Artefok
-// - Использует DBManager, (все using сверху)
+// - Использует все using сверху, а также DBManager
 // - Статичный класс для вызова элементов в других скриптах игры
 public static class Building
 {   
     // СТАТИЧНЫЕ ПЕРЕМЕННЫЕ В КЛАССЕ
-    public static List<Dictionary<string, string>> player_storage; // хранилище игрока (soon)
     
 
     // ОБЩИЕ МЕТОДЫ
@@ -67,22 +66,26 @@ public static class Building
         string query = "";
         List<string> res_elements = new List<string>();
         if(is_in_inventory){
-            DataTable inventory_element_ids = DBManager.GetTable("SELECT element_id FROM inventory WHERE element_id > 0");
+            DataTable inventory_element_ids = DBManager.GetTable("SELECT element_id FROM inventory");
             for(int i = 0; i < inventory_element_ids.Rows.Count; i++){
-                res_elements.Add(ElementInfo(element_id: Convert.ToInt32(inventory_element_ids.Rows[i][0].ToString()))["name"]);
+                if(inventory_element_ids.Rows[i][0].ToString() != "0"){
+                    res_elements.Add(ElementInfo(element_id: Convert.ToInt32(inventory_element_ids.Rows[i][0].ToString()))["name"]);
+                } else {
+                    res_elements.Add("-");
+                }
             }
             return res_elements;
 
         } else {
             query = "SELECT name FROM elements_info WHERE element_id > 0";
+            DataTable elements = DBManager.GetTable(query);
+            res_elements.Add(""); // добавляем пустой выбор для проверки в UI агрегата на полноту алгоритма
+            for(int i = 0; i < elements.Rows.Count; i++){
+                string value = elements.Rows[i][0].ToString();
+                res_elements.Add(value);
+            }
+            return res_elements;
         }
-        DataTable elements = DBManager.GetTable(query);
-        res_elements.Add(""); // добавляем пустой выбор для проверки в UI агрегата на полноту алгоритма
-        for(int i = 0; i < elements.Rows.Count; i++){
-            string value = elements.Rows[i][0].ToString();
-            res_elements.Add(value);
-        }
-        return res_elements;
     }
 
     // Информация о всех агрегатах, куда можно вывести вещество
