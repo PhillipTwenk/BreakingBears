@@ -6,6 +6,8 @@ TagManager:
   tags:
   - PortalTriggerForward
   - PortalTriggerBackward
+  - EndNDzone
+  - EndDzone
   layers:
   - Default
   - TransparentFX

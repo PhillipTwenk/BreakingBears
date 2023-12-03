@@ -11,9 +11,11 @@ public class UIController : MonoBehaviour
     public Transform characterPosition;
     public Transform CameraPosition;
     public Transform[] CheckPointArrayPosition;
+    private QuestClass QuestClassInstance;
+    public Text ProgressPanelText;
     private void Start()
     {
-
+        QuestClassInstance = new QuestClass();
     }
     #region Buttons Methods
     public void MapButtonOpen(){
@@ -24,6 +26,11 @@ public class UIController : MonoBehaviour
         ArrayMenus[3].SetActive(false);
         ArrayButtonsMain[5].SetActive(true);
         ArrayButtonsMain[4].SetActive(false);
+        if (PlayerPrefs.GetInt("ProgressInt") == 1)
+        {
+            PlayerPrefs.SetInt("ProgressInt", 2);
+            QuestClassInstance.TextChanger(ProgressPanelText);
+        }
     }
     public void ChatButtonOpen(){
         //Activation chat 

@@ -11,6 +11,8 @@ public class MovementCharacter : MonoBehaviour
     [SerializeField]private float jumpForce;
     [SerializeField]private float jumpForceForLongJump;
     public Transform RayCastEmpty;
+    public Transform RayCastSerfEmpty;
+    public Transform RayCastSerfEmptyUp;
     public LayerMask Default;
     private void Start()
     {
@@ -31,7 +33,7 @@ public class MovementCharacter : MonoBehaviour
         float vt = Input.GetAxis("Vertical");
 
         //Are we in air?
-        if(Physics.CheckSphere(RayCastEmpty.position, 0.4f))
+        if(Physics.CheckSphere(RayCastEmpty.position, 2f))
         {
             CharacterAnimator.SetBool("IsInAir", false);
         }
@@ -57,10 +59,12 @@ public class MovementCharacter : MonoBehaviour
         if (CharacterAnimator.GetBool("IsShift"))
         {
             rbCharacter.velocity = new Vector3(moveDir.x * 2, rbCharacter.velocity.y, moveDir.z * 2);
+            NoSerf();
         }
         else
         {
             rbCharacter.velocity = new Vector3(moveDir.x, rbCharacter.velocity.y, moveDir.z);
+            NoSerf();
         }
 
         //angularVelocity zeroing out
@@ -100,6 +104,14 @@ public class MovementCharacter : MonoBehaviour
         if (Physics.Raycast(RayCastEmpty.position, Vector3.down, 0.4f)){
             CharacterAnimator.SetTrigger("Jump");
             rbCharacter.AddForce(new Vector3(0f, 0.7f, 2f) * jumpForceForLongJump, ForceMode.Impulse);
+        }
+    }
+    private void NoSerf(){
+        if(Physics.CheckSphere(RayCastSerfEmpty.position, 1f)){
+            rbCharacter.velocity = Vector3.down * 3;
+        }
+        if(Physics.CheckSphere(RayCastSerfEmptyUp.position, 1f)){
+            rbCharacter.velocity = Vector3.down * 3;
         }
     }
 }
