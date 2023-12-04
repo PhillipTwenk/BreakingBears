@@ -25,7 +25,7 @@ public class MovementCharacter : MonoBehaviour
 
         speed = 4f;
         speedRotation = 10f;
-        jumpForce = 5f;
+        jumpForce = 4f;
         jumpForceForLongJump = 10f;
     }
     private void FixedUpdate()

@@ -17,10 +17,13 @@ public class CheckPointSystem : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
+        // Игрок открывает новый чекпоинт
+
         if (other.gameObject.tag == "Player")
         {
             CPclass.ActivationCheckPoint(Mark);
             CPclass.DeleteCPTrigger(TriggerCP);
+            CPclass.NewSave(NumberCheckPoint);
         }
     }
 }
