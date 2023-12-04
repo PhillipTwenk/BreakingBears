@@ -17,10 +17,12 @@ public class MovementCharacter : MonoBehaviour
     private void Start()
     {
         //Get Component
+
         rbCharacter = GetComponent<Rigidbody>();
         CharacterAnimator = GetComponent<Animator>();
 
         //Set any values
+
         speed = 4f;
         speedRotation = 10f;
         jumpForce = 5f;
@@ -29,10 +31,12 @@ public class MovementCharacter : MonoBehaviour
     private void FixedUpdate()
     {
         //Get Axis Input
+        
         float hz = Input.GetAxis("Horizontal");
         float vt = Input.GetAxis("Vertical");
 
         //Are we in air?
+
         if(Physics.CheckSphere(RayCastEmpty.position, 2f))
         {
             CharacterAnimator.SetBool("IsInAir", false);
@@ -43,6 +47,7 @@ public class MovementCharacter : MonoBehaviour
         }
 
         //Direction Vector3
+
         Vector3 vectorOrientation = new Vector3(hz, 0, vt);
 
         if(vectorOrientation.magnitude > Mathf.Abs(0.05f)){
@@ -50,12 +55,15 @@ public class MovementCharacter : MonoBehaviour
         }
 
         //Set speed value
+
         CharacterAnimator.SetFloat("speedMove", Vector3.ClampMagnitude(vectorOrientation, 1).magnitude);
 
         //Movement Direction
+
         Vector3 moveDir = Vector3.ClampMagnitude(vectorOrientation, 1) * speed;
         
         //Velocity Movement
+
         if (CharacterAnimator.GetBool("IsShift"))
         {
             rbCharacter.velocity = new Vector3(moveDir.x * 2, rbCharacter.velocity.y, moveDir.z * 2);
@@ -68,6 +76,7 @@ public class MovementCharacter : MonoBehaviour
         }
 
         //angularVelocity zeroing out
+
         rbCharacter.angularVelocity = Vector3.zero;
     }
 
@@ -75,6 +84,7 @@ public class MovementCharacter : MonoBehaviour
     void Update()
     {
         //Jump
+
         if(Input.GetKeyDown(KeyCode.Space)){
             if(CharacterAnimator.GetBool("IsShift")){
                 LongJumpMethod();
@@ -93,6 +103,7 @@ public class MovementCharacter : MonoBehaviour
     private void JumpMethod()
     {
         //Raycast hit
+
         if (Physics.Raycast(RayCastEmpty.position, Vector3.down, 0.4f)){
             CharacterAnimator.SetTrigger("Jump");
             rbCharacter.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -101,12 +112,16 @@ public class MovementCharacter : MonoBehaviour
     private void LongJumpMethod()
     {
         //Raycast hit for long jump
+
         if (Physics.Raycast(RayCastEmpty.position, Vector3.down, 0.4f)){
             CharacterAnimator.SetTrigger("Jump");
             rbCharacter.AddForce(new Vector3(0f, 0.7f, 2f) * jumpForceForLongJump, ForceMode.Impulse);
         }
     }
     private void NoSerf(){
+
+        //Две сферы, проверяющие наличие коллайдеров и при их присутствии опускающая персонажа вниз
+
         if(Physics.CheckSphere(RayCastSerfEmpty.position, 1f)){
             rbCharacter.velocity = Vector3.down * 3;
         }

@@ -10,7 +10,13 @@ using UnityEngine.UI;
             PlayerPrefs.SetInt("ProgressInt", 1);
         }
         public void TextChanger(Text ProgressPanelText){
+
+            // Получение значения, отображающего наше продвижение в квесте
+
             int Progress = PlayerPrefs.GetInt("ProgressInt");
+
+            //Перебор значения для установления нужного текста
+
             switch (Progress)
             {
                 case 1:
