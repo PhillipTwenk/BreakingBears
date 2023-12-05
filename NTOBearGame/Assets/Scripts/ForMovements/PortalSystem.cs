@@ -10,6 +10,7 @@ public class PortalSystem : MonoBehaviour
     public Transform CameraPosition;
     private QuestClass QuestClassInstance;
     public Text ProgressPanelText;
+    public Text DetailPanelText;
     void Start()
     {
         CharacterPosition = GetComponent<Transform>();
@@ -31,16 +32,26 @@ public class PortalSystem : MonoBehaviour
             Vector3 newCamPosition = new Vector3(CharacterPosition.position.x, CharacterPosition.position.y, CharacterPosition.position.z);
             CameraPosition.position = newCamPosition;
 
-            // Перебор номера триггера для закрытия квестов, в которых необходимо пройти локацию
+            // Перебор номера триггера для закрытия квестов, в которых необходимо пройти в комнату
 
             switch (NumberTrigger)
             {
                 case 0:
                     if (PlayerPrefs.GetInt("ProgressInt") == 4)
                     {
-                        PlayerPrefs.SetInt("ProgressInt", 5);
-                        QuestClassInstance.TextChanger(ProgressPanelText);
-                        Debug.Log("4 квест выполнен!");
+                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+                    }
+                break;
+                case 4:
+                    if (PlayerPrefs.GetInt("ProgressInt") == 14)
+                    {
+                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+                    }
+                break;
+                case 8:
+                    if (PlayerPrefs.GetInt("ProgressInt") == 16)
+                    {
+                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
                     }
                 break;
             }
@@ -77,25 +88,21 @@ public class PortalSystem : MonoBehaviour
                 // Пройдена 1 безопасная зона
                     if (PlayerPrefs.GetInt("ProgressInt") == 3)
                     {
-                        PlayerPrefs.SetInt("ProgressInt", 4);
-                        QuestClassInstance.TextChanger(ProgressPanelText);
-                        Debug.Log("3 квест выполнен!");
+                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
                     }
                 break;
                 case 2:
                 // Пройдена 2 безопасная зона
-                    if (PlayerPrefs.GetInt("ProgressInt") == 14)
+                    if (PlayerPrefs.GetInt("ProgressInt") == 15)
                     {
-                        PlayerPrefs.SetInt("ProgressInt", 15);
-                        QuestClassInstance.TextChanger(ProgressPanelText);
+                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
                     }
                 break;
                 case 3:
                 // Пройдена 3 безопасная зона
-                    if (PlayerPrefs.GetInt("ProgressInt") == 23)
+                    if (PlayerPrefs.GetInt("ProgressInt") == 24)
                     {
-                        PlayerPrefs.SetInt("ProgressInt", 24);
-                        QuestClassInstance.TextChanger(ProgressPanelText);
+                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
                     }
                 break;
             }
@@ -110,18 +117,16 @@ public class PortalSystem : MonoBehaviour
             {
                 // Пройдена 1 опасна зона
                 case 1:
-                    if (PlayerPrefs.GetInt("ProgressInt") == 12)
+                    if (PlayerPrefs.GetInt("ProgressInt") == 13)
                     {
-                        PlayerPrefs.SetInt("ProgressInt", 13);
-                        QuestClassInstance.TextChanger(ProgressPanelText);
+                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
                     }
                 break;
                 // Пройдена 2 опасная зона
                 case 2:
-                    if (PlayerPrefs.GetInt("ProgressInt") == 21)
+                    if (PlayerPrefs.GetInt("ProgressInt") == 22)
                     {
-                        PlayerPrefs.SetInt("ProgressInt", 22);
-                        QuestClassInstance.TextChanger(ProgressPanelText);
+                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
                     }
                 break;
             }

@@ -21,8 +21,12 @@ public class ElementListMenu : MonoBehaviour
     [SerializeField] Dropdown ListOfElements;
     [SerializeField] Text ElementReactionsText;
     [SerializeField] Text ElementInfoText;
+    private QuestClass QuestClassInstance;
+    public Text ProgressPanelText;
+    public Text DetailPanelText;
     void Start()
     {
+        QuestClassInstance = new QuestClass();
         ListOfElements.ClearOptions();
         ElementsNames = Building.ElementsChoiceInfo();
         ListOfElements.AddOptions(ElementsNames);
@@ -44,6 +48,10 @@ public class ElementListMenu : MonoBehaviour
         ElementsReactions = Building.ReactionsWithElement(ListOfElements.value);
         for(int i = 0; i < ElementsReactions.Count; i++){
             ElementReactionsText.text += $"{ElementsReactions[i]}\n";
+        }
+        if (ListOfElements.value == 9 && PlayerPrefs.GetInt("ProgressInt") == 9)
+        {
+            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
         }
     }
 }

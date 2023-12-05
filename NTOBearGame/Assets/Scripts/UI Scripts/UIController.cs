@@ -7,12 +7,25 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     public GameObject[] ArrayButtonsMain;
+    //0 - Chat
+    //1 - Map
+    //2 - List
+    //3 - Notification
+    //4 - Case
+    //5 - CloseButton
     public GameObject[] ArrayMenus;
+    //0 - ChatMenu
+    //1 - MapMenu
+    //2 - ListMenu
+    //3 - CaseMenu
     public Transform characterPosition;
     public Transform CameraPosition;
     public Transform[] CheckPointArrayPosition;
     private QuestClass QuestClassInstance;
     public Text ProgressPanelText;
+    public Text DetailPanelText;
+    public GameObject DetailPanelObj;
+    public GameObject ProgressPanel;
     private void Start()
     {
         QuestClassInstance = new QuestClass();
@@ -26,11 +39,14 @@ public class UIController : MonoBehaviour
         ArrayMenus[3].SetActive(false);
         ArrayButtonsMain[5].SetActive(true);
         ArrayButtonsMain[4].SetActive(false);
+        ProgressPanel.SetActive(false);
         if (PlayerPrefs.GetInt("ProgressInt") == 1)
         {
-            PlayerPrefs.SetInt("ProgressInt", 2);
-            QuestClassInstance.TextChanger(ProgressPanelText);
-            Debug.Log("1 квест выполнен!");
+            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+        }
+        if (PlayerPrefs.GetInt("ProgressInt") == 7)
+        {
+            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
         }
     }
     public void ChatButtonOpen(){
@@ -42,6 +58,7 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[5].SetActive(true);
         ArrayButtonsMain[3].SetActive(false);
         ArrayButtonsMain[4].SetActive(false);
+        ProgressPanel.SetActive(false);
     }
     public void ListButtonOpen(){
         // Activation list with Chemical elements
@@ -51,6 +68,11 @@ public class UIController : MonoBehaviour
         ArrayMenus[3].SetActive(false);
         ArrayButtonsMain[5].SetActive(true);
         ArrayButtonsMain[4].SetActive(false);
+        ProgressPanel.SetActive(false);
+        if (PlayerPrefs.GetInt("ProgressInt") == 8)
+        {
+            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+        }
     }
     public void BriefcaseButtonOpen(){
         // Activation our portable briefcase
@@ -64,9 +86,10 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[2].SetActive(false);
         ArrayButtonsMain[3].SetActive(false);
         ArrayButtonsMain[4].SetActive(false);
+        ProgressPanel.SetActive(false);
     }
     public void NotificationButtonOpen(){
-        // Activation chat
+        // Activation NotificationButtonOpen
         ArrayMenus[0].SetActive(true);
         ArrayMenus[1].SetActive(false);
         ArrayMenus[2].SetActive(false);
@@ -74,9 +97,10 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[3].SetActive(false);
         ArrayButtonsMain[5].SetActive(true);
         ArrayButtonsMain[4].SetActive(false);
+        ProgressPanel.SetActive(false);
     }
     public void CloseButton(){
-        // Activation chat
+        // Close All
         ArrayMenus[0].SetActive(false);
         ArrayMenus[1].SetActive(false);
         ArrayMenus[2].SetActive(false);
@@ -85,6 +109,18 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[1].SetActive(true);
         ArrayButtonsMain[2].SetActive(true);
         ArrayButtonsMain[4].SetActive(true);
+        ArrayButtonsMain[5].SetActive(false);
+        DetailPanelObj.SetActive(false);
+        ProgressPanel.SetActive(true);
+    }
+    public void OpenDetailPanel(){
+
+        // Открывает панель описания квеста
+
+        DetailPanelObj.SetActive(true);
+        ArrayButtonsMain[4].SetActive(false); //Отключние кнопки, открывающей инвентарь
+        ArrayButtonsMain[5].SetActive(true); //Включение кнопки закрытия
+        ProgressPanel.SetActive(false);
     }
     public void MarksMethod(GameObject ButtonObj){
 
@@ -104,15 +140,38 @@ public class UIController : MonoBehaviour
         // Отключение карты
 
         ArrayMenus[1].SetActive(false);
+        ProgressPanel.SetActive(true);
         switch (nameNumber)
         {
-            // Телепортировались в 1 безопасную зону
+            // Телепортировались в 1 безопасную зону [квест 2]
             case 0:
                 if (PlayerPrefs.GetInt("ProgressInt") == 2)
                 {
-                    PlayerPrefs.SetInt("ProgressInt", 3);
-                    QuestClassInstance.TextChanger(ProgressPanelText);
-                    Debug.Log("2 квест выполнен!");
+                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+                }
+            break;
+
+            // Телепортировались обратно в комнату [квест 11]
+            case 1:
+                if (PlayerPrefs.GetInt("ProgressInt") == 11)
+                {
+                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+                }
+            break;
+
+            //Телепортировались обратно в лабораторию[квест 6, 18, 27]
+            case 6:
+                if (PlayerPrefs.GetInt("ProgressInt") == 6)
+                {
+                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+                }
+                if (PlayerPrefs.GetInt("ProgressInt") == 18)
+                {
+                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+                }
+                if (PlayerPrefs.GetInt("ProgressInt") == 27)
+                {
+                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
                 }
             break;
         }
