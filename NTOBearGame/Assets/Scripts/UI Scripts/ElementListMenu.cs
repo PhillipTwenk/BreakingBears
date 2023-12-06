@@ -24,6 +24,7 @@ public class ElementListMenu : MonoBehaviour
     private QuestClass QuestClassInstance;
     public Text ProgressPanelText;
     public Text DetailPanelText;
+    public Text LabelText;
     void Start()
     {
         QuestClassInstance = new QuestClass();
@@ -49,7 +50,7 @@ public class ElementListMenu : MonoBehaviour
         for(int i = 0; i < ElementsReactions.Count; i++){
             ElementReactionsText.text += $"{ElementsReactions[i]}\n";
         }
-        if (ListOfElements.value == 9 && PlayerPrefs.GetInt("ProgressInt") == 9)
+        if (LabelText.text == "NaClO" && PlayerPrefs.GetInt("ProgressInt") == 9)
         {
             QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
         }

@@ -470,6 +470,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   element_name_text: {fileID: 2521461827583257512}
+  ProgressPanelText: {fileID: 0}
+  DetailPanelText: {fileID: 0}
 --- !u!65 &5363065785496700565
 BoxCollider:
   m_ObjectHideFlags: 0

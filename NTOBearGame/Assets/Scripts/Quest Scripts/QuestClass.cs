@@ -92,7 +92,7 @@ using UnityEngine.UI;
                     DetailPanelText.text = "";
                 break;
                 case 19:
-                    ProgressPanelText.text = "Создать противоядие";
+                    ProgressPanelText.text = "Получить противоядие";
                     DetailPanelText.text = "";
                 break;
                 case 20:
@@ -128,7 +128,7 @@ using UnityEngine.UI;
                     DetailPanelText.text = "";
                 break;
                 case 28:
-                    ProgressPanelText.text = "Создать вещество";
+                    ProgressPanelText.text = "Получить вещество";
                     DetailPanelText.text = "";
                 break;
                 case 29:

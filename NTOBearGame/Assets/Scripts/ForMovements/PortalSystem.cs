@@ -54,6 +54,18 @@ public class PortalSystem : MonoBehaviour
                         QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
                     }
                 break;
+                case 12:
+                    if (PlayerPrefs.GetInt("ProgressInt") == 23)
+                    {
+                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+                    }
+                break;
+                case 16:
+                    if (PlayerPrefs.GetInt("ProgressInt") == 25)
+                    {
+                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+                    }
+                break;
             }
         }
 

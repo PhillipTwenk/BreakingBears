@@ -151,9 +151,15 @@ public class UIController : MonoBehaviour
                 }
             break;
 
-            // Телепортировались обратно в комнату [квест 11]
+            // Телепортировались обратно в комнату [квест 11, 20]
             case 1:
                 if (PlayerPrefs.GetInt("ProgressInt") == 11)
+                {
+                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+                }
+            break;
+            case 3:
+                if (PlayerPrefs.GetInt("ProgressInt") == 20)
                 {
                     QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
                 }
