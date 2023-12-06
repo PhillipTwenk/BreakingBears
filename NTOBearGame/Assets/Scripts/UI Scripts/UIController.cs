@@ -141,6 +141,7 @@ public class UIController : MonoBehaviour
 
         ArrayMenus[1].SetActive(false);
         ProgressPanel.SetActive(true);
+        ArrayButtonsMain[4].SetActive(true);
         switch (nameNumber)
         {
             // Телепортировались в 1 безопасную зону [квест 2]
