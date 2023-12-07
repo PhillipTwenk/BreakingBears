@@ -16,6 +16,12 @@ public class PortalSystem : MonoBehaviour
         CharacterPosition = GetComponent<Transform>();
         QuestClassInstance = new QuestClass();
     }
+    void OnCollisionStay(Collision other){
+            if(other.gameObject.tag == "MovePlatform")
+            {
+                CharacterPosition.position = other.gameObject.GetComponent<Transform>().position;
+            }
+    }
     void OnCollisionEnter(Collision other)
     {
         // Игрок вошёл в портал

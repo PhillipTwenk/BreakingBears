@@ -23,7 +23,7 @@ public class Element : MonoBehaviour
         if(gameObject.name == "NaClO" && PlayerPrefs.GetInt("ProgressInt") == 10){
             QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), StaticStorage.ProgressPanelTextStatic, StaticStorage.DetailPanelTextStatic);
         }
-        if(gameObject.name == "NaOH" && PlayerPrefs.GetInt("ProgressInt") == 19){
+        if(gameObject.name == "Na2S2O2" && PlayerPrefs.GetInt("ProgressInt") == 19){
             QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), StaticStorage.ProgressPanelTextStatic, StaticStorage.DetailPanelTextStatic);
         }
         if(gameObject.name == "Li2CO3" && PlayerPrefs.GetInt("ProgressInt") == 28){
