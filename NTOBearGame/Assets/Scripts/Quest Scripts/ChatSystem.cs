@@ -5,19 +5,18 @@ using UnityEngine.UI;
 using TMPro;
 public class ChatSystem : MonoBehaviour
 {
-    public GameObject chatPanel, textObjectPrefab;
+    public GameObject chatPanel, textObjectPrefab, LittletextObjectprefab;
     List<Message> messageList = new List<Message>();
     public RectTransform newObjectTransform;
-    public Transform AllMessages;
-    void Start()
-    {
-    }
+    public Scrollbar scrollbar;
+    public ScrollRect scrollrect;
+    public RectTransform contentPanel;
 
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.C))
         {
-            GetMessage("pqpqpq", textObjectPrefab);
+            GetMessage("YEASHHHHH", textObjectPrefab);
         }
     }
     public void GetMessage(string text, GameObject textObject) {
@@ -28,12 +27,10 @@ public class ChatSystem : MonoBehaviour
 
         GameObject newText = Instantiate(textObject, newObjectTransform);
 
-        newText.transform.parent = AllMessages;
+        newText.transform.parent = contentPanel;
 
-        Debug.Log(newObjectTransform.localPosition);
+        //newObjectTransform.localPosition = new Vector3(newObjectTransform.localPosition.x, newObjectTransform.localPosition.y - 1000, newObjectTransform.localPosition.z);
 
-        newObjectTransform.localPosition = new Vector3(newObjectTransform.localPosition.x, newObjectTransform.localPosition.y - 120, newObjectTransform.localPosition.z);
-        Debug.Log(newObjectTransform.localPosition);
         newMessage.textObjectClass = newText.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
         
         newMessage.textObjectClass.text = newMessage.text;
