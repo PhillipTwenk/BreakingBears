@@ -9,6 +9,7 @@ public class StaticStorage : MonoBehaviour
     public static Text DetailPanelTextStatic;
     public Text ProgressPanelText;
     public Text DetailPanelText;
+    public static bool isChatRead;
     void Start()
     {
         ProgressPanelTextStatic = ProgressPanelText;

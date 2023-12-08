@@ -22,8 +22,6 @@ public class ElementListMenu : MonoBehaviour
     [SerializeField] Text ElementReactionsText;
     [SerializeField] Text ElementInfoText;
     private QuestClass QuestClassInstance;
-    public Text ProgressPanelText;
-    public Text DetailPanelText;
     public Text LabelText;
     void Start()
     {
@@ -52,7 +50,7 @@ public class ElementListMenu : MonoBehaviour
         }
         if (LabelText.text == "NaClO" && PlayerPrefs.GetInt("ProgressInt") == 9)
         {
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
         }
     }
 }

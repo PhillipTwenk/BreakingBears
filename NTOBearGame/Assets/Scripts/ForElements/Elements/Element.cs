@@ -9,8 +9,6 @@ public class Element : MonoBehaviour
 {
     private Dictionary<string, string> element_info;
     [SerializeField] TMP_Text element_name_text;
-    [SerializeField] Text ProgressPanelText;
-    [SerializeField] Text DetailPanelText;
     private QuestClass QuestClassInstance;
     private void Start(){
         QuestClassInstance = new QuestClass();
@@ -21,13 +19,13 @@ public class Element : MonoBehaviour
 
     private void OnMouseDown(){
         if(gameObject.name == "NaClO" && PlayerPrefs.GetInt("ProgressInt") == 10){
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), StaticStorage.ProgressPanelTextStatic, StaticStorage.DetailPanelTextStatic);
+            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
         }
         if(gameObject.name == "Na2S2O2" && PlayerPrefs.GetInt("ProgressInt") == 19){
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), StaticStorage.ProgressPanelTextStatic, StaticStorage.DetailPanelTextStatic);
+            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
         }
         if(gameObject.name == "Li2CO3" && PlayerPrefs.GetInt("ProgressInt") == 28){
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), StaticStorage.ProgressPanelTextStatic, StaticStorage.DetailPanelTextStatic);
+            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
         }
         DBManager.ExecuteQueryWithoutAnswer($"UPDATE elements_info SET studied_state = 1 WHERE name = '{element_name_text.text}' AND studied_state = 0");
         string empty_slot_id = DBManager.ExecuteQuery($"SELECT MIN(slot_id) FROM inventory WHERE element_id = 0");

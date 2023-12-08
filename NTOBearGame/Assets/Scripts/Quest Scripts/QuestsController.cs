@@ -5,14 +5,12 @@ using UnityEngine.UI;
 
     public class QuestsController : MonoBehaviour
     {
-        public Text ProgressPanelText;
-        public Text DetailPanelText;
         private QuestClass QuestClassInstance;
         void Start()
         {
             QuestClassInstance = new QuestClass();
             QuestClassInstance.PlayerPrefsStartValue();
-            QuestClassInstance.TextChanger(ProgressPanelText, DetailPanelText);
+            QuestClassInstance.TextChanger();
         }
         void Update()
         {
@@ -24,13 +22,13 @@ using UnityEngine.UI;
                 switch (PlayerPrefs.GetInt("ProgressInt"))
                 {
                     case 5:
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
                     break;
                     case 17:
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
                     break;
                     case 26:
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
                     break;
                 }
             }
@@ -39,10 +37,10 @@ using UnityEngine.UI;
                 switch (PlayerPrefs.GetInt("ProgressInt"))
                 {
                     case 12:
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
                     break;
                     case 21:
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
                     break;
                 }
             }

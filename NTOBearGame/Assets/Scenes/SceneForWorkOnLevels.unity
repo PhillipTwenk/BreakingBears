@@ -2820,8 +2820,6 @@ MonoBehaviour:
   ListOfElements: {fileID: 1585646508}
   ElementReactionsText: {fileID: 389802393}
   ElementInfoText: {fileID: 1556584682}
-  ProgressPanelText: {fileID: 2080090597}
-  DetailPanelText: {fileID: 1459752151}
   LabelText: {fileID: 1786341327}
 --- !u!114 &103186413
 MonoBehaviour:
@@ -27043,8 +27041,6 @@ MonoBehaviour:
   - {fileID: 1876188875}
   - {fileID: 948009121}
   CameraPosition: {fileID: 1843387734}
-  ProgressPanelText: {fileID: 2080090597}
-  DetailPanelText: {fileID: 1459752151}
 --- !u!1001 &1079764027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40548,8 +40544,6 @@ MonoBehaviour:
   - {fileID: 1165524467}
   - {fileID: 2008911196}
   - {fileID: 1695196216}
-  ProgressPanelText: {fileID: 2080090597}
-  DetailPanelText: {fileID: 1459752151}
   DetailPanelObj: {fileID: 271793479}
   ProgressPanel: {fileID: 1372162849}
 --- !u!114 &1574998018
@@ -40579,12 +40573,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chatPanel: {fileID: 698762879}
-  textObjectPrefab: {fileID: 6017702708384604595, guid: c87ee467e5b51f449a957479904faa87, type: 3}
-  LittletextObjectprefab: {fileID: 5643952513177271247, guid: 7d5a3e1348bc7504e99b6783bd1c21d5, type: 3}
+  textObjectPrefabB: {fileID: 6017702708384604595, guid: c87ee467e5b51f449a957479904faa87, type: 3}
+  textObjectPrefabL: {fileID: 5643952513177271247, guid: 7d5a3e1348bc7504e99b6783bd1c21d5, type: 3}
   newObjectTransform: {fileID: 698762880}
   scrollbar: {fileID: 1675740695}
   scrollrect: {fileID: 2128819554}
   contentPanel: {fileID: 1675464731}
+  NewMessage: {fileID: 0}
 --- !u!114 &1574998020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40597,9 +40592,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50bb67296831bd44690f10c09bd67dec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefarb: {fileID: 0}
-  countText: {fileID: 0}
-  content: {fileID: 1675464731}
 --- !u!1 &1575884434 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 530308397480299513, guid: b35960b2ef8e458418ea1348712c471e, type: 3}
@@ -56556,8 +56548,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6acd76c1ce81a848a4ee9a6081381e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProgressPanelText: {fileID: 2080090597}
-  DetailPanelText: {fileID: 1459752151}
 --- !u!4 &1164843604065514814 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 93377137077761319, guid: e32bc4d6a689bf94ba29614caaa71b66, type: 3}

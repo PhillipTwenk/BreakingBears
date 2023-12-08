@@ -22,8 +22,6 @@ public class UIController : MonoBehaviour
     public Transform CameraPosition;
     public Transform[] CheckPointArrayPosition;
     private QuestClass QuestClassInstance;
-    public Text ProgressPanelText;
-    public Text DetailPanelText;
     public GameObject DetailPanelObj;
     public GameObject ProgressPanel;
     private void Start()
@@ -42,11 +40,11 @@ public class UIController : MonoBehaviour
         ProgressPanel.SetActive(false);
         if (PlayerPrefs.GetInt("ProgressInt") == 1)
         {
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
         }
         if (PlayerPrefs.GetInt("ProgressInt") == 7)
         {
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
         }
     }
     public void ChatButtonOpen(){
@@ -71,7 +69,7 @@ public class UIController : MonoBehaviour
         ProgressPanel.SetActive(false);
         if (PlayerPrefs.GetInt("ProgressInt") == 8)
         {
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
         }
     }
     public void BriefcaseButtonOpen(){
@@ -148,7 +146,7 @@ public class UIController : MonoBehaviour
             case 0:
                 if (PlayerPrefs.GetInt("ProgressInt") == 2)
                 {
-                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
                 }
             break;
 
@@ -156,13 +154,13 @@ public class UIController : MonoBehaviour
             case 1:
                 if (PlayerPrefs.GetInt("ProgressInt") == 11)
                 {
-                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
                 }
             break;
             case 3:
                 if (PlayerPrefs.GetInt("ProgressInt") == 20)
                 {
-                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
                 }
             break;
 
@@ -170,15 +168,15 @@ public class UIController : MonoBehaviour
             case 6:
                 if (PlayerPrefs.GetInt("ProgressInt") == 6)
                 {
-                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
                 }
                 if (PlayerPrefs.GetInt("ProgressInt") == 18)
                 {
-                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
                 }
                 if (PlayerPrefs.GetInt("ProgressInt") == 27)
                 {
-                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"), ProgressPanelText, DetailPanelText);
+                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
                 }
             break;
         }
