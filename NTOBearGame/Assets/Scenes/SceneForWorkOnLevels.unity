@@ -8820,6 +8820,58 @@ CapsuleCollider:
   m_Height: 5.9103823
   m_Direction: 1
   m_Center: {x: 0, y: 3.0087016, z: -0.00024414062}
+--- !u!1 &356401166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 356401167}
+  - component: {fileID: 356401168}
+  m_Layer: 0
+  m_Name: ChatSystemEmpty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &356401167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356401166}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &356401168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356401166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 833fb7ade53eedd49a620df56f79382d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chatPanel: {fileID: 698762879}
+  newObjectTransform: {fileID: 698762880}
+  scrollbar: {fileID: 1675740695}
+  scrollrect: {fileID: 2128819554}
+  contentPanel: {fileID: 1675464731}
+  NewMessage: {fileID: 1265669689}
+  ChatPanel: {fileID: 1824137169}
+  ButtonDownObj: {fileID: 1022351222}
 --- !u!1001 &357623284
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18568,7 +18620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.13866144, g: 0.68853927, b: 0.7169812, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -24767,7 +24819,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1574998019}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ChatSystem, Assembly-CSharp
         m_MethodName: ClickDownButton
         m_Mode: 1
@@ -40799,7 +40851,6 @@ GameObject:
   - component: {fileID: 1574998016}
   - component: {fileID: 1574998017}
   - component: {fileID: 1574998018}
-  - component: {fileID: 1574998019}
   m_Layer: 0
   m_Name: CanvasEmpty
   m_TagString: Untagged
@@ -40875,30 +40926,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProgressPanelText: {fileID: 2080090597}
   DetailPanelText: {fileID: 1459752153}
-  textObjectB: {fileID: 1328132590765005727, guid: c87ee467e5b51f449a957479904faa87, type: 3}
+  textObjectB: {fileID: 2549258174235544162, guid: c87ee467e5b51f449a957479904faa87, type: 3}
   textObjectL: {fileID: 855454355618658714, guid: 7d5a3e1348bc7504e99b6783bd1c21d5, type: 3}
   TextingMessageAnimationObj: {fileID: 1939651805}
-  ChatSystemRef: {fileID: 1574998019}
---- !u!114 &1574998019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1574998015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 833fb7ade53eedd49a620df56f79382d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chatPanel: {fileID: 698762879}
-  newObjectTransform: {fileID: 698762880}
-  scrollbar: {fileID: 1675740695}
-  scrollrect: {fileID: 2128819554}
-  contentPanel: {fileID: 1675464731}
-  NewMessage: {fileID: 1265669689}
-  ChatPanel: {fileID: 1824137169}
-  ButtonDownObj: {fileID: 1022351222}
+  ChatSystemRef: {fileID: 356401168}
 --- !u!1 &1575884434 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 530308397480299513, guid: b35960b2ef8e458418ea1348712c471e, type: 3}
@@ -43762,13 +43793,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 783452272}
   m_HandleRect: {fileID: 783452271}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1574998019}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ChatSystem, Assembly-CSharp
         m_MethodName: StartCoroutineMethod
         m_Mode: 3
@@ -43793,7 +43824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4672481, g: 0.7767024, b: 0.7924528, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -44714,7 +44745,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695196215}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.57, y: 1.4540565, z: -16.62}
+  m_LocalPosition: {x: 6.95, y: 1.5, z: -6.7}
   m_LocalScale: {x: 2.388401, y: 2.3884, z: 2.388401}
   m_ConstrainProportionsScale: 0
   m_Children: []
