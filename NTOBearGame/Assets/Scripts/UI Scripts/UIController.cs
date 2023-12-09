@@ -111,6 +111,7 @@ public class UIController : MonoBehaviour
     }
     public void CloseButton(){
         // Close All
+        Building.is_agregat_canvas_activated = false;
         ArrayMenus[0].SetActive(false);
         ArrayMenus[1].SetActive(false);
         ArrayMenus[2].SetActive(false);
@@ -122,7 +123,6 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[5].SetActive(false);
         DetailPanelObj.SetActive(false);
         ProgressPanel.SetActive(true);
-        Building.is_agregat_canvas_activated = false;
     }
     public void OpenDetailPanel(){
 
