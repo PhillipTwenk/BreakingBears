@@ -17,10 +17,14 @@ public class CameraController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(StaticStorage.IsInNDzone == true || StaticStorage.IsInDzone == true)
+        if(StaticStorage.IsInZone == true)
         {
             Vector3 newCamPosition = new Vector3(transformPlayer.position.x + offset.x, transformPlayer.position.y + offset.y, transformPlayer.position.z + offset.z);
             transform.position = Vector3.Lerp(transform.position, newCamPosition, speedChangePositionCam * Time.deltaTime);
+        }
+        if (StaticStorage.IsInLab == true)
+        {
+            gameObject.transform.position = LabPositionCamera;
         }
     }
 }

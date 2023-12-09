@@ -162,6 +162,8 @@ public class UIController : MonoBehaviour
                 {
                     QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
                 }
+                StaticStorage.IsInZone = true;
+                StaticStorage.IsInLab = false;
             break;
 
             // Телепортировались обратно в комнату [квест 11, 20]
@@ -170,12 +172,28 @@ public class UIController : MonoBehaviour
                 {
                     QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
                 }
+                StaticStorage.IsInZone = true;
+                StaticStorage.IsInLab = false;
+            break;
+            case 2:
+                StaticStorage.IsInZone = true;
+                StaticStorage.IsInLab = false;
             break;
             case 3:
                 if (PlayerPrefs.GetInt("ProgressInt") == 20)
                 {
                     QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
                 }
+                StaticStorage.IsInZone = true;
+                StaticStorage.IsInLab = false;
+            break;
+            case 4:
+                StaticStorage.IsInZone = true;
+                StaticStorage.IsInLab = false;
+            break;
+            case 5:
+                StaticStorage.IsInZone = true;
+                StaticStorage.IsInLab = false;
             break;
 
             //Телепортировались обратно в лабораторию[квест 6, 18, 27]
@@ -192,6 +210,8 @@ public class UIController : MonoBehaviour
                 {
                     QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
                 }
+                StaticStorage.IsInZone = false;
+                StaticStorage.IsInLab = true;
             break;
         }
     }

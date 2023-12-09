@@ -20,14 +20,12 @@ public class StaticStorage : MonoBehaviour
     public static ChatSystem ChatSystemRefStatic;
     public static bool IsInStartMenu;
     public static bool IsInLab;
-    public static bool IsInNDzone;
-    public static bool IsInDzone;
+    public static bool IsInZone;
     void Start()
     {
         IsInStartMenu = true;
         IsInLab = false;
-        IsInNDzone = false;
-        IsInDzone = false;
+        IsInZone = false;
         ChatSystemRefStatic = ChatSystemRef;
         AllMessagesArray = new string[47];
         AssigningValues();
