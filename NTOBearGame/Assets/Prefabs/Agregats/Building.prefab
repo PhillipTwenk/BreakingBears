@@ -1537,7 +1537,6 @@ GameObject:
   - component: {fileID: 2507182675763868905}
   - component: {fileID: 4389776297194733604}
   - component: {fileID: 3038765553812960146}
-  - component: {fileID: 3922607468888047853}
   m_Layer: 0
   m_Name: Building
   m_TagString: Untagged
@@ -1624,22 +1623,6 @@ MonoBehaviour:
   AgregatName: {fileID: 8025849662238201930}
   ReactionStateText: {fileID: 9048988599964797870}
   InputElementsText: {fileID: 8803690486458413961}
---- !u!54 &3922607468888047853
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2177748060629126646}
-  serializedVersion: 2
-  m_Mass: 26
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &2224456671739785647
 GameObject:
   m_ObjectHideFlags: 0
