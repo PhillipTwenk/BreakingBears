@@ -28,6 +28,25 @@ public class UIController : MonoBehaviour
     {
         QuestClassInstance = new QuestClass();
     }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            ChatButtonOpen();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            MapButtonOpen();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            ListButtonOpen();
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            BriefcaseButtonOpen();
+        }
+    }
     #region Buttons Methods
     public void MapButtonOpen(){
         // Activation Map
@@ -37,7 +56,7 @@ public class UIController : MonoBehaviour
         ArrayMenus[3].SetActive(false);
         ArrayButtonsMain[5].SetActive(true);
         ArrayButtonsMain[4].SetActive(false);
-        ProgressPanel.SetActive(false);
+        //ProgressPanel.SetActive(false);
         if (PlayerPrefs.GetInt("ProgressInt") == 1)
         {
             QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
@@ -56,7 +75,7 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[5].SetActive(true);
         ArrayButtonsMain[3].SetActive(false);
         ArrayButtonsMain[4].SetActive(false);
-        ProgressPanel.SetActive(false);
+        //ProgressPanel.SetActive(false);
     }
     public void ListButtonOpen(){
         // Activation list with Chemical elements
@@ -66,7 +85,7 @@ public class UIController : MonoBehaviour
         ArrayMenus[3].SetActive(false);
         ArrayButtonsMain[5].SetActive(true);
         ArrayButtonsMain[4].SetActive(false);
-        ProgressPanel.SetActive(false);
+        //ProgressPanel.SetActive(false);
         if (PlayerPrefs.GetInt("ProgressInt") == 8)
         {
             QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
@@ -84,18 +103,7 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[2].SetActive(false);
         ArrayButtonsMain[3].SetActive(false);
         ArrayButtonsMain[4].SetActive(false);
-        ProgressPanel.SetActive(false);
-    }
-    public void NotificationButtonOpen(){
-        // Activation NotificationButtonOpen
-        ArrayMenus[0].SetActive(true);
-        ArrayMenus[1].SetActive(false);
-        ArrayMenus[2].SetActive(false);
-        ArrayMenus[3].SetActive(false);
-        ArrayButtonsMain[3].SetActive(false);
-        ArrayButtonsMain[5].SetActive(true);
-        ArrayButtonsMain[4].SetActive(false);
-        ProgressPanel.SetActive(false);
+        //ProgressPanel.SetActive(false);
     }
     public void CloseButton(){
         // Close All
