@@ -57,6 +57,7 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[5].SetActive(true);
         ArrayButtonsMain[4].SetActive(false);
         //ProgressPanel.SetActive(false);
+        Building.is_agregat_canvas_activated = true;
         if (PlayerPrefs.GetInt("ProgressInt") == 1)
         {
             QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
@@ -76,6 +77,7 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[3].SetActive(false);
         ArrayButtonsMain[4].SetActive(false);
         //ProgressPanel.SetActive(false);
+        Building.is_agregat_canvas_activated = true;
     }
     public void ListButtonOpen(){
         // Activation list with Chemical elements
@@ -86,6 +88,7 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[5].SetActive(true);
         ArrayButtonsMain[4].SetActive(false);
         //ProgressPanel.SetActive(false);
+        Building.is_agregat_canvas_activated = true;
         if (PlayerPrefs.GetInt("ProgressInt") == 8)
         {
             QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
@@ -104,6 +107,7 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[3].SetActive(false);
         ArrayButtonsMain[4].SetActive(false);
         //ProgressPanel.SetActive(false);
+        Building.is_agregat_canvas_activated = true;
     }
     public void CloseButton(){
         // Close All
@@ -118,6 +122,7 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[5].SetActive(false);
         DetailPanelObj.SetActive(false);
         ProgressPanel.SetActive(true);
+        Building.is_agregat_canvas_activated = false;
     }
     public void OpenDetailPanel(){
 
@@ -127,6 +132,7 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[4].SetActive(false); //Отключние кнопки, открывающей инвентарь
         ArrayButtonsMain[5].SetActive(true); //Включение кнопки закрытия
         ProgressPanel.SetActive(false);
+        Building.is_agregat_canvas_activated = true;
     }
     public void MarksMethod(GameObject ButtonObj){
 
