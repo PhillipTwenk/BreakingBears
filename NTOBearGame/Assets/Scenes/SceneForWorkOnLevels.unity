@@ -2981,7 +2981,7 @@ MonoBehaviour:
   ListOfElements: {fileID: 1585646508}
   ElementReactionsText: {fileID: 389802393}
   ElementInfoText: {fileID: 1556584682}
-  LabelText: {fileID: 1786341327}
+  LabelText: {fileID: 0}
 --- !u!114 &103186413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43246,8 +43246,8 @@ MonoBehaviour:
   - {fileID: 1165524467}
   - {fileID: 2008911196}
   - {fileID: 1695196216}
-  DetailPanelObj: {fileID: 271793479}
-  ProgressPanel: {fileID: 1372162849}
+  DetailPanelObj: {fileID: 0}
+  ProgressPanel: {fileID: 0}
 --- !u!114 &1574998018
 MonoBehaviour:
   m_ObjectHideFlags: 0
