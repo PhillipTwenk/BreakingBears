@@ -68,6 +68,7 @@ public class ChatSystem : MonoBehaviour
 
             if(ProgressMessage == NumberOfMessageC)
             {
+                Debug.Log(1);
                 StaticStorage.TextingMessageAnimationObjStatic.SetActive(false);
             }
             yield return new WaitForSeconds(Random.Range(7, 10));
