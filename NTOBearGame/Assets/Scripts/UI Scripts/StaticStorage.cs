@@ -18,8 +18,16 @@ public class StaticStorage : MonoBehaviour
     public static string[] AllMessagesArray;
     public ChatSystem ChatSystemRef;
     public static ChatSystem ChatSystemRefStatic;
+    public static bool IsInStartMenu;
+    public static bool IsInLab;
+    public static bool IsInNDzone;
+    public static bool IsInDzone;
     void Start()
     {
+        IsInStartMenu = true;
+        IsInLab = false;
+        IsInNDzone = false;
+        IsInDzone = false;
         ChatSystemRefStatic = ChatSystemRef;
         AllMessagesArray = new string[47];
         AssigningValues();
@@ -47,7 +55,7 @@ public class StaticStorage : MonoBehaviour
 
         AllMessagesArray[12] = "Здесь и располагаются точки телепортации и хранилища с нужными нам веществами. Нажми на них и выпадут нужные вещества, после возьми их с собой";
         AllMessagesArray[13] = "Пора возвращаться. Открой карту и нажми на точку телепортации лаборатории,  вернёшься обратно";
-        
+
         AllMessagesArray[14] = "Ах да, совсем забыл рассказать, как создавать вещества ";
         AllMessagesArray[15] = "Для начала зайди в карту, там будет подписано, какое противоядие создавать против ядовитой зоны, это мы уже исследовали";
 
