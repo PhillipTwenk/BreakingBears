@@ -240,6 +240,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 9048988599964797870, guid: 75417087835bbb347bfbbf5b5c124f26, type: 3}
+      propertyPath: m_margin.w
+      value: 6.021467
+      objectReference: {fileID: 0}
+    - target: {fileID: 9048988599964797870, guid: 75417087835bbb347bfbbf5b5c124f26, type: 3}
+      propertyPath: m_margin.x
+      value: -1.995882
+      objectReference: {fileID: 0}
+    - target: {fileID: 9048988599964797870, guid: 75417087835bbb347bfbbf5b5c124f26, type: 3}
+      propertyPath: m_margin.y
+      value: -3.0470603
+      objectReference: {fileID: 0}
+    - target: {fileID: 9048988599964797870, guid: 75417087835bbb347bfbbf5b5c124f26, type: 3}
+      propertyPath: m_margin.z
+      value: 17.849903
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75417087835bbb347bfbbf5b5c124f26, type: 3}
 --- !u!4 &46272538169248812 stripped

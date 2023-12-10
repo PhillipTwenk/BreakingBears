@@ -226,15 +226,14 @@ public class BuildingObject : MonoBehaviour
             // если результата нет
             if(Convert.ToInt32(result_element[0]["element_id"]) == temp_element_ids[0] && PlayerPrefs.GetString($"{sys_building_name}Action") != "Аннигилировать, оставить основной элемент"){
                 reaction_state = "Нет такой реакции!"; // выставление соответствующего состояния агрегата
-                is_reacted = true;
                 if(exit == building_name){
                     Instantiate(EP.elements_prefabs[Convert.ToInt32(result_element[0]["element_id"])-1], OutputPlace.transform.position, Quaternion.identity);
                 } else {
                     Instantiate(EP.elements_prefabs[Convert.ToInt32(result_element[0]["element_id"])-1], Transporter.AgregatInputPlaces[PlayerPrefs.GetString($"{sys_building_name}Exit")].transform.position, Quaternion.identity);
                 }
+                is_reacted = true;
             } else{ // если же он есть
                 reaction_state = "Реакция прошла успешно!";
-                is_reacted = true;
                 foreach(Dictionary<string, string> element in result_element){
                     if(Convert.ToInt32(element["element_id"]) == 0){
                         continue;
@@ -246,6 +245,7 @@ public class BuildingObject : MonoBehaviour
                         Instantiate(EP.elements_prefabs[Convert.ToInt32(element["element_id"])-1], Transporter.AgregatInputPlaces[PlayerPrefs.GetString($"{sys_building_name}Exit")].transform.position, Quaternion.identity);
                     }
                 }
+                is_reacted = true;
             }
             InputElementsText.text = "";
             DeleteAlgorithm();        
