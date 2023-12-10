@@ -36,6 +36,7 @@ public class EffectController : MonoBehaviour
                     immune_to = "";
                 } else if (toxic != ""){
                     toxic = "";
+                    // death is here..
                 }
 
                 isEffect = false;
