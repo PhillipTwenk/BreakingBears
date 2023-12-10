@@ -54,7 +54,7 @@ public class ElementListMenu : MonoBehaviour
         for(int i = 0; i < ElementsReactions.Count; i++){
             ElementReactionsText.text += $"{ElementsReactions[i]}\n";
         }
-        if (LabelText.text == "NaClO" && PlayerPrefs.GetInt("ProgressInt") == 9)
+        if (LabelText.text == "NaOCl" && PlayerPrefs.GetInt("ProgressInt") == 9)
         {
             QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
         }

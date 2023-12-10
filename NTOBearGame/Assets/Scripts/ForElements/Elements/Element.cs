@@ -154,7 +154,7 @@ public class Element : MonoBehaviour
         }
     }
     private void AddEffect(){
-        if(gameObject.name.Split('(')[0] == "NaClO" && PlayerPrefs.GetInt("ProgressInt") == 12){
+        if(gameObject.name.Split('(')[0] == "NaOCl" && PlayerPrefs.GetInt("ProgressInt") == 12){
             QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
         }
         if(gameObject.name.Split('(')[0] == "Na₂S₂O₃" && PlayerPrefs.GetInt("ProgressInt") == 21){
