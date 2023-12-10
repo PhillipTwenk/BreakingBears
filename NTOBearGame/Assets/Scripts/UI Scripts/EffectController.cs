@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class EffectController : MonoBehaviour
 {
+    public Transform CharacterPosition;
+    public Transform CameraPosition;
+    public Transform[] CPpositionsArray;
     [SerializeField] Image EffectImage;
     [SerializeField] Text TimerText;
     [SerializeField] Text ElementName;
@@ -15,6 +18,11 @@ public class EffectController : MonoBehaviour
     private bool isEffect = false;
     private string immune_to = "";
     private string toxic = "";
+    private CheckPointClass CPclass;
+    void Start()
+    {
+        CPclass = new CheckPointClass();
+    }
     private void Update(){
         if(PlayerState.is_changed == true){
             NewEffect();
@@ -36,7 +44,7 @@ public class EffectController : MonoBehaviour
                     immune_to = "";
                 } else if (toxic != ""){
                     toxic = "";
-                    // death is here..
+                    CPclass.DeadTeleportation(CPpositionsArray, CharacterPosition, CameraPosition);
                 }
 
                 isEffect = false;

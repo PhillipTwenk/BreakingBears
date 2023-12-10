@@ -5,44 +5,46 @@ using UnityEngine.UI;
 
 public class TrainingMaterialScript : MonoBehaviour
 {
-    public Image[] SlidesMainTutorial;
-    public Image[] SlidesEquipmentTutorial;
-    public Image Next;
+    public GameObject[] SlidesMainTutorial;
+    public GameObject[] SlidesEquipmentTutorial;
+    public GameObject Next;
+    public GameObject Back;
     private int OnWhichSlide;
     private bool IsWhichTutorialActive;
-    public GameObject TutorialActive;
+    public GameObject TutorialMain;
+    public GameObject TutorialEquipment;
     public GameObject CloseButton;
     public void ClickMainTutorial(){
-        TutorialActive.SetActive(true);
+        TutorialMain.SetActive(true);
+        TutorialEquipment.SetActive(false);
         CloseButton.SetActive(true);
-        Next.enabled = true;
+        Next.SetActive(true);
         Building.is_agregat_canvas_activated = true;
         OnWhichSlide = 0;
         IsWhichTutorialActive = true;
-        foreach (Image item in SlidesMainTutorial)
+        foreach (GameObject item in SlidesMainTutorial)
         {
-            item.enabled = false;
-            if(SlidesMainTutorial[OnWhichSlide].enabled == false)
+            item.SetActive(false);
+            if(SlidesMainTutorial[OnWhichSlide].activeSelf == false)
             {
-                item.enabled = true;
-                Debug.Log(1);
+                SlidesMainTutorial[OnWhichSlide].SetActive(true);
             }
         }
     }
     public void ClickEquipmentTutorial(){
-        TutorialActive.SetActive(true);
+        TutorialEquipment.SetActive(true);
+        TutorialMain.SetActive(false);
         CloseButton.SetActive(true);
-        Next.enabled = true;
+        Next.SetActive(true);
         Building.is_agregat_canvas_activated = true;
         OnWhichSlide = 0;
         IsWhichTutorialActive = false;
-        foreach (Image item in SlidesEquipmentTutorial)
+        foreach (GameObject item in SlidesEquipmentTutorial)
         {
-            item.enabled = false;
-            if(SlidesEquipmentTutorial[OnWhichSlide].enabled == true)
+            item.SetActive(false);
+            if(SlidesEquipmentTutorial[OnWhichSlide].activeSelf == false)
             {
-                item.enabled = true;
-                Debug.Log(1);
+                SlidesEquipmentTutorial[OnWhichSlide].SetActive(true);
             }
         }
     }
@@ -50,24 +52,40 @@ public class TrainingMaterialScript : MonoBehaviour
         OnWhichSlide += 1;
         if (IsWhichTutorialActive)
         {
-            foreach (Image item in SlidesMainTutorial)
+            foreach (GameObject item in SlidesMainTutorial)
             {
-                item.enabled = false;
-                if(SlidesMainTutorial[OnWhichSlide].enabled == false)
+                item.SetActive(false);
+                if(SlidesMainTutorial[OnWhichSlide].activeSelf == false)
                 {   
-                    item.enabled = true;
+                    SlidesMainTutorial[OnWhichSlide].SetActive(true);
                 }
+            }
+            if (OnWhichSlide == 6)
+            {
+                Next.SetActive(false);
+            }
+            if (OnWhichSlide == 1)
+            {
+                Back.SetActive(true);
             }
         }
         if (!IsWhichTutorialActive)
         {
-            foreach (Image item in SlidesEquipmentTutorial)
+            foreach (GameObject item in SlidesEquipmentTutorial)
             {
-                item.enabled = false;
-                if(SlidesEquipmentTutorial[OnWhichSlide].enabled == true)
+                item.SetActive(false);
+                if(SlidesEquipmentTutorial[OnWhichSlide].activeSelf == false)
                 {
-                    item.enabled = true;
+                    SlidesEquipmentTutorial[OnWhichSlide].SetActive(true);
                 }
+            }
+            if (OnWhichSlide == 7)
+            {
+                Next.SetActive(false);
+            }
+            if (OnWhichSlide == 1)
+            {
+                Back.SetActive(true);
             }
         }
     }
@@ -75,24 +93,40 @@ public class TrainingMaterialScript : MonoBehaviour
         OnWhichSlide -= 1;
         if (IsWhichTutorialActive)
         {
-            foreach (Image item in SlidesMainTutorial)
+            foreach (GameObject item in SlidesMainTutorial)
             {
-                item.enabled = false;
-                if(SlidesMainTutorial[OnWhichSlide].enabled == false)
+                item.SetActive(false);
+                if(SlidesMainTutorial[OnWhichSlide].activeSelf == false)
                 {
-                    item.enabled = true;
+                    SlidesMainTutorial[OnWhichSlide].SetActive(true);
                 }
+            }
+            if (OnWhichSlide == 0)
+            {
+                Back.SetActive(false);
+            }
+            if (OnWhichSlide == 5)
+            {
+                Next.SetActive(true);
             }
         }
         if (!IsWhichTutorialActive)
         {
-            foreach (Image item in SlidesEquipmentTutorial)
+            foreach (GameObject item in SlidesEquipmentTutorial)
             {
-                item.enabled = false;
-                if(SlidesEquipmentTutorial[OnWhichSlide].enabled == true)
+                item.SetActive(false);
+                if(SlidesEquipmentTutorial[OnWhichSlide].activeSelf == false)
                 {
-                    item.enabled = true;
+                    SlidesEquipmentTutorial[OnWhichSlide].SetActive(true);
                 }
+            }
+            if (OnWhichSlide == 0)
+            {
+                Back.SetActive(false);
+            }
+            if (OnWhichSlide == 6)
+            {
+                Next.SetActive(true);
             }
         }
     }

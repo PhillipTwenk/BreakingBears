@@ -12,38 +12,5 @@ using UnityEngine.UI;
             QuestClassInstance.PlayerPrefsStartValue();
             QuestClassInstance.TextChanger();
         }
-        void Update()
-        {
-
-            // ТЕСТ!!!!!!!!  Пока не сделана механика взятия элементов из сундука
-
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                switch (PlayerPrefs.GetInt("ProgressInt"))
-                {
-                    case 5:
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                    break;
-                    case 17:
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                    break;
-                    case 26:
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                    break;
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.Y))
-            {
-                switch (PlayerPrefs.GetInt("ProgressInt"))
-                {
-                    case 12:
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                    break;
-                    case 21:
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                    break;
-                }
-            }
-        }
     }
 
