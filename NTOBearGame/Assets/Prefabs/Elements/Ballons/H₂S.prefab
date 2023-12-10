@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 5764163384766635064}
   - component: {fileID: 5764163384766635063}
   - component: {fileID: 5764163384766635066}
-  - component: {fileID: 5764163384766635065}
   m_Layer: 0
   m_Name: "H\u2082S"
   m_TagString: Untagged
@@ -162,24 +161,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5764163384766635062}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.6449065, y: 5.236618, z: 1.8198265}
   m_Center: {x: -0.022630852, y: 2.4588747, z: -0.072576076}
---- !u!65 &5764163384766635065
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5764163384766635062}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.5, y: 5.1, z: 1.7}
-  m_Center: {x: -0.02263085, y: 2.458875, z: -0.07257608}
 --- !u!1 &6472379322043062253
 GameObject:
   m_ObjectHideFlags: 0

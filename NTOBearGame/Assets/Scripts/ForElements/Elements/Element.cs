@@ -34,13 +34,14 @@ public class Element : MonoBehaviour
     }   
 
     private void AddItemToInventory(){
-        if(gameObject.name == "NaOCl" && PlayerPrefs.GetInt("ProgressInt") == 10){
+        Debug.Log(element_name_text.text);
+        if(gameObject.name.Split('(')[0] == "NaOCl" && PlayerPrefs.GetInt("ProgressInt") == 10){
             QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
         }
-        if(gameObject.name == "Na₂S₂O₃" && PlayerPrefs.GetInt("ProgressInt") == 19){
+        if(gameObject.name.Split('(')[0] == "Na₂S₂O₃" && PlayerPrefs.GetInt("ProgressInt") == 19){
             QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
         }
-        if(gameObject.name == "Li₂CO₃" && PlayerPrefs.GetInt("ProgressInt") == 28){
+        if(gameObject.name.Split('(')[0] == "Li₂CO₃" && PlayerPrefs.GetInt("ProgressInt") == 28){
             QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
         }
         DBManager.ExecuteQueryWithoutAnswer($"UPDATE elements_info SET studied_state = 1 WHERE name = '{element_name_text.text}' AND studied_state = 0");
