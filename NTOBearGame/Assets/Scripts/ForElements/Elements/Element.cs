@@ -48,7 +48,9 @@ public class Element : MonoBehaviour
         string empty_slot_id = DBManager.ExecuteQuery($"SELECT MIN(slot_id) FROM inventory WHERE element_id = 0");
         DBManager.ExecuteQueryWithoutAnswer($"UPDATE inventory SET element_id = {element_info["element_id"]} WHERE slot_id = {Convert.ToInt32(empty_slot_id)}"); 
         Inventory.is_changed = true;
-        Destroy(gameObject);
+        if(gameObject.tag != "Case"){
+            Destroy(gameObject);
+        }
     }
     private void AddEffect(){
         PlayerState.player_state = "";

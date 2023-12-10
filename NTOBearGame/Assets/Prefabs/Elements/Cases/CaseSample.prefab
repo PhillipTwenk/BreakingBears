@@ -678,7 +678,7 @@ GameObject:
   - component: {fileID: -8517718804524374773}
   m_Layer: 0
   m_Name: CaseSample
-  m_TagString: Untagged
+  m_TagString: Case
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
