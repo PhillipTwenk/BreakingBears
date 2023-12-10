@@ -56,6 +56,8 @@ public class UIController : MonoBehaviour
         ArrayMenus[3].SetActive(false);
         ArrayButtonsMain[5].SetActive(true);
         ArrayButtonsMain[4].SetActive(false);
+        ArrayButtonsMain[6].SetActive(false);
+        ArrayButtonsMain[7].SetActive(false);
         //ProgressPanel.SetActive(false);
         Building.is_agregat_canvas_activated = true;
         if (PlayerPrefs.GetInt("ProgressInt") == 1)
@@ -76,6 +78,9 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[5].SetActive(true);
         ArrayButtonsMain[3].SetActive(false);
         ArrayButtonsMain[4].SetActive(false);
+        ArrayButtonsMain[6].SetActive(false);
+        ArrayButtonsMain[7].SetActive(false);
+        ArrayButtonsMain[8].SetActive(false);
         //ProgressPanel.SetActive(false);
         Building.is_agregat_canvas_activated = true;
     }
@@ -87,6 +92,9 @@ public class UIController : MonoBehaviour
         ArrayMenus[3].SetActive(false);
         ArrayButtonsMain[5].SetActive(true);
         ArrayButtonsMain[4].SetActive(false);
+        ArrayButtonsMain[6].SetActive(false);
+        ArrayButtonsMain[7].SetActive(false);
+        ArrayButtonsMain[8].SetActive(false);
         //ProgressPanel.SetActive(false);
         Building.is_agregat_canvas_activated = true;
         if (PlayerPrefs.GetInt("ProgressInt") == 8)
@@ -106,6 +114,9 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[2].SetActive(false);
         ArrayButtonsMain[3].SetActive(false);
         ArrayButtonsMain[4].SetActive(false);
+        ArrayButtonsMain[6].SetActive(false);
+        ArrayButtonsMain[7].SetActive(false);
+        ArrayButtonsMain[8].SetActive(false);
         //ProgressPanel.SetActive(false);
         Building.is_agregat_canvas_activated = true;
     }
@@ -121,6 +132,9 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[2].SetActive(true);
         ArrayButtonsMain[4].SetActive(true);
         ArrayButtonsMain[5].SetActive(false);
+        ArrayButtonsMain[6].SetActive(true);
+        ArrayButtonsMain[7].SetActive(true);
+        ArrayButtonsMain[8].SetActive(true);
         DetailPanelObj.SetActive(false);
         ProgressPanel.SetActive(true);
     }
@@ -131,6 +145,9 @@ public class UIController : MonoBehaviour
         DetailPanelObj.SetActive(true);
         ArrayButtonsMain[4].SetActive(false); //Отключние кнопки, открывающей инвентарь
         ArrayButtonsMain[5].SetActive(true); //Включение кнопки закрытия
+        ArrayButtonsMain[6].SetActive(false);
+        ArrayButtonsMain[7].SetActive(false);
+        ArrayButtonsMain[8].SetActive(false);
         ProgressPanel.SetActive(false);
         Building.is_agregat_canvas_activated = true;
     }
