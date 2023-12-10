@@ -23,7 +23,7 @@ using TMPro;
                 case 1:
                     StaticStorage.ProgressPanelTextStatic.text = "Открыть карту";
                     StaticStorage.DetailPanelTextStatic.text = "Для открытия карты нажмите цифру 2 на клавиатуре или кнопку наверху с изображением маркера";
-                    StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(10);
+                    // StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(10);
                 break;
                 case 2:
                     StaticStorage.ProgressPanelTextStatic.text = "Переместиться в руины";

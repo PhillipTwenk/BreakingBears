@@ -22,5 +22,6 @@ public class StartGameMenu : MonoBehaviour
         CanvasStartGame.SetActive(false);
         StaticStorage.IsInStartMenu = false;
         MusicController.StartMusicInLab();
+        StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(10);
     }
 }

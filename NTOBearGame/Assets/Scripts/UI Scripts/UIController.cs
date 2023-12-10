@@ -24,6 +24,13 @@ public class UIController : MonoBehaviour
     private QuestClass QuestClassInstance;
     public GameObject DetailPanelObj;
     public GameObject ProgressPanel;
+    public GameObject Tutorials;
+    public Image[] SlidesMainTutorial;
+    public Image[] SlidesEquipmentTutorial;
+    public Image Next;
+    private int OnWhichSlide;
+    private bool IsWhichTutorialActive;
+    public GameObject TutorialActive;
     private void Start()
     {
         QuestClassInstance = new QuestClass();
@@ -45,6 +52,10 @@ public class UIController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             BriefcaseButtonOpen();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseButton();
         }
     }
     #region Buttons Methods
@@ -137,6 +148,7 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[8].SetActive(true);
         DetailPanelObj.SetActive(false);
         ProgressPanel.SetActive(true);
+        Tutorials.SetActive(false);
     }
     public void OpenDetailPanel(){
 
@@ -150,6 +162,90 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[8].SetActive(false);
         ProgressPanel.SetActive(false);
         Building.is_agregat_canvas_activated = true;
+    }
+    public void ClickMainTutorial(){
+        TutorialActive.SetActive(true);
+        ArrayButtonsMain[5].SetActive(true);
+        Next.enabled = true;
+        Building.is_agregat_canvas_activated = true;
+        OnWhichSlide = 0;
+        IsWhichTutorialActive = true;
+        foreach (Image item in SlidesMainTutorial)
+        {
+            item.enabled = false;
+            if(SlidesMainTutorial[OnWhichSlide].enabled == false)
+            {
+                item.enabled = true;
+                Debug.Log(1);
+            }
+        }
+    }
+    public void ClickEquipmentTutorial(){
+        TutorialActive.SetActive(true);
+        ArrayButtonsMain[5].SetActive(true);
+        Next.enabled = true;
+        Building.is_agregat_canvas_activated = true;
+        OnWhichSlide = 0;
+        IsWhichTutorialActive = false;
+        foreach (Image item in SlidesEquipmentTutorial)
+        {
+            item.enabled = false;
+            if(SlidesEquipmentTutorial[OnWhichSlide].enabled == true)
+            {
+                item.enabled = true;
+                Debug.Log(1);
+            }
+        }
+    }
+    public void ClickNext(){
+        OnWhichSlide += 1;
+        if (IsWhichTutorialActive)
+        {
+            foreach (Image item in SlidesMainTutorial)
+            {
+                item.enabled = false;
+                if(SlidesMainTutorial[OnWhichSlide].enabled == false)
+                {   
+                    item.enabled = true;
+                }
+            }
+        }
+        if (!IsWhichTutorialActive)
+        {
+            foreach (Image item in SlidesEquipmentTutorial)
+            {
+                item.enabled = false;
+                if(SlidesEquipmentTutorial[OnWhichSlide].enabled == true)
+                {
+                    item.enabled = true;
+                }
+            }
+        }
+    }
+    public void ClickBack(){
+        OnWhichSlide -= 1;
+        if (IsWhichTutorialActive)
+        {
+            foreach (Image item in SlidesMainTutorial)
+            {
+                item.enabled = false;
+                if(SlidesMainTutorial[OnWhichSlide].enabled == false)
+                {
+                    item.enabled = true;
+                }
+            }
+        }
+        if (!IsWhichTutorialActive)
+        {
+            foreach (Image item in SlidesEquipmentTutorial)
+            {
+                item.enabled = false;
+                if(SlidesEquipmentTutorial[OnWhichSlide].enabled == true)
+                {
+                    item.enabled = true;
+                }
+            }
+        }
     }
     public void MarksMethod(GameObject ButtonObj){
 
