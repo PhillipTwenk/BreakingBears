@@ -12,13 +12,15 @@ public class StartGameMenu : MonoBehaviour
         CanvasMenus.SetActive(false);
         Buildings.SetActive(false);
         StaticStorage.IsInStartMenu = true;
+        MusicController.StartMusicInStartGame();
     }
-    public void ClickStartButton() {
+    public void ClickStartButton(){
         CanvasMain.SetActive(true);
         CanvasMenus.SetActive(true);
         Buildings.SetActive(true);
         gameObject.SetActive(false);
         CanvasStartGame.SetActive(false);
         StaticStorage.IsInStartMenu = false;
+        MusicController.StartMusicInLab();
     }
 }

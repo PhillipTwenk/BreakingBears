@@ -181,6 +181,7 @@ public class UIController : MonoBehaviour
                 }
                 StaticStorage.IsInZone = true;
                 StaticStorage.IsInLab = false;
+                MusicController.StartMusicInZone();
             break;
 
             // Телепортировались обратно в комнату [квест 11, 20]
@@ -191,10 +192,12 @@ public class UIController : MonoBehaviour
                 }
                 StaticStorage.IsInZone = true;
                 StaticStorage.IsInLab = false;
+                MusicController.StartMusicInZone();
             break;
             case 2:
                 StaticStorage.IsInZone = true;
                 StaticStorage.IsInLab = false;
+                MusicController.StartMusicInZone();
             break;
             case 3:
                 if (PlayerPrefs.GetInt("ProgressInt") == 20)
@@ -203,14 +206,17 @@ public class UIController : MonoBehaviour
                 }
                 StaticStorage.IsInZone = true;
                 StaticStorage.IsInLab = false;
+                MusicController.StartMusicInZone();
             break;
             case 4:
                 StaticStorage.IsInZone = true;
                 StaticStorage.IsInLab = false;
+                MusicController.StartMusicInZone();
             break;
             case 5:
                 StaticStorage.IsInZone = true;
                 StaticStorage.IsInLab = false;
+                MusicController.StartMusicInZone();
             break;
 
             //Телепортировались обратно в лабораторию[квест 6, 18, 27]
@@ -229,6 +235,7 @@ public class UIController : MonoBehaviour
                 }
                 StaticStorage.IsInZone = false;
                 StaticStorage.IsInLab = true;
+                MusicController.StartMusicInLab();
             break;
         }
     }

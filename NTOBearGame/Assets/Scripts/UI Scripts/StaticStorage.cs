@@ -21,8 +21,18 @@ public class StaticStorage : MonoBehaviour
     public static bool IsInStartMenu;
     public static bool IsInLab;
     public static bool IsInZone;
+
+    public static AudioSource MusicInLabStatic;
+    public static AudioSource MusicInZoneStatic;
+    public static AudioSource MusicInStartGameMenuStatic;
+    public AudioSource MusicInLab;
+    public AudioSource MusicInZone;
+    public AudioSource MusicInStartGameMenu;
     void Start()
     {
+        MusicInLabStatic = MusicInLab;
+        MusicInZoneStatic = MusicInZone;
+        MusicInStartGameMenuStatic = MusicInStartGameMenu;
         IsInStartMenu = true;
         IsInLab = false;
         IsInZone = false;
