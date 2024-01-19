@@ -126,7 +126,6 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[6].SetActive(false);
         ArrayButtonsMain[7].SetActive(false);
         ArrayButtonsMain[8].SetActive(false);
-        //ProgressPanel.SetActive(false);
         Building.is_agregat_canvas_activated = true;
     }
     public void CloseButton(){
@@ -156,8 +155,8 @@ public class UIController : MonoBehaviour
         // Открывает панель описания квеста
 
         DetailPanelObj.SetActive(true);
-        ArrayButtonsMain[4].SetActive(false); //Отключние кнопки, открывающей инвентарь
-        ArrayButtonsMain[5].SetActive(true); //Включение кнопки закрытия
+        ArrayButtonsMain[4].SetActive(false);  //Отключние кнопки, открывающей инвентарь
+        ArrayButtonsMain[5].SetActive(true);  //Включение кнопки закрытия
         ArrayButtonsMain[6].SetActive(false);
         ArrayButtonsMain[7].SetActive(false);
         ArrayButtonsMain[8].SetActive(false);

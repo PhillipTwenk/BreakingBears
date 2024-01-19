@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Mono.Data.Sqlite;
+using System.Data;
+using System;
 
 
     public class QuestClass
@@ -16,7 +19,11 @@ using TMPro;
 
             int Progress = PlayerPrefs.GetInt("ProgressInt");
 
-            //Перебор значения для установления нужного текста
+            string SmallPanelQuery = $"SELECT SmallPanel FROM Panel_Table WHERE id = '{Progress}'";
+            string DetailPanelQuery = $"SELECT DetailPanel FROM Panel_Table WHERE id = '{Progress}'";
+
+            StaticStorage.ProgressPanelTextStatic.text = DBManager.ExecuteQuery(SmallPanelQuery);
+            StaticStorage.DetailPanelTextStatic.text = DBManager.ExecuteQuery(DetailPanelQuery);
 
             switch (Progress)
             {

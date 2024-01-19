@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Mono.Data.Sqlite;
+using System.Data;
+using System;
 public class ChatSystem : MonoBehaviour
 {
     public GameObject chatPanel;
@@ -59,7 +62,11 @@ public class ChatSystem : MonoBehaviour
         int ProgressMessage = PlayerPrefs.GetInt("ProgressMessage");
         while(ProgressMessage <= NumberOfMessageC)
         {
-            GetMessage(StaticStorage.AllMessagesArray[ProgressMessage], true);
+            string ChatQuery = $"SELECT Phrase FROM Chat_Phrases WHERE id = '{ProgressMessage - 1}'";
+
+            string message = DBManager.ExecuteQuery(ChatQuery);
+
+            GetMessage(message, true);
 
             ProgressMessage +=1;
             PlayerPrefs.SetInt("ProgressMessage", ProgressMessage);
@@ -68,10 +75,9 @@ public class ChatSystem : MonoBehaviour
 
             if(ProgressMessage == NumberOfMessageC)
             {
-                Debug.Log(1);
                 StaticStorage.TextingMessageAnimationObjStatic.SetActive(false);
             }
-            yield return new WaitForSeconds(Random.Range(7, 10));
+            yield return new WaitForSeconds(UnityEngine.Random.Range(7, 10));
         }
     }
     public void ClickDownButton()

@@ -18,6 +18,7 @@ public class StaticStorage : MonoBehaviour
     public static string[] AllMessagesArray;
     public ChatSystem ChatSystemRef;
     public static ChatSystem ChatSystemRefStatic;
+    
     public static bool IsInStartMenu;
     public static bool IsInLab;
     public static bool IsInZone;
