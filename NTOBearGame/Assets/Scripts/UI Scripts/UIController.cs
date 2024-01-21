@@ -67,7 +67,6 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[4].SetActive(false);
         ArrayButtonsMain[6].SetActive(false);
         ArrayButtonsMain[7].SetActive(false);
-        //ProgressPanel.SetActive(false);
         Building.is_agregat_canvas_activated = true;
         if (PlayerPrefs.GetInt("ProgressInt") == 1)
         {
