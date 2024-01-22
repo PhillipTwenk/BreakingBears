@@ -228,7 +228,7 @@ MonoBehaviour:
     value: 0
   postExposure:
     overrideState: 1
-    value: -0.26
+    value: -0.35
   contrast:
     overrideState: 1
     value: 45
@@ -240,7 +240,7 @@ MonoBehaviour:
     value: 0
   mixerRedOutBlueIn:
     overrideState: 0
-    value: 0
+    value: -21
   mixerGreenOutRedIn:
     overrideState: 0
     value: 0
@@ -264,10 +264,10 @@ MonoBehaviour:
     value: {x: 1, y: 1, z: 1, w: 0}
   gamma:
     overrideState: 0
-    value: {x: 1, y: 1, z: 1, w: 0}
+    value: {x: 0.7696291, y: 1, z: 0.66873044, w: 0}
   gain:
     overrideState: 0
-    value: {x: 1, y: 1, z: 1, w: 0}
+    value: {x: 0.9446905, y: 1, z: 0.81876266, w: 0}
   masterCurve:
     overrideState: 0
     value:
