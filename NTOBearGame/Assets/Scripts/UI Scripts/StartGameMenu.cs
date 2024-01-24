@@ -19,7 +19,9 @@ public class StartGameMenu : MonoBehaviour
         CanvasMenus.SetActive(true);
         Buildings.SetActive(true);
         gameObject.SetActive(false);
+        Debug.Log(1);
         CanvasStartGame.SetActive(false);
+        Debug.Log(2);
         StaticStorage.IsInStartMenu = false;
         MusicController.StartMusicInLab();
         StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(10);
