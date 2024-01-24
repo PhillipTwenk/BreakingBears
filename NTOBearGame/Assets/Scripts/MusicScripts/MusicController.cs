@@ -6,7 +6,6 @@ public class MusicController : MonoBehaviour
 {
     public static void StartMusicInStartGame(){
         StaticStorage.MusicInStartGameMenuStatic.Play();
-        Debug.Log(8);
         StaticStorage.MusicInZoneStatic.Stop();
         StaticStorage.MusicInLabStatic.Stop();
     }
