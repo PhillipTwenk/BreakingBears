@@ -13,7 +13,7 @@ using System;
         {
             QuestClassInstance = new QuestClass();
             QuestClassInstance.PlayerPrefsStartValue();
-            QuestClassInstance.TextChanger();
+            // QuestClassInstance.TextChanger();
         }
     }
 

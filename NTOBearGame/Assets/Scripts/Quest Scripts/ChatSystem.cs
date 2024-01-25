@@ -62,7 +62,7 @@ public class ChatSystem : MonoBehaviour
         int ProgressMessage = PlayerPrefs.GetInt("ProgressMessage");
         while(ProgressMessage <= NumberOfMessageC)
         {
-            string ChatQuery = $"SELECT Phrase FROM Chat_Phrases WHERE id = '{ProgressMessage - 1}'";
+            string ChatQuery = $"SELECT Phrase FROM Chat_Phrases WHERE id = '{ProgressMessage + 1}'";
 
             string message = DBManager.ExecuteQuery(ChatQuery);
 

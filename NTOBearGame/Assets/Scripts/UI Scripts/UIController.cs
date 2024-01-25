@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+    public GameObject BearOSPanel;
     public GameObject[] ArrayButtonsMain;
     //0 - Chat
     //1 - Map
@@ -51,6 +52,10 @@ public class UIController : MonoBehaviour
         {
             BriefcaseButtonOpen();
         }
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            BearOSPanel.SetActive(true);
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             CloseButton();
@@ -89,11 +94,12 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[6].SetActive(false);
         ArrayButtonsMain[7].SetActive(false);
         ArrayButtonsMain[8].SetActive(false);
-        //ProgressPanel.SetActive(false);
         Building.is_agregat_canvas_activated = true;
     }
     public void ListButtonOpen(){
-        // Activation list with Chemical elements
+
+        // Активация панели со справочником
+
         ArrayMenus[0].SetActive(false);
         ArrayMenus[1].SetActive(false);
         ArrayMenus[2].SetActive(true);
@@ -103,8 +109,11 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[6].SetActive(false);
         ArrayButtonsMain[7].SetActive(false);
         ArrayButtonsMain[8].SetActive(false);
-        //ProgressPanel.SetActive(false);
         Building.is_agregat_canvas_activated = true;
+
+
+        //Проверка на действующий квест
+
         if (PlayerPrefs.GetInt("ProgressInt") == 8)
         {
             QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
@@ -148,6 +157,7 @@ public class UIController : MonoBehaviour
         TutorialMain.SetActive(false);
         Next.SetActive(false);
         Back.SetActive(false);
+        BearOSPanel.SetActive(false);
     }
     public void OpenDetailPanel(){
 

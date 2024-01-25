@@ -32,11 +32,19 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    //Запуск цикла анимаций потухания-появления экрана при начале экрана
     public void StartFadeAnimation(){
         FadeAnimator.SetTrigger("StartFadeAnimationTrigger");
     }
 
+    //Старт анимации движения камеры при начале игры
     public void StartCameraMovement(){
         CameraAnimator.SetTrigger("StartCameraAnimationTrigger");
+    }
+
+    public void MovingCameraToLab(){
+        CameraAnimator.enabled = false;
+        transform.position = LabPositionCamera;
+        StaticStorage.IsInLab = true;
     }
 }

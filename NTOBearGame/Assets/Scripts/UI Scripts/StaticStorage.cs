@@ -17,6 +17,11 @@ public class StaticStorage : MonoBehaviour
     public static GameObject textObjectPrefabB, textObjectPrefabL;
     public static string[] AllMessagesArray;
     public ChatSystem ChatSystemRef;
+
+    public StartGameMenu StartGameMenuRef;
+
+    public static StartGameMenu StartGameMenuRefStatic;
+
     public static ChatSystem ChatSystemRefStatic;
     
     public static bool IsInStartMenu;
@@ -60,6 +65,7 @@ public class StaticStorage : MonoBehaviour
         DetailPanelTextStatic = DetailPanelText;
         textObjectPrefabB = textObjectB;
         textObjectPrefabL = textObjectL;
+        StartGameMenuRefStatic = StartGameMenuRef;
     }
     private void AssigningValues()
     {

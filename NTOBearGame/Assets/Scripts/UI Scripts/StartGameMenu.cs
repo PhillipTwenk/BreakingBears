@@ -11,8 +11,12 @@ public class StartGameMenu : MonoBehaviour
     //Ccылка на скрипт CameraController
     public CameraController CameraControllerScriptReference;
 
+    //Ccылка на скрипт QuestClass
+    private QuestClass QuestClassInstance;
+
     void Start()
     {
+        QuestClassInstance = new QuestClass();
         CanvasStartGame.SetActive(true);
         CanvasMain.SetActive(false);
         CanvasMenus.SetActive(false);
@@ -24,24 +28,46 @@ public class StartGameMenu : MonoBehaviour
     //Нажатие на кнопку старта
     public void ClickStartButton(){
 
-        //Активирование нужных элементов UI
+        //Запуск стартовой анимации
 
         CameraControllerScriptReference.StartCameraMovement();
+
+
+        //Отключение стартового  UI
+
+        gameObject.SetActive(false);
+        CanvasStartGame.SetActive(false);
+    }
+
+    //Выполняется после стартовой анимации
+    public void AfterStartAnimation(){
+
+        //Перенос камеры в лабораторию(метод из скрипта CameraController)
+
+        CameraControllerScriptReference.MovingCameraToLab();
+
+
+        //Включение основого интерфейса
 
         CanvasMain.SetActive(true);
         CanvasMenus.SetActive(true);
         Buildings.SetActive(true);
-        gameObject.SetActive(false);
-        CanvasStartGame.SetActive(false);
+
 
         StaticStorage.IsInStartMenu = false;
 
+
         //Запуск музыкальной темы в лаборатории
+
         MusicController.StartMusicInLab();
 
         //Запуск сообщений от профессора
-        StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(10);
+        
+        QuestClassInstance.TextChanger();
+        //StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(10);
     }
+
+    //Выполняется при нажатии кнопки "Выход"
     public void ClickQuitButton(){
 
         //Выход из приложения
