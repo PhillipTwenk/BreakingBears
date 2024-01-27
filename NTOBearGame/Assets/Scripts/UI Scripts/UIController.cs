@@ -30,6 +30,7 @@ public class UIController : MonoBehaviour
     public GameObject TutorialEquipment;
     public GameObject Next;
     public GameObject Back;
+    public GameObject PauseMenu;
     private void Start()
     {
         QuestClassInstance = new QuestClass();
@@ -54,14 +55,32 @@ public class UIController : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            BearOSPanel.SetActive(true);
+            BearOSPanel.SetActive(!BearOSPanel.activeSelf);
         }
         if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseButton();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
         {
             CloseButton();
         }
     }
     #region Buttons Methods
+
+    //Выполняется при нажатии на паузу(кнопка esc)
+    public void PauseButton(){
+        if (StaticStorage.IsPause)
+        {
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            Time.timeScale = 0f;
+        }
+        PauseMenu.SetActive(!PauseMenu.activeSelf);
+        StaticStorage.IsPause = !StaticStorage.IsPause;
+    }
     public void MapButtonOpen(){
         // Activation Map
         ArrayMenus[0].SetActive(false);
@@ -139,10 +158,12 @@ public class UIController : MonoBehaviour
     public void CloseButton(){
         // Close All
         Building.is_agregat_canvas_activated = false;
+
         ArrayMenus[0].SetActive(false);
         ArrayMenus[1].SetActive(false);
         ArrayMenus[2].SetActive(false);
         ArrayMenus[3].SetActive(false);
+
         ArrayButtonsMain[0].SetActive(true);
         ArrayButtonsMain[1].SetActive(true);
         ArrayButtonsMain[2].SetActive(true);
@@ -151,13 +172,21 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[6].SetActive(true);
         ArrayButtonsMain[7].SetActive(true);
         ArrayButtonsMain[8].SetActive(true);
+
         DetailPanelObj.SetActive(false);
         ProgressPanel.SetActive(true);
+
         TutorialEquipment.SetActive(false);
         TutorialMain.SetActive(false);
+
         Next.SetActive(false);
         Back.SetActive(false);
+
         BearOSPanel.SetActive(false);
+
+        if(StaticStorage.IsPause){
+            PauseButton();
+        }
     }
     public void OpenDetailPanel(){
 

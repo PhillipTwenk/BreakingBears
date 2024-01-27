@@ -13,6 +13,7 @@ public class ControllerSoundEffect : MonoBehaviour
     void Start()
     {
         Source = GetComponent<AudioSource>();
+        StaticStorage.NewMessageSourceStatic = Source;
     }
     public void HitHammerPlay() {
         Source.PlayOneShot(HitHammer);
@@ -28,5 +29,8 @@ public class ControllerSoundEffect : MonoBehaviour
     }
     public void RunningPlay() {
         Source.PlayOneShot(Running);
+    }
+    public static void PlayNewMessageSound(){
+        StaticStorage.NewMessageSourceStatic.PlayOneShot(StaticStorage.NewMessageStatic);
     }
 }
