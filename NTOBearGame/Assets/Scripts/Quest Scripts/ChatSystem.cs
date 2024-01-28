@@ -8,15 +8,13 @@ using System.Data;
 using System;
 public class ChatSystem : MonoBehaviour
 {
-    //public GameObject chatPanel;
     List<Message> messageList = new List<Message>();
     public RectTransform newObjectTransform;
     public Scrollbar scrollbar;
     public ScrollRect scrollrect;
     public RectTransform contentPanel;
-    public GameObject NewMessage;
     public GameObject ChatPanel;
-    public GameObject ButtonDownObj;
+    //public GameObject ButtonDownObj;
 
     //Создание сообщения
     public void CreateMessage(string text, bool IsBigMessage) {
@@ -38,20 +36,6 @@ public class ChatSystem : MonoBehaviour
         newMessage.textObjectClass.text = newMessage.text;
 
         messageList.Add(newMessage);
-        NewMessageWasNotRead();
-    }
-
-    public void NewMessageWasNotRead(){
-        if (ChatPanel.activeSelf == false)
-        {
-            StaticStorage.isChatRead = false;
-            NewMessage.SetActive(true);
-        }
-        else
-        {
-            StaticStorage.isChatRead = true;
-            NewMessage.SetActive(false);
-        }
     }
 
     //Метод для запуска корутины
@@ -95,7 +79,7 @@ public class ChatSystem : MonoBehaviour
 
             //Активирование кнопки перехода к низу чата
 
-            ButtonDownObj.SetActive(true);
+            //ButtonDownObj.SetActive(true);
 
 
             //Отключение анимации набора текста
@@ -109,11 +93,11 @@ public class ChatSystem : MonoBehaviour
         }
     }
 
-    public void ClickDownButton()
-    {
-        scrollbar.value = 0f;
-        ButtonDownObj.SetActive(false);
-    }
+    // public void ClickDownButton()
+    // {
+    //     scrollbar.value = 0f;
+    //     ButtonDownObj.SetActive(false);
+    // }
 }
 public class Message
 {
