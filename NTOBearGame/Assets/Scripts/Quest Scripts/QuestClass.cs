@@ -13,6 +13,7 @@ using System;
         public void PlayerPrefsStartValue(){
             PlayerPrefs.SetInt("ProgressInt", 1);
             PlayerPrefs.SetInt("ProgressMessage", 0);
+            PlayerPrefs.SetInt("CPCondition", 0);
         }
         public void TextChanger(){
             // Получение значения, отображающего наше продвижение в квесте и продвижение в сообщениях

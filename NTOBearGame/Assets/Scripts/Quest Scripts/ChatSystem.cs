@@ -29,7 +29,7 @@ public class ChatSystem : MonoBehaviour
         else 
             newText = Instantiate(StaticStorage.textObjectPrefabL, newObjectTransform);
 
-        newText.transform.parent = contentPanel;
+        newText.transform.SetParent(contentPanel);
 
         newMessage.textObjectClass = newText.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
         

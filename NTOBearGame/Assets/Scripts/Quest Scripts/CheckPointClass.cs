@@ -6,10 +6,11 @@ public class CheckPointClass
 {
     public void CheckPointStartValue(){
         PlayerPrefs.SetInt("CPCondition", 0);
+        PlayerPrefs.SetInt("CPNumber", 0);
     }
 
+
     // Определение номера ЧекПоинта
-    
     public int DefiningCheckPoint(GameObject gameObjectCP){
         string name = gameObjectCP.name;
         char nameNumberChar = name[1];
@@ -17,30 +18,33 @@ public class CheckPointClass
         return nameNumber;
     }
 
-    // Активация чекпоинта при условии что он ещё не активен
 
+    // Активация чекпоинта на карте при условии что он ещё не активен
     public void ActivationCheckPoint(GameObject Mark){
         if(!Mark.active){
             Mark.SetActive(true);
+            Debug.Log("Open New Checkpoint");
         }
+
+        PlayerPrefs.SetInt("CPNumber", PlayerPrefs.GetInt("CPNumber") + 1);
     }
 
-    // Удаление триггера, отслеживающего активацию чекпоинта
 
+    // Удаление триггера, отслеживающего активацию чекпоинта
     public void DeleteCPTrigger(SphereCollider TriggerCP){
         if(TriggerCP.enabled == true){
             TriggerCP.enabled = false;
         }
     }
 
-    // Сохраняет новое значение последнего чекпоинта
 
+    // Сохраняет новое значение последнего чекпоинта
     public void NewSave(int NumberCheckPoint){
         PlayerPrefs.SetInt("CPCondition", NumberCheckPoint);
     }
 
-    // Реализация телепортации после смерти игрока от падения
 
+    // Реализация телепортации после смерти игрока от падения
     public void DeadTeleportation(Transform[] CPposArray, Transform CharacterPos, Transform CameraPos) {
         int CPCondition = PlayerPrefs.GetInt("CPCondition");
         Vector3 newCharacterPosition = new Vector3(CPposArray[CPCondition].position.x, CPposArray[CPCondition].position.y, CPposArray[CPCondition].position.z);

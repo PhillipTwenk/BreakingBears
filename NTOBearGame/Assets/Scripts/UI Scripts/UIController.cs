@@ -3,70 +3,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
     public GameObject BearOSPanel;
-    public GameObject[] ArrayButtonsMain;
-    //0 - Chat
-    //1 - Map
-    //2 - List
-    //3 - Notification
-    //4 - Case
-    //5 - CloseButton
-    public GameObject[] ArrayMenus;
-    //0 - ChatMenu
-    //1 - MapMenu
-    //2 - ListMenu
-    //3 - CaseMenu
     public Transform characterPosition;
     public Transform CameraPosition;
     public Transform[] CheckPointArrayPosition;
+    public Transform HomeCheckPoint;
     private QuestClass QuestClassInstance;
     public GameObject DetailPanelObj;
     public GameObject ProgressPanel;
-    public GameObject Tutorials;
     public GameObject TutorialMain;
     public GameObject TutorialEquipment;
     public GameObject Next;
     public GameObject Back;
     public GameObject PauseMenu;
+    public GameObject ButtonClose;
+    public TextMeshProUGUI TextTeleportButton;
     private void Start()
     {
         QuestClassInstance = new QuestClass();
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            ChatButtonOpen();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            MapButtonOpen();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            ListButtonOpen();
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            BriefcaseButtonOpen();
-        }
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            BearOSPanel.SetActive(!BearOSPanel.activeSelf);
+            BearOS();
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PauseButton();
         }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            CloseButton();
-        }
     }
     #region Buttons Methods
+
 
     //Выполняется при нажатии на паузу(кнопка esc)
     public void PauseButton(){
@@ -80,17 +52,22 @@ public class UIController : MonoBehaviour
         }
         PauseMenu.SetActive(!PauseMenu.activeSelf);
         StaticStorage.IsPause = !StaticStorage.IsPause;
+        if(BearOSPanel.activeSelf){
+            BearOSPanel.SetActive(!BearOSPanel.activeSelf);
+        }
+        ProgressPanel.SetActive(true);
+    }
+
+
+    //Активация/Дезактивация панели BearOS
+    public void BearOS(){
+        BearOSPanel.SetActive(!BearOSPanel.activeSelf);
+        if(DetailPanelObj.activeSelf){
+            DetailPanelObj.SetActive(!ProgressPanel.activeSelf);
+        }
+        ProgressPanel.SetActive(!ProgressPanel.activeSelf);
     }
     public void MapButtonOpen(){
-        // Activation Map
-        ArrayMenus[0].SetActive(false);
-        ArrayMenus[1].SetActive(true);
-        ArrayMenus[2].SetActive(false);
-        ArrayMenus[3].SetActive(false);
-        ArrayButtonsMain[5].SetActive(true);
-        ArrayButtonsMain[4].SetActive(false);
-        ArrayButtonsMain[6].SetActive(false);
-        ArrayButtonsMain[7].SetActive(false);
         Building.is_agregat_canvas_activated = true;
         if (PlayerPrefs.GetInt("ProgressInt") == 1)
         {
@@ -101,33 +78,9 @@ public class UIController : MonoBehaviour
             QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
         }
     }
-    public void ChatButtonOpen(){
-        // Activation chat 
-        ArrayMenus[0].SetActive(true);
-        ArrayMenus[1].SetActive(false);
-        ArrayMenus[2].SetActive(false);
-        ArrayMenus[3].SetActive(false);
-        ArrayButtonsMain[5].SetActive(true);
-        ArrayButtonsMain[3].SetActive(false);
-        ArrayButtonsMain[4].SetActive(false);
-        ArrayButtonsMain[6].SetActive(false);
-        ArrayButtonsMain[7].SetActive(false);
-        ArrayButtonsMain[8].SetActive(false);
-        Building.is_agregat_canvas_activated = true;
-    }
     public void ListButtonOpen(){
 
         // Активация панели со справочником
-
-        ArrayMenus[0].SetActive(false);
-        ArrayMenus[1].SetActive(false);
-        ArrayMenus[2].SetActive(true);
-        ArrayMenus[3].SetActive(false);
-        ArrayButtonsMain[5].SetActive(true);
-        ArrayButtonsMain[4].SetActive(false);
-        ArrayButtonsMain[6].SetActive(false);
-        ArrayButtonsMain[7].SetActive(false);
-        ArrayButtonsMain[8].SetActive(false);
         Building.is_agregat_canvas_activated = true;
 
 
@@ -140,38 +93,11 @@ public class UIController : MonoBehaviour
     }
     public void BriefcaseButtonOpen(){
         // Activation our portable briefcase
-        ArrayMenus[0].SetActive(false);
-        ArrayMenus[1].SetActive(false);
-        ArrayMenus[2].SetActive(false);
-        ArrayMenus[3].SetActive(true);
-        ArrayButtonsMain[5].SetActive(true);
-        ArrayButtonsMain[0].SetActive(false);
-        ArrayButtonsMain[1].SetActive(false);
-        ArrayButtonsMain[2].SetActive(false);
-        ArrayButtonsMain[3].SetActive(false);
-        ArrayButtonsMain[4].SetActive(false);
-        ArrayButtonsMain[6].SetActive(false);
-        ArrayButtonsMain[7].SetActive(false);
-        ArrayButtonsMain[8].SetActive(false);
         Building.is_agregat_canvas_activated = true;
     }
     public void CloseButton(){
         // Close All
         Building.is_agregat_canvas_activated = false;
-
-        ArrayMenus[0].SetActive(false);
-        ArrayMenus[1].SetActive(false);
-        ArrayMenus[2].SetActive(false);
-        ArrayMenus[3].SetActive(false);
-
-        ArrayButtonsMain[0].SetActive(true);
-        ArrayButtonsMain[1].SetActive(true);
-        ArrayButtonsMain[2].SetActive(true);
-        ArrayButtonsMain[4].SetActive(true);
-        ArrayButtonsMain[5].SetActive(false);
-        ArrayButtonsMain[6].SetActive(true);
-        ArrayButtonsMain[7].SetActive(true);
-        ArrayButtonsMain[8].SetActive(true);
 
         DetailPanelObj.SetActive(false);
         ProgressPanel.SetActive(true);
@@ -193,16 +119,93 @@ public class UIController : MonoBehaviour
         // Открывает панель описания квеста
 
         DetailPanelObj.SetActive(true);
-        ArrayButtonsMain[4].SetActive(false);  //Отключние кнопки, открывающей инвентарь
-        ArrayButtonsMain[5].SetActive(true);  //Включение кнопки закрытия
-        ArrayButtonsMain[6].SetActive(false);
-        ArrayButtonsMain[7].SetActive(false);
-        ArrayButtonsMain[8].SetActive(false);
         ProgressPanel.SetActive(false);
         Building.is_agregat_canvas_activated = true;
     }
 
+    public void TeleportMethod(){
+        int CPNumber = PlayerPrefs.GetInt("CPNumber");
+        if (StaticStorage.IsInLab){
+            Vector3 newPositionCharacter = new Vector3(CheckPointArrayPosition[CPNumber].position.x, CheckPointArrayPosition[CPNumber].position.y, CheckPointArrayPosition[CPNumber].position.z + 5);
+            characterPosition.position = newPositionCharacter;
+            TextTeleportButton.text = "В лабораторию";
+            switch (CPNumber)
+            {
+                // Телепортировались в 1 безопасную зону [квест 2]
+                case 0:
+                    if (PlayerPrefs.GetInt("ProgressInt") == 2)
+                    {
+                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+                    }
+                    StaticStorage.IsInZone = true;
+                    StaticStorage.IsInLab = false;
+                    MusicController.StartMusicInZone();
+                break;
 
+                // Телепортировались обратно в комнату [квест 11, 20]
+                case 1:
+                    if (PlayerPrefs.GetInt("ProgressInt") == 11)
+                    {
+                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+                    }
+                    StaticStorage.IsInZone = true;
+                    StaticStorage.IsInLab = false;
+                    MusicController.StartMusicInZone();
+                break;
+                case 2:
+                    StaticStorage.IsInZone = true;
+                    StaticStorage.IsInLab = false;
+                    MusicController.StartMusicInZone();
+                break;
+                case 3:
+                    if (PlayerPrefs.GetInt("ProgressInt") == 20)
+                    {
+                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+                    }
+                    StaticStorage.IsInZone = true;
+                    StaticStorage.IsInLab = false;
+                    MusicController.StartMusicInZone();
+                break;
+                case 4:
+                    StaticStorage.IsInZone = true;
+                    StaticStorage.IsInLab = false;
+                    MusicController.StartMusicInZone();
+                break;
+                case 5:
+                    StaticStorage.IsInZone = true;
+                    StaticStorage.IsInLab = false;
+                    MusicController.StartMusicInZone();
+                break;
+            }
+        }
+        else{
+            Vector3 newPositionCharacter = new Vector3(HomeCheckPoint.position.x, HomeCheckPoint.position.y, HomeCheckPoint.position.z + 5);
+            characterPosition.position = newPositionCharacter;
+            TextTeleportButton.text = "В Контрольную точку";
+            if (PlayerPrefs.GetInt("ProgressInt") == 6)
+            {
+                QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+            }
+            if (PlayerPrefs.GetInt("ProgressInt") == 18)
+            {
+                QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+            }
+            if (PlayerPrefs.GetInt("ProgressInt") == 27)
+            {
+                QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+            }
+            StaticStorage.IsInZone = false;
+            StaticStorage.IsInLab = true;
+            MusicController.StartMusicInLab();
+        }
+        Vector3 newCamPosition = new Vector3(characterPosition.position.x, characterPosition.position.y, characterPosition.position.z);
+        CameraPosition.position = newCamPosition;
+        Debug.Log(StaticStorage.IsInLab);
+
+        BearOSPanel.SetActive(false);
+
+        Debug.Log(CPNumber);
+    }
     public void MarksMethod(GameObject ButtonObj){
 
         // Определение номера метки
@@ -220,10 +223,8 @@ public class UIController : MonoBehaviour
 
         // Отключение карты
 
-        ArrayMenus[1].SetActive(false);
-        ProgressPanel.SetActive(true);
-        ArrayButtonsMain[4].SetActive(true);
-        ArrayButtonsMain[5].SetActive(false);
+        ButtonClose.GetComponent<Button>().onClick.Invoke();
+
         switch (nameNumber)
         {
             // Телепортировались в 1 безопасную зону [квест 2]
