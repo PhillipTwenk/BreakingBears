@@ -65,7 +65,6 @@ public class BuildingObject : MonoBehaviour
         // обнуляем сохраненный алгоритм до этого
         DeleteAlgorithm();
         AgregatName.text = $"{building_name}";
-
         ExitAgregatUI();
     }
     public void ExitAgregatUI(){

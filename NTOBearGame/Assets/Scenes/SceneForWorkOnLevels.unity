@@ -56265,7 +56265,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5282555271958404006, guid: fb553ce1831eb384a9da0232e2ab4518, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5282555271958404006, guid: fb553ce1831eb384a9da0232e2ab4518, type: 3}
       propertyPath: m_LocalPosition.x
@@ -71707,7 +71707,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -0.162, y: -89.654, z: -0.001}
 --- !u!114 &1843387735
 MonoBehaviour:
@@ -82018,7 +82018,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1259554206233669056, guid: 37f6615d77ac7874d9f8eb5bd85e7a51, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4058453517521748338, guid: 37f6615d77ac7874d9f8eb5bd85e7a51, type: 3}
       propertyPath: PlayerMenu
