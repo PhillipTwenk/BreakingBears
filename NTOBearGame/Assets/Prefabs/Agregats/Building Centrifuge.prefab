@@ -137,6 +137,10 @@ PrefabInstance:
       value: 2.1693003
       objectReference: {fileID: 0}
     - target: {fileID: 3038765553812960146, guid: 75417087835bbb347bfbbf5b5c124f26, type: 3}
+      propertyPath: outline
+      value: 
+      objectReference: {fileID: 1263714655309277869}
+    - target: {fileID: 3038765553812960146, guid: 75417087835bbb347bfbbf5b5c124f26, type: 3}
       propertyPath: building_name
       value: "\u0426\u0435\u043D\u0442\u0440\u0438\u0444\u0443\u0433\u0430"
       objectReference: {fileID: 0}
@@ -263,3 +267,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1310112478843795873, guid: 75417087835bbb347bfbbf5b5c124f26, type: 3}
   m_PrefabInstance: {fileID: 1335898911522780557}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1263714655309277869 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 217172461422075680, guid: 75417087835bbb347bfbbf5b5c124f26, type: 3}
+  m_PrefabInstance: {fileID: 1335898911522780557}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

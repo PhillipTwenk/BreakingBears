@@ -92,6 +92,10 @@ PrefabInstance:
       value: -0.0132063525
       objectReference: {fileID: 0}
     - target: {fileID: 3038765553812960146, guid: 75417087835bbb347bfbbf5b5c124f26, type: 3}
+      propertyPath: outline
+      value: 
+      objectReference: {fileID: 1259554206233669056}
+    - target: {fileID: 3038765553812960146, guid: 75417087835bbb347bfbbf5b5c124f26, type: 3}
       propertyPath: PlayerMenu
       value: 
       objectReference: {fileID: 0}
@@ -214,6 +218,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1310112478843795873, guid: 75417087835bbb347bfbbf5b5c124f26, type: 3}
   m_PrefabInstance: {fileID: 1331192830137692896}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1259554206233669056 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 217172461422075680, guid: 75417087835bbb347bfbbf5b5c124f26, type: 3}
+  m_PrefabInstance: {fileID: 1331192830137692896}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8163670586712165301
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -55,7 +55,7 @@ public class BuildingObject : MonoBehaviour
     [SerializeField] Text AgregatName; // Надпись (название алгоритма) в UI
     [SerializeField] TMP_Text ReactionStateText; // Надпись над объектом(состояние алгоритма)
     [SerializeField] TMP_Text InputElementsText; // Надпись над объектом(подающиеся элементы)
-
+    [SerializeField] Outline outline;
     // Запуск при появлении на сцене
     // INPUT: -
     // OUTPUT: - (сброс предыдущих алгоритмов и отключение канваса)
@@ -96,11 +96,18 @@ public class BuildingObject : MonoBehaviour
             }
         }
     }
+    private void OnMouseEnter(){
+        outline.enabled = true; // если мы навелись на объект
+    }
 
+    private void OnMouseExit(){
+        outline.enabled = false; // если мы отводим мышку от объекта
+    }
     // Нажатие на агрегат -> активация интерфейса агрегата (отключение основного интерфейса игрока) выставление в выпадающие списки нужные значения
     // INPUT: - (клик по мыши на агрегат)
     // OUTPUT: - (все нужные значения в выпадающих списках из БД)
     void OnMouseDown(){
+        Debug.Log("1");
         if(!Building.is_agregat_canvas_activated && !is_canvas_activated){
             PlayerMenu.SetActive(false);
             Canvas.gameObject.SetActive(true);
