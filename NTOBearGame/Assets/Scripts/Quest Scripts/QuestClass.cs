@@ -16,6 +16,7 @@ using System;
             PlayerPrefs.SetInt("CPCondition", 0);
         }
         public void TextChanger(){
+            
             // Получение значения, отображающего наше продвижение в квесте и продвижение в сообщениях
 
             int Progress = PlayerPrefs.GetInt("ProgressInt");
