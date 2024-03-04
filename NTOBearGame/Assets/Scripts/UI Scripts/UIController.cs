@@ -31,6 +31,14 @@ public class UIController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Q))
         {
             BearOS();
+            if (PlayerPrefs.GetInt("ProgressInt") == 1)
+            {
+                QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+            }
+            if (PlayerPrefs.GetInt("ProgressInt") == 7)
+            {
+                QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+            }
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -66,17 +74,7 @@ public class UIController : MonoBehaviour
             DetailPanelObj.SetActive(!ProgressPanel.activeSelf);
         }
         ProgressPanel.SetActive(!ProgressPanel.activeSelf);
-    }
-    public void MapButtonOpen(){
         Building.is_agregat_canvas_activated = true;
-        if (PlayerPrefs.GetInt("ProgressInt") == 1)
-        {
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-        }
-        if (PlayerPrefs.GetInt("ProgressInt") == 7)
-        {
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-        }
     }
     public void ListButtonOpen(){
 
@@ -205,93 +203,6 @@ public class UIController : MonoBehaviour
         BearOSPanel.SetActive(false);
 
         Debug.Log(CPNumber);
-    }
-    public void MarksMethod(GameObject ButtonObj){
-
-        // Определение номера метки
-
-        string name = ButtonObj.name;
-        char nameNumberChar = name[6];
-        int nameNumber = (nameNumberChar - '0') - 1;
-
-        // Перемещение персонажа с камерой в нужные координаты
-
-        Vector3 newPositionCharacter = new Vector3(CheckPointArrayPosition[nameNumber].position.x, CheckPointArrayPosition[nameNumber].position.y, CheckPointArrayPosition[nameNumber].position.z + 5);
-        characterPosition.position = newPositionCharacter;
-        Vector3 newCamPosition = new Vector3(characterPosition.position.x, characterPosition.position.y, characterPosition.position.z);
-        CameraPosition.position = newCamPosition;
-
-        // Отключение карты
-
-        ButtonClose.GetComponent<Button>().onClick.Invoke();
-
-        switch (nameNumber)
-        {
-            // Телепортировались в 1 безопасную зону [квест 2]
-            case 0:
-                if (PlayerPrefs.GetInt("ProgressInt") == 2)
-                {
-                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                }
-                StaticStorage.IsInZone = true;
-                StaticStorage.IsInLab = false;
-                MusicController.StartMusicInZone();
-            break;
-
-            // Телепортировались обратно в комнату [квест 11, 20]
-            case 1:
-                if (PlayerPrefs.GetInt("ProgressInt") == 11)
-                {
-                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                }
-                StaticStorage.IsInZone = true;
-                StaticStorage.IsInLab = false;
-                MusicController.StartMusicInZone();
-            break;
-            case 2:
-                StaticStorage.IsInZone = true;
-                StaticStorage.IsInLab = false;
-                MusicController.StartMusicInZone();
-            break;
-            case 3:
-                if (PlayerPrefs.GetInt("ProgressInt") == 20)
-                {
-                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                }
-                StaticStorage.IsInZone = true;
-                StaticStorage.IsInLab = false;
-                MusicController.StartMusicInZone();
-            break;
-            case 4:
-                StaticStorage.IsInZone = true;
-                StaticStorage.IsInLab = false;
-                MusicController.StartMusicInZone();
-            break;
-            case 5:
-                StaticStorage.IsInZone = true;
-                StaticStorage.IsInLab = false;
-                MusicController.StartMusicInZone();
-            break;
-
-            //Телепортировались обратно в лабораторию[квест 6, 18, 27]
-            case 6:
-                if (PlayerPrefs.GetInt("ProgressInt") == 6)
-                {
-                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                }
-                if (PlayerPrefs.GetInt("ProgressInt") == 18)
-                {
-                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                }
-                if (PlayerPrefs.GetInt("ProgressInt") == 27)
-                {
-                    QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                }
-                StaticStorage.IsInZone = false;
-                StaticStorage.IsInLab = true;
-                MusicController.StartMusicInLab();
-            break;
-        }
     }
     #endregion
 }

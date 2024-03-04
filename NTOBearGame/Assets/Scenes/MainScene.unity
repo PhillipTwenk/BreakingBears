@@ -4319,10 +4319,10 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: -30
+    m_Top: -44
     m_Bottom: -30
   m_ChildAlignment: 7
-  m_Spacing: -77.37
+  m_Spacing: -95.7
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0

@@ -17,24 +17,41 @@ public class ChatSystem : MonoBehaviour
     //public GameObject ButtonDownObj;
 
     //Создание сообщения
-    public void CreateMessage(string text, bool IsBigMessage) {
+    public void CreateMessage(string text, bool IsBigMessage)
+    {
+        //Создание экземпляра нового сообщения
         Message newMessage = new Message();
+        
+        
+        //Создание заготовок текста
+        newMessage.TimeText = DateTime.Now.ToString("HH:mm:ss");
 
         newMessage.text = text;
 
         GameObject newText;
 
+        
+        //Создание объекта сообщений
         if(IsBigMessage) 
             newText = Instantiate(StaticStorage.textObjectPrefabB, newObjectTransform);
         else 
             newText = Instantiate(StaticStorage.textObjectPrefabL, newObjectTransform);
-
+        
         newText.transform.SetParent(contentPanel);
-
+        
+        //Получение TMPro компонентов от родителя
         newMessage.textObjectClass = newText.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
         
+        newMessage.TimeTextObjectClass = newText.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
+        
+        
+        //Присваивание тексту компонентов заготовленный текст
         newMessage.textObjectClass.text = newMessage.text;
 
+        newMessage.TimeTextObjectClass.text = newMessage.TimeText;
+
+        
+        //Добавления сообщения в динамический массив
         messageList.Add(newMessage);
     }
 
@@ -72,16 +89,10 @@ public class ChatSystem : MonoBehaviour
             ControllerSoundEffect.PlayNewMessageSound();
 
             //Обновление прогресса
-
             ProgressMessage +=1;
             PlayerPrefs.SetInt("ProgressMessage", ProgressMessage);
-
-
-            //Активирование кнопки перехода к низу чата
-
-            //ButtonDownObj.SetActive(true);
-
-
+            
+            
             //Отключение анимации набора текста
 
             if(ProgressMessage == NumberOfMessageC)
@@ -89,7 +100,7 @@ public class ChatSystem : MonoBehaviour
                 StaticStorage.TextingMessageAnimationObjStatic.SetActive(false);
             }
 
-            yield return new WaitForSeconds(UnityEngine.Random.Range(7, 10));
+            yield return new WaitForSeconds(UnityEngine.Random.Range(10, 15));
         }
     }
 
@@ -103,4 +114,6 @@ public class Message
 {
     public string text;
     public TextMeshProUGUI textObjectClass;
+    public TextMeshProUGUI TimeTextObjectClass;
+    public string TimeText;
 }
