@@ -106,7 +106,6 @@ public class BuildingObject : MonoBehaviour
     // INPUT: - (клик по мыши на агрегат)
     // OUTPUT: - (все нужные значения в выпадающих списках из БД)
     void OnMouseDown(){
-        Debug.Log("1");
         if(!Building.is_agregat_canvas_activated && !is_canvas_activated){
             PlayerMenu.SetActive(false);
             Canvas.gameObject.SetActive(true);

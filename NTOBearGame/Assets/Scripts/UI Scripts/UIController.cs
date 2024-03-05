@@ -44,6 +44,12 @@ public class UIController : MonoBehaviour
         {
             PauseButton();
         }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            Debug.Log("ИСПОЛЬЗОВАНЫ ЧИТ КОДЫ!!!!!!!!!!!");
+            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+        }
     }
     #region Buttons Methods
 
@@ -74,7 +80,7 @@ public class UIController : MonoBehaviour
             DetailPanelObj.SetActive(!ProgressPanel.activeSelf);
         }
         ProgressPanel.SetActive(!ProgressPanel.activeSelf);
-        Building.is_agregat_canvas_activated = true;
+        Building.is_agregat_canvas_activated = !Building.is_agregat_canvas_activated;
     }
     public void ListButtonOpen(){
 
@@ -201,6 +207,8 @@ public class UIController : MonoBehaviour
         Debug.Log(StaticStorage.IsInLab);
 
         BearOSPanel.SetActive(false);
+        ProgressPanel.SetActive(true);
+        DetailPanelObj.SetActive(false);
 
         Debug.Log(CPNumber);
     }

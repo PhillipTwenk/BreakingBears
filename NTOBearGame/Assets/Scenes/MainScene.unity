@@ -26650,7 +26650,7 @@ GameObject:
   - component: {fileID: 638843222}
   - component: {fileID: 638843224}
   - component: {fileID: 638843223}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: 4WallCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82015,6 +82015,10 @@ PrefabInstance:
     - target: {fileID: 1077106445627209741, guid: 37f6615d77ac7874d9f8eb5bd85e7a51, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.0000076293945
+      objectReference: {fileID: 0}
+    - target: {fileID: 1259554206233669056, guid: 37f6615d77ac7874d9f8eb5bd85e7a51, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4058453517521748338, guid: 37f6615d77ac7874d9f8eb5bd85e7a51, type: 3}
       propertyPath: PlayerMenu
