@@ -50,6 +50,11 @@ public class UIController : MonoBehaviour
             Debug.Log("ИСПОЛЬЗОВАНЫ ЧИТ КОДЫ!!!!!!!!!!!");
             QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
         }
+
+        if (Input.GetKey(KeyCode.N))
+        {
+            SceneController.SwithScene("TutorialScene");
+        }
     }
     #region Buttons Methods
 
