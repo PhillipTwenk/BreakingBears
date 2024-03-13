@@ -7,6 +7,9 @@ using TMPro;
 
 public class UIController : MonoBehaviour
 {
+    private TextMeshProUGUI AntidoteTextMPro;
+    public GameObject AntidotePanelObj;
+    public GameObject BriefcaseObj;
     public GameObject BearOSPanel;
     public Transform characterPosition;
     public Transform CameraPosition;
@@ -15,30 +18,23 @@ public class UIController : MonoBehaviour
     private QuestClass QuestClassInstance;
     public GameObject DetailPanelObj;
     public GameObject ProgressPanel;
-    public GameObject TutorialMain;
-    public GameObject TutorialEquipment;
-    public GameObject Next;
-    public GameObject Back;
     public GameObject PauseMenu;
-    public GameObject ButtonClose;
     public TextMeshProUGUI TextTeleportButton;
     private void Start()
     {
+        AntidoteTextMPro = AntidotePanelObj.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         QuestClassInstance = new QuestClass();
     }
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            BriefcaseButtonOpen();
+        }
         if(Input.GetKeyDown(KeyCode.Q))
         {
             BearOS();
-            if (PlayerPrefs.GetInt("ProgressInt") == 1)
-            {
-                QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-            }
-            if (PlayerPrefs.GetInt("ProgressInt") == 7)
-            {
-                QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-            }
+            AntidotePanel();
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -84,53 +80,42 @@ public class UIController : MonoBehaviour
         if(DetailPanelObj.activeSelf){
             DetailPanelObj.SetActive(!ProgressPanel.activeSelf);
         }
+        if(BriefcaseObj.activeSelf){
+            BriefcaseObj.SetActive(!BriefcaseObj.activeSelf);
+        }
         ProgressPanel.SetActive(!ProgressPanel.activeSelf);
         Building.is_agregat_canvas_activated = !Building.is_agregat_canvas_activated;
-    }
-    public void ListButtonOpen(){
-
-        // Активация панели со справочником
-        Building.is_agregat_canvas_activated = true;
-
-
-        //Проверка на действующий квест
-
-        if (PlayerPrefs.GetInt("ProgressInt") == 8)
+        if (PlayerPrefs.GetInt("ProgressInt") == 1)
+        {
+            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+        }
+        if (PlayerPrefs.GetInt("ProgressInt") == 7)
         {
             QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
         }
     }
-    public void BriefcaseButtonOpen(){
-        // Activation our portable briefcase
-        Building.is_agregat_canvas_activated = true;
-    }
-    public void CloseButton(){
-        // Close All
-        Building.is_agregat_canvas_activated = false;
 
-        DetailPanelObj.SetActive(false);
-        ProgressPanel.SetActive(true);
-
-        TutorialEquipment.SetActive(false);
-        TutorialMain.SetActive(false);
-
-        Next.SetActive(false);
-        Back.SetActive(false);
-
-        BearOSPanel.SetActive(false);
-
-        if(StaticStorage.IsPause){
-            PauseButton();
+    public void AntidotePanel()
+    {
+        if (PlayerPrefs.GetInt("ProgressInt") < 19)
+        {
+            AntidoteTextMPro.text = "NaOCl";
+        }
+        else
+        {
+            AntidoteTextMPro.text = "Na₂S₂O₃";
         }
     }
-    public void OpenDetailPanel(){
 
-        // Открывает панель описания квеста
-
-        DetailPanelObj.SetActive(true);
-        ProgressPanel.SetActive(false);
-        Building.is_agregat_canvas_activated = true;
+    //Активация / деактивация панели инвентаря
+    public void BriefcaseButtonOpen(){
+        BriefcaseObj.SetActive(!BriefcaseObj.activeSelf);
+        if(BearOSPanel.activeSelf){
+            BearOSPanel.SetActive(!BearOSPanel.activeSelf);
+        }
+        Building.is_agregat_canvas_activated = !Building.is_agregat_canvas_activated;
     }
+    
 
     public void TeleportMethod(){
         int CPNumber = PlayerPrefs.GetInt("CPNumber");

@@ -31,7 +31,16 @@ public class ElementListMenu : MonoBehaviour
         ListOfElements.AddOptions(ElementsNames);
     }
 
+    public void Quest8Check()
+    {
+        if (PlayerPrefs.GetInt("ProgressInt") == 8)
+        {
+            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+        }
+    }
+
     public void ElementsAndReactions(){
+        
         ElementInfoText.text = "";
         ElementReactionsText.text = "";
 

@@ -4,10 +4,11 @@ using UnityEngine;
 using Mono.Data.Sqlite;
 using System.Data;
 using System;
+using System.IO;
 
 public static class DBManager
 {
-    private static string path = Application.dataPath + "/StreamingAssets/elements.bytes"; // путь к БД
+    private static string path = Path.Combine(Application.dataPath,"StreamingAssets","elements.bytes"); // путь к БД
     private static SqliteConnection dbconnection;
     private static SqliteCommand cmd;
     

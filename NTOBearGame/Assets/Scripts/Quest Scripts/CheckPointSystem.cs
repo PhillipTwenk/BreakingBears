@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CheckPointSystem : MonoBehaviour
 {
-    public GameObject Mark;
     private CheckPointClass CPclass;
     private int NumberCheckPoint;
     private SphereCollider TriggerCP;
@@ -21,7 +20,7 @@ public class CheckPointSystem : MonoBehaviour
 
         if (other.gameObject.tag == "Player")
         {
-            CPclass.ActivationCheckPoint(Mark);
+            CPclass.ActivationCheckPoint();
             CPclass.DeleteCPTrigger(TriggerCP);
             CPclass.NewSave(NumberCheckPoint);
         }

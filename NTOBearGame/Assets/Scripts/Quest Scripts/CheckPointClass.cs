@@ -20,12 +20,7 @@ public class CheckPointClass
 
 
     // Активация чекпоинта на карте при условии что он ещё не активен
-    public void ActivationCheckPoint(GameObject Mark){
-        if(!Mark.active){
-            Mark.SetActive(true);
-            Debug.Log("Open New Checkpoint");
-        }
-
+    public void ActivationCheckPoint(){
         PlayerPrefs.SetInt("CPNumber", PlayerPrefs.GetInt("CPNumber") + 1);
     }
 
