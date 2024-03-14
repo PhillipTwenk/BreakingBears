@@ -60175,6 +60175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79d4a96580e44c4f8d436b65c971ee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NSS: {fileID: 0}
+  TextMProTutorial: {fileID: 1396725336}
   ProgressPanelText: {fileID: 2080090597}
   DetailPanelText: {fileID: 1459752153}
   textObjectB: {fileID: 5968880745781919296, guid: 75a657e14032a4d98925b127994b3945, type: 3}

@@ -1,11 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class StaticStorage : MonoBehaviour
 {
+    public NewStaticStorage NSS;
+    public static NewStaticStorage NSSStatic;
+    public TextMeshProUGUI TextMProTutorial;
+    public static TextMeshProUGUI TextMProTutorialStatic;
     public static Text ProgressPanelTextStatic;
     public static TextMeshProUGUI DetailPanelTextStatic;
     public Text ProgressPanelText;
@@ -48,6 +50,8 @@ public class StaticStorage : MonoBehaviour
     public static AudioSource NewMessageSourceStatic;
     void Start()
     {
+        NSSStatic = NSS;
+        TextMProTutorialStatic = TextMProTutorial;
         WalkingStatic = Walking;
         RunningStatic = Running;
         HitHammerStatic = HitHammer;
