@@ -73,8 +73,9 @@ Material:
     - _normal_strength: 1.25
     - _scale: 111.54
     m_Colors:
+    - _Tiling: {r: 0, g: 0.03, b: 0, a: 0}
     - _Tint_Color: {r: 0, g: 1, b: 0.41772032, a: 0}
-    - _emission_color: {r: 1, g: 0.17973839, b: 0, a: 0}
+    - _emission_color: {r: 1.4588236, g: 0.3372549, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4044802008012723092
 MonoBehaviour:
