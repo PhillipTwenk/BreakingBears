@@ -1,20 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-using Mono.Data.Sqlite;
-using System.Data;
-using System;
 
 
-    public class QuestClass
+public class QuestClass
     {
-        public void PlayerPrefsStartValue(){
-            PlayerPrefs.SetInt("ProgressInt", 1);
-            PlayerPrefs.SetInt("ProgressMessage", 0);
-            PlayerPrefs.SetInt("CPCondition", 0);
-        }
         public void TextChanger(){
             
             // Получение значения, отображающего наше продвижение в квесте и продвижение в сообщениях

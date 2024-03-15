@@ -11,7 +11,6 @@ public class CheckPointSystem : MonoBehaviour
     {
         CPclass = new CheckPointClass();
         TriggerCP = GetComponent<SphereCollider>();
-        CPclass.CheckPointStartValue();
         NumberCheckPoint = CPclass.DefiningCheckPoint(gameObject);
     }
     void OnTriggerEnter(Collider other)

@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 
 public class StartGameMenu : MonoBehaviour
 {
+    //Объект содержащий панель для запроса прохождения туториала + Холст туториала
+    public GameObject PreTutorialPanel, CanvasTutorial;
+    
     //Получение объектов холстов
     public GameObject CanvasMain, CanvasMenus, CanvasStartGame, Buildings;
 
@@ -61,10 +64,19 @@ public class StartGameMenu : MonoBehaviour
 
         MusicController.StartMusicInLab();
 
-        //Запуск сообщений от профессора
-        
-        QuestClassInstance.TextChanger();
-        //StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(10);
+        if (PlayerPrefs.GetInt("FirstIntrance") == 0)
+        {
+            //Активирование панели, содержащей запрос прохождения туториала
+            
+            CanvasTutorial.SetActive(true);
+            PreTutorialPanel.SetActive(true);
+        }
+        else
+        {
+            //Запуск сообщений от профессора
+            
+            QuestClassInstance.TextChanger();
+        }
     }
 
     //Выполняется при нажатии кнопки "Выход"

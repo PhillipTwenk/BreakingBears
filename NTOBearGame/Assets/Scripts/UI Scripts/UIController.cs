@@ -46,6 +46,14 @@ public class UIController : MonoBehaviour
             Debug.Log("ИСПОЛЬЗОВАНЫ ЧИТ КОДЫ!!!!!!!!!!!");
             QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
         }
+
+        if (Input.GetKeyDown(KeyCode.Return) && !TutorialClass.IsTextingMessage)
+        {
+            if (TutorialClass.IsInTutorial)
+            {
+                StaticStorage.TutorialClassStatic.UpdateTutorialStage();
+            }
+        }
     }
     #region Buttons Methods
 

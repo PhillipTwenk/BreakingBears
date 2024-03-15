@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class CheckPointClass
 {
-    public void CheckPointStartValue(){
-        PlayerPrefs.SetInt("CPCondition", 0);
-        PlayerPrefs.SetInt("CPNumber", 0);
-    }
-
-
     // Определение номера ЧекПоинта
     public int DefiningCheckPoint(GameObject gameObjectCP){
         string name = gameObjectCP.name;

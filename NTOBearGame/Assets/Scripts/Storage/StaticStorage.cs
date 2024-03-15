@@ -4,6 +4,8 @@ using TMPro;
 
 public class StaticStorage : MonoBehaviour
 {
+    public TutorialClass TutorialClass;
+    public static TutorialClass TutorialClassStatic;
     public NewStaticStorage NSS;
     public static NewStaticStorage NSSStatic;
     public TextMeshProUGUI TextMProTutorial;
@@ -51,6 +53,7 @@ public class StaticStorage : MonoBehaviour
     void Start()
     {
         NSSStatic = NSS;
+        TutorialClassStatic = TutorialClass;
         TextMProTutorialStatic = TextMProTutorial;
         WalkingStatic = Walking;
         RunningStatic = Running;
