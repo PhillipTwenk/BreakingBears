@@ -35,35 +35,20 @@ public class PortalSystem : MonoBehaviour
             switch (NumberTrigger)
             {
                 case 0:
-                    if (PlayerPrefs.GetInt("ProgressInt") == 4)
-                    {
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                    }
-                break;
+                    QuestClassInstance.CheckQuest(4);
+                    break;
                 case 4:
-                    if (PlayerPrefs.GetInt("ProgressInt") == 14)
-                    {
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                    }
-                break;
+                    QuestClassInstance.CheckQuest(14);
+                    break;
                 case 8:
-                    if (PlayerPrefs.GetInt("ProgressInt") == 16)
-                    {
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                    }
-                break;
+                    QuestClassInstance.CheckQuest(16);
+                    break;
                 case 12:
-                    if (PlayerPrefs.GetInt("ProgressInt") == 23)
-                    {
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                    }
-                break;
+                    QuestClassInstance.CheckQuest(23);
+                    break;
                 case 16:
-                    if (PlayerPrefs.GetInt("ProgressInt") == 25)
-                    {
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                    }
-                break;
+                    QuestClassInstance.CheckQuest(25);
+                    break;
             }
         }
 
@@ -95,26 +80,17 @@ public class PortalSystem : MonoBehaviour
             switch (nameNumber)
             {
                 case 1:
-                // Пройдена 1 безопасная зона
-                    if (PlayerPrefs.GetInt("ProgressInt") == 3)
-                    {
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                    }
-                break;
+                    // Пройдена 1 безопасная зона
+                    QuestClassInstance.CheckQuest(3);
+                    break;
                 case 2:
-                // Пройдена 2 безопасная зона
-                    if (PlayerPrefs.GetInt("ProgressInt") == 15)
-                    {
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                    }
-                break;
+                    // Пройдена 2 безопасная зона
+                    QuestClassInstance.CheckQuest(15);
+                    break;
                 case 3:
-                // Пройдена 3 безопасная зона
-                    if (PlayerPrefs.GetInt("ProgressInt") == 24)
-                    {
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                    }
-                break;
+                    // Пройдена 3 безопасная зона
+                    QuestClassInstance.CheckQuest(24);
+                    break;
             }
             Destroy(other.gameObject);
         }
@@ -127,18 +103,12 @@ public class PortalSystem : MonoBehaviour
             {
                 // Пройдена 1 опасна зона
                 case 1:
-                    if (PlayerPrefs.GetInt("ProgressInt") == 13)
-                    {
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                    }
-                break;
+                    QuestClassInstance.CheckQuest(13);
+                    break;
                 // Пройдена 2 опасная зона
                 case 2:
-                    if (PlayerPrefs.GetInt("ProgressInt") == 22)
-                    {
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                    }
-                break;
+                    QuestClassInstance.CheckQuest(22);
+                    break;
             }
             Destroy(other.gameObject);
         }

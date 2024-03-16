@@ -39,10 +39,21 @@ public class QuestClass
                 StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(int.Parse(DBManager.ExecuteQuery(MessageQueryNumber)));
             }
         }
+        
+        //Cnарт нового квеста
         public void StartNewQuest(int ActiveQuest){
             PlayerPrefs.SetInt("ProgressInt", ActiveQuest + 1);
             TextChanger();
             Debug.Log($"{ActiveQuest} квест выполнен! ");
+        }
+        
+        //Проверка на текущий квест
+        public void CheckQuest(int CurrentQuestStage)
+        {
+            if (PlayerPrefs.GetInt("ProgressInt") == CurrentQuestStage && !TutorialClass.IsInTutorial)
+            {
+                StartNewQuest(CurrentQuestStage);
+            }
         }
     }
 

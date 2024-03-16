@@ -8,18 +8,21 @@ using TMPro;
 public class UIController : MonoBehaviour
 {
     private TextMeshProUGUI AntidoteTextMPro;
+    public TextMeshProUGUI TextTeleportButton;
+    
     public GameObject AntidotePanelObj;
     public GameObject BriefcaseObj;
     public GameObject BearOSPanel;
+    public GameObject DetailPanelObj;
+    public GameObject ProgressPanel;
+    public GameObject PauseMenu;
+    
     public Transform characterPosition;
     public Transform CameraPosition;
     public Transform[] CheckPointArrayPosition;
     public Transform HomeCheckPoint;
+    
     private QuestClass QuestClassInstance;
-    public GameObject DetailPanelObj;
-    public GameObject ProgressPanel;
-    public GameObject PauseMenu;
-    public TextMeshProUGUI TextTeleportButton;
     private void Start()
     {
         AntidoteTextMPro = AntidotePanelObj.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
@@ -27,37 +30,48 @@ public class UIController : MonoBehaviour
     }
     void Update()
     {
+        
+        //Открытие инвентаря
         if(Input.GetKeyDown(KeyCode.E))
         {
             BriefcaseButtonOpen();
         }
+        
+        //Рабочая панель
         if(Input.GetKeyDown(KeyCode.Q))
         {
             BearOS();
             AntidotePanel();
         }
+        
+        //Пауза
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PauseButton();
         }
 
+        //ЧИТЫЫЫЫ
         if (Input.GetKeyDown(KeyCode.M))
         {
             Debug.Log("ИСПОЛЬЗОВАНЫ ЧИТ КОДЫ!!!!!!!!!!!");
             QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
         }
 
-        if (Input.GetKeyDown(KeyCode.Return) && !TutorialClass.IsTextingMessage)
+        //Проверка на нажатие кнопки Enter во время туториала
+        if (Input.GetKeyDown(KeyCode.Return) && TutorialClass.IsInTutorial && !TutorialClass.IsNotEnterContinue)
         {
-            if (TutorialClass.IsInTutorial)
+            if (TutorialClass.IsTextingMessage)
+            {
+                TutorialClass.IsTextingMessageBreak = true;
+            }
+            else
             {
                 StaticStorage.TutorialClassStatic.UpdateTutorialStage();
             }
         }
     }
     #region Buttons Methods
-
-
+    
     //Выполняется при нажатии на паузу(кнопка esc)
     public void PauseButton(){
         if (StaticStorage.IsPause)
@@ -75,8 +89,7 @@ public class UIController : MonoBehaviour
         }
         ProgressPanel.SetActive(true);
     }
-
-
+    
     //Активация/Дезактивация панели BearOS
     public void BearOS(){
         BearOSPanel.SetActive(!BearOSPanel.activeSelf);
@@ -87,17 +100,17 @@ public class UIController : MonoBehaviour
             BriefcaseObj.SetActive(!BriefcaseObj.activeSelf);
         }
         ProgressPanel.SetActive(!ProgressPanel.activeSelf);
+        
         Building.is_agregat_canvas_activated = !Building.is_agregat_canvas_activated;
-        if (PlayerPrefs.GetInt("ProgressInt") == 1)
-        {
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-        }
-        if (PlayerPrefs.GetInt("ProgressInt") == 7)
-        {
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-        }
+        
+        QuestClassInstance.CheckQuest(1);
+        QuestClassInstance.CheckQuest(7);
+
+        StaticStorage.TutorialClassStatic.ContinueTutorial(4);
+        StaticStorage.TutorialClassStatic.ContinueTutorial(14);
     }
 
+    //Метод, отвечающий за Изменение антидота на соответствующей панели
     public void AntidotePanel()
     {
         if (PlayerPrefs.GetInt("ProgressInt") < 19)
@@ -117,9 +130,12 @@ public class UIController : MonoBehaviour
             BearOSPanel.SetActive(!BearOSPanel.activeSelf);
         }
         Building.is_agregat_canvas_activated = !Building.is_agregat_canvas_activated;
+        
+        StaticStorage.TutorialClassStatic.ContinueTutorial(22);
+        StaticStorage.TutorialClassStatic.ContinueTutorial(26);
     }
     
-
+    //Метод, отвечающий за телепортацию
     public void TeleportMethod(){
         int CPNumber = PlayerPrefs.GetInt("CPNumber");
         if (StaticStorage.IsInLab){
@@ -130,10 +146,7 @@ public class UIController : MonoBehaviour
             {
                 // Телепортировались в 1 безопасную зону [квест 2]
                 case 0:
-                    if (PlayerPrefs.GetInt("ProgressInt") == 2)
-                    {
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                    }
+                    QuestClassInstance.CheckQuest(2);
                     StaticStorage.IsInZone = true;
                     StaticStorage.IsInLab = false;
                     MusicController.StartMusicInZone();
@@ -141,10 +154,7 @@ public class UIController : MonoBehaviour
 
                 // Телепортировались обратно в комнату [квест 11, 20]
                 case 1:
-                    if (PlayerPrefs.GetInt("ProgressInt") == 11)
-                    {
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                    }
+                    QuestClassInstance.CheckQuest(11);
                     StaticStorage.IsInZone = true;
                     StaticStorage.IsInLab = false;
                     MusicController.StartMusicInZone();
@@ -155,10 +165,7 @@ public class UIController : MonoBehaviour
                     MusicController.StartMusicInZone();
                 break;
                 case 3:
-                    if (PlayerPrefs.GetInt("ProgressInt") == 20)
-                    {
-                        QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-                    }
+                    QuestClassInstance.CheckQuest(20);
                     StaticStorage.IsInZone = true;
                     StaticStorage.IsInLab = false;
                     MusicController.StartMusicInZone();
@@ -179,18 +186,9 @@ public class UIController : MonoBehaviour
             Vector3 newPositionCharacter = new Vector3(HomeCheckPoint.position.x, HomeCheckPoint.position.y, HomeCheckPoint.position.z + 5);
             characterPosition.position = newPositionCharacter;
             TextTeleportButton.text = "В Контрольную точку";
-            if (PlayerPrefs.GetInt("ProgressInt") == 6)
-            {
-                QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-            }
-            if (PlayerPrefs.GetInt("ProgressInt") == 18)
-            {
-                QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-            }
-            if (PlayerPrefs.GetInt("ProgressInt") == 27)
-            {
-                QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-            }
+            QuestClassInstance.CheckQuest(6);
+            QuestClassInstance.CheckQuest(18);
+            QuestClassInstance.CheckQuest(27);
             StaticStorage.IsInZone = false;
             StaticStorage.IsInLab = true;
             MusicController.StartMusicInLab();

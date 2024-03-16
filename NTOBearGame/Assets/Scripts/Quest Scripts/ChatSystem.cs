@@ -103,12 +103,6 @@ public class ChatSystem : MonoBehaviour
             yield return new WaitForSeconds(UnityEngine.Random.Range(10, 15));
         }
     }
-
-    // public void ClickDownButton()
-    // {
-    //     scrollbar.value = 0f;
-    //     ButtonDownObj.SetActive(false);
-    // }
 }
 public class Message
 {

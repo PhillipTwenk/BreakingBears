@@ -33,10 +33,7 @@ public class ElementListMenu : MonoBehaviour
 
     public void Quest8Check()
     {
-        if (PlayerPrefs.GetInt("ProgressInt") == 8)
-        {
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-        }
+        QuestClassInstance.CheckQuest(8);
     }
 
     public void ElementsAndReactions(){
@@ -63,9 +60,9 @@ public class ElementListMenu : MonoBehaviour
         for(int i = 0; i < ElementsReactions.Count; i++){
             ElementReactionsText.text += $"{ElementsReactions[i]}\n";
         }
-        if (LabelText.text == "NaOCl" && PlayerPrefs.GetInt("ProgressInt") == 9)
+        if (LabelText.text == "NaOCl")
         {
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+            QuestClassInstance.CheckQuest(9);
         }
     }
 }

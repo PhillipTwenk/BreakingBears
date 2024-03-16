@@ -36,18 +36,19 @@ public class Element : MonoBehaviour
     }   
 
     private void AddItemToInventory(){
+        StaticStorage.TutorialClassStatic.ContinueTutorial(26);
         Debug.Log(element_name_text.text);
-        if(gameObject.name.Split('(')[0] == "NaOCl" && PlayerPrefs.GetInt("ProgressInt") == 10){
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+        if(gameObject.name.Split('(')[0] == "NaOCl"){
+            QuestClassInstance.CheckQuest(10);
         }
-        if(gameObject.name.Split('(')[0] == "Na₂S₂O₃" && PlayerPrefs.GetInt("ProgressInt") == 19){
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+        if(gameObject.name.Split('(')[0] == "Na₂S₂O₃"){
+            QuestClassInstance.CheckQuest(19);
         }
-        if(gameObject.name.Split('(')[0] == "Li₂CO₃" && PlayerPrefs.GetInt("ProgressInt") == 28){
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+        if(gameObject.name.Split('(')[0] == "Li₂CO₃"){
+            QuestClassInstance.CheckQuest(28);
         }
-        if(gameObject.name.Split('(')[0] == "Na" && PlayerPrefs.GetInt("ProgressInt") == 5){
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+        if(gameObject.name.Split('(')[0] == "Na"){
+            QuestClassInstance.CheckQuest(5);
             if(Counter != 3)
             {
                 Counter += 1;
@@ -57,8 +58,8 @@ public class Element : MonoBehaviour
                 Counter = 1;
             }
         }
-        if(gameObject.name.Split('(')[0] == "Сl" && PlayerPrefs.GetInt("ProgressInt") == 5){
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+        if(gameObject.name.Split('(')[0] == "Сl"){
+            QuestClassInstance.CheckQuest(5);
             if(Counter != 3)
             {
                 Counter += 1;
@@ -68,8 +69,8 @@ public class Element : MonoBehaviour
                 Counter = 1;
             }
         }
-        if(gameObject.name.Split('(')[0] == "H₂O" && PlayerPrefs.GetInt("ProgressInt") == 5){
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+        if(gameObject.name.Split('(')[0] == "H₂O"){
+            QuestClassInstance.CheckQuest(5);
             if(Counter != 3)
             {
                 Counter += 1;
@@ -79,8 +80,8 @@ public class Element : MonoBehaviour
                 Counter = 1;
             }
         }
-        if(gameObject.name.Split('(')[0] == "S" && PlayerPrefs.GetInt("ProgressInt") == 17){
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+        if(gameObject.name.Split('(')[0] == "S"){
+            QuestClassInstance.CheckQuest(17);
             if(Counter != 3)
             {
                 Counter += 1;
@@ -90,8 +91,8 @@ public class Element : MonoBehaviour
                 Counter = 1;
             }
         }
-        if(gameObject.name.Split('(')[0] == "Na₂O" && PlayerPrefs.GetInt("ProgressInt") == 17){
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+        if(gameObject.name.Split('(')[0] == "Na₂O"){
+            QuestClassInstance.CheckQuest(17);
             if(Counter != 3)
             {
                 Counter += 1;
@@ -101,8 +102,8 @@ public class Element : MonoBehaviour
                 Counter = 1;
             }
         }
-        if(gameObject.name.Split('(')[0] == "S" && PlayerPrefs.GetInt("ProgressInt") == 17){
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+        if(gameObject.name.Split('(')[0] == "S"){
+            QuestClassInstance.CheckQuest(17);
             if(Counter != 3)
             {
                 Counter += 1;
@@ -112,8 +113,8 @@ public class Element : MonoBehaviour
                 Counter = 1;
             }
         }
-        if(gameObject.name.Split('(')[0] == "CO₂" && PlayerPrefs.GetInt("ProgressInt") == 26){
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+        if(gameObject.name.Split('(')[0] == "CO₂"){
+            QuestClassInstance.CheckQuest(26);
             if(Counter != 3)
             {
                 Counter += 1;
@@ -123,8 +124,8 @@ public class Element : MonoBehaviour
                 Counter = 1;
             }
         }
-        if(gameObject.name.Split('(')[0] == "NaOH" && PlayerPrefs.GetInt("ProgressInt") == 26){
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+        if(gameObject.name.Split('(')[0] == "NaOH"){
+            QuestClassInstance.CheckQuest(26);
             if(Counter != 3)
             {
                 Counter += 1;
@@ -143,11 +144,11 @@ public class Element : MonoBehaviour
         }
     }
     private void AddEffect(){
-        if(gameObject.name.Split('(')[0] == "NaOCl" && PlayerPrefs.GetInt("ProgressInt") == 12){
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+        if(gameObject.name.Split('(')[0] == "NaOCl"){
+            QuestClassInstance.CheckQuest(12);
         }
-        if(gameObject.name.Split('(')[0] == "Na₂S₂O₃" && PlayerPrefs.GetInt("ProgressInt") == 21){
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+        if(gameObject.name.Split('(')[0] == "Na₂S₂O₃"){
+            QuestClassInstance.CheckQuest(21);
         }
         PlayerState.player_state = "";
         DataTable result_effect = DBManager.GetTable($"SELECT result, result_parameter FROM elements_effects WHERE entry_element = {element_info["element_id"]}");

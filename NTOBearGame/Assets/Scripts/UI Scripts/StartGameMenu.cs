@@ -68,6 +68,7 @@ public class StartGameMenu : MonoBehaviour
         {
             //Активирование панели, содержащей запрос прохождения туториала
             
+            Building.is_agregat_canvas_activated = true;
             CanvasTutorial.SetActive(true);
             PreTutorialPanel.SetActive(true);
         }
