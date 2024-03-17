@@ -182,6 +182,7 @@ public class TutorialClass: MonoBehaviour
             TMProHint.SetActive(true);
             TMProHint.GetComponent<TextMeshProUGUI>().text = WhichPhrase;
             IsNotEnterContinue = true;
+            Debug.Log(TutorialClass.IsNotEnterContinue);
             if (TutorialCounter == 36)
             {
                 Building.is_agregat_canvas_activated = false;

@@ -113,7 +113,7 @@ public class BuildingObject : MonoBehaviour
     // OUTPUT: - (все нужные значения в выпадающих списках из БД)
     void OnMouseDown(){
         if(!Building.is_agregat_canvas_activated && !is_canvas_activated){
-            StaticStorage.TutorialClassStatic.ContinueTutorial(35);
+            StaticStorage.TutorialClassStatic.ContinueTutorial(36);
             StaticStorage.TutorialClassStatic.ContinueTutorial(47);
             PlayerMenu.SetActive(false);
             Canvas.gameObject.SetActive(true);
