@@ -96,17 +96,25 @@ public class BuildingObject : MonoBehaviour
         }
     }
     private void OnMouseEnter(){
-        outline.enabled = true; // если мы навелись на объект
+        if (!Building.is_agregat_canvas_activated)
+        {
+            outline.enabled = true; // если мы навелись на объект
+        }
     }
 
     private void OnMouseExit(){
-        outline.enabled = false; // если мы отводим мышку от объекта
+        if (!Building.is_agregat_canvas_activated)
+        {
+            outline.enabled = false; // если мы навелись на объект
+        }
     }
     // Нажатие на агрегат -> активация интерфейса агрегата (отключение основного интерфейса игрока) выставление в выпадающие списки нужные значения
     // INPUT: - (клик по мыши на агрегат)
     // OUTPUT: - (все нужные значения в выпадающих списках из БД)
     void OnMouseDown(){
         if(!Building.is_agregat_canvas_activated && !is_canvas_activated){
+            StaticStorage.TutorialClassStatic.ContinueTutorial(35);
+            StaticStorage.TutorialClassStatic.ContinueTutorial(47);
             PlayerMenu.SetActive(false);
             Canvas.gameObject.SetActive(true);
             is_canvas_activated = true;

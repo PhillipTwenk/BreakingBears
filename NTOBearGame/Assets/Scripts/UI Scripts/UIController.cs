@@ -105,9 +105,11 @@ public class UIController : MonoBehaviour
         
         QuestClassInstance.CheckQuest(1);
         QuestClassInstance.CheckQuest(7);
-
+        
         StaticStorage.TutorialClassStatic.ContinueTutorial(4);
         StaticStorage.TutorialClassStatic.ContinueTutorial(14);
+        StaticStorage.TutorialClassStatic.ContinueTutorial(31);
+        StaticStorage.TutorialClassStatic.ContinueTutorial(35);
     }
 
     //Метод, отвечающий за Изменение антидота на соответствующей панели
@@ -129,79 +131,87 @@ public class UIController : MonoBehaviour
         if(BearOSPanel.activeSelf){
             BearOSPanel.SetActive(!BearOSPanel.activeSelf);
         }
-        Building.is_agregat_canvas_activated = !Building.is_agregat_canvas_activated;
+        if (!TutorialClass.IsInTutorial)
+        {
+            Building.is_agregat_canvas_activated = !Building.is_agregat_canvas_activated;
+        }
         
         StaticStorage.TutorialClassStatic.ContinueTutorial(22);
         StaticStorage.TutorialClassStatic.ContinueTutorial(26);
+        StaticStorage.TutorialClassStatic.ContinueTutorial(29);
     }
     
     //Метод, отвечающий за телепортацию
     public void TeleportMethod(){
-        int CPNumber = PlayerPrefs.GetInt("CPNumber");
-        if (StaticStorage.IsInLab){
-            Vector3 newPositionCharacter = new Vector3(CheckPointArrayPosition[CPNumber].position.x, CheckPointArrayPosition[CPNumber].position.y, CheckPointArrayPosition[CPNumber].position.z + 5);
-            characterPosition.position = newPositionCharacter;
-            TextTeleportButton.text = "В лабораторию";
-            switch (CPNumber)
-            {
-                // Телепортировались в 1 безопасную зону [квест 2]
-                case 0:
-                    QuestClassInstance.CheckQuest(2);
-                    StaticStorage.IsInZone = true;
-                    StaticStorage.IsInLab = false;
-                    MusicController.StartMusicInZone();
-                break;
+        if (!TutorialClass.IsInTutorial)
+        {
+            int CPNumber = PlayerPrefs.GetInt("CPNumber");
+            if (StaticStorage.IsInLab){
+                Vector3 newPositionCharacter = new Vector3(CheckPointArrayPosition[CPNumber].position.x, CheckPointArrayPosition[CPNumber].position.y, CheckPointArrayPosition[CPNumber].position.z + 5);
+                characterPosition.position = newPositionCharacter;
+                TextTeleportButton.text = "В лабораторию";
+                switch (CPNumber)
+                {
+                    // Телепортировались в 1 безопасную зону [квест 2]
+                    case 0:
+                       QuestClassInstance.CheckQuest(2);
+                       StaticStorage.IsInZone = true;
+                       StaticStorage.IsInLab = false;
+                       MusicController.StartMusicInZone(); 
+                       break;
 
-                // Телепортировались обратно в комнату [квест 11, 20]
-                case 1:
-                    QuestClassInstance.CheckQuest(11);
-                    StaticStorage.IsInZone = true;
-                    StaticStorage.IsInLab = false;
-                    MusicController.StartMusicInZone();
-                break;
-                case 2:
-                    StaticStorage.IsInZone = true;
-                    StaticStorage.IsInLab = false;
-                    MusicController.StartMusicInZone();
-                break;
-                case 3:
-                    QuestClassInstance.CheckQuest(20);
-                    StaticStorage.IsInZone = true;
-                    StaticStorage.IsInLab = false;
-                    MusicController.StartMusicInZone();
-                break;
-                case 4:
-                    StaticStorage.IsInZone = true;
-                    StaticStorage.IsInLab = false;
-                    MusicController.StartMusicInZone();
-                break;
-                case 5:
-                    StaticStorage.IsInZone = true;
-                    StaticStorage.IsInLab = false;
-                    MusicController.StartMusicInZone();
-                break;
+                    // Телепортировались обратно в комнату [квест 11, 20]
+                    case 1:
+                        QuestClassInstance.CheckQuest(11);
+                        StaticStorage.IsInZone = true;
+                        StaticStorage.IsInLab = false;
+                        MusicController.StartMusicInZone();
+                    break;
+                    case 2:
+                        StaticStorage.IsInZone = true;
+                        StaticStorage.IsInLab = false;
+                        MusicController.StartMusicInZone();
+                    break;
+                    case 3:
+                        QuestClassInstance.CheckQuest(20);
+                        StaticStorage.IsInZone = true;
+                        StaticStorage.IsInLab = false;
+                        MusicController.StartMusicInZone();
+                    break;
+                    case 4:
+                        StaticStorage.IsInZone = true;
+                        StaticStorage.IsInLab = false;
+                        MusicController.StartMusicInZone();
+                    break;
+                    case 5:
+                       StaticStorage.IsInZone = true;
+                       StaticStorage.IsInLab = false; 
+                       MusicController.StartMusicInZone();
+                    break;
+                }
             }
-        }
-        else{
-            Vector3 newPositionCharacter = new Vector3(HomeCheckPoint.position.x, HomeCheckPoint.position.y, HomeCheckPoint.position.z + 5);
-            characterPosition.position = newPositionCharacter;
-            TextTeleportButton.text = "В Контрольную точку";
-            QuestClassInstance.CheckQuest(6);
-            QuestClassInstance.CheckQuest(18);
-            QuestClassInstance.CheckQuest(27);
-            StaticStorage.IsInZone = false;
-            StaticStorage.IsInLab = true;
-            MusicController.StartMusicInLab();
-        }
-        Vector3 newCamPosition = new Vector3(characterPosition.position.x, characterPosition.position.y, characterPosition.position.z);
-        CameraPosition.position = newCamPosition;
-        Debug.Log(StaticStorage.IsInLab);
+            else{
+                Vector3 newPositionCharacter = new Vector3(HomeCheckPoint.position.x, HomeCheckPoint.position.y, HomeCheckPoint.position.z + 5);
+                characterPosition.position = newPositionCharacter;
+                TextTeleportButton.text = "В Контрольную точку";
+                QuestClassInstance.CheckQuest(6);
+                QuestClassInstance.CheckQuest(18);
+                QuestClassInstance.CheckQuest(27);
+                StaticStorage.IsInZone = false;
+                StaticStorage.IsInLab = true;
+                MusicController.StartMusicInLab();
+            }
+            Vector3 newCamPosition = new Vector3(characterPosition.position.x, characterPosition.position.y, characterPosition.position.z);
+            CameraPosition.position = newCamPosition;
+            Debug.Log(StaticStorage.IsInLab);
 
-        BearOSPanel.SetActive(false);
-        ProgressPanel.SetActive(true);
-        DetailPanelObj.SetActive(false);
+            BearOSPanel.SetActive(false);
+            ProgressPanel.SetActive(true);
+            DetailPanelObj.SetActive(false);
 
-        Debug.Log(CPNumber);
+            Debug.Log(CPNumber);
+        }
+        
     }
     #endregion
 }

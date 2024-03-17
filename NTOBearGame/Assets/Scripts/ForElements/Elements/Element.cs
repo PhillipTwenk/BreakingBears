@@ -36,8 +36,11 @@ public class Element : MonoBehaviour
     }   
 
     private void AddItemToInventory(){
-        StaticStorage.TutorialClassStatic.ContinueTutorial(26);
         Debug.Log(element_name_text.text);
+        if (gameObject.name.Split('(')[0] == "H")
+        {
+            StaticStorage.TutorialClassStatic.ContinueTutorial(27);
+        }
         if(gameObject.name.Split('(')[0] == "NaOCl"){
             QuestClassInstance.CheckQuest(10);
         }
