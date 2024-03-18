@@ -74659,7 +74659,7 @@ GameObject:
   - component: {fileID: 1766335825}
   - component: {fileID: 1766335827}
   - component: {fileID: 1766335826}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: 4WallCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

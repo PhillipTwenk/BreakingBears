@@ -185,7 +185,7 @@ public class TutorialClass: MonoBehaviour
             Debug.Log(TutorialClass.IsNotEnterContinue);
             if (TutorialCounter == 36)
             {
-                Building.is_agregat_canvas_activated = false;
+                BuildingObject.usingBuildings = true;
             }
         }
     }
@@ -271,6 +271,19 @@ public class TutorialClass: MonoBehaviour
         bool IsThereShadow = bool.Parse(DBManager.ExecuteQuery(IsThereShadowQuery));
 
         ShadowPanel.SetActive(IsThereShadow);
+    }
+    
+    //Можно ли брать элементы
+    public static bool GetElementBool()
+    {
+        if(TutorialCounter == 27)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     
 }

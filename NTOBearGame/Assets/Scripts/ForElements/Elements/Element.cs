@@ -36,6 +36,9 @@ public class Element : MonoBehaviour
     }   
 
     private void AddItemToInventory(){
+        if(!TutorialClass.GetElementBool()){
+            return;
+        }
         Debug.Log(element_name_text.text);
         if (gameObject.name.Split('(')[0] == "H")
         {
