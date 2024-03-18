@@ -133,7 +133,7 @@ public class TutorialClass: MonoBehaviour
         ProfTutorialPanel.SetActive(false);
         CanvasTutorial.SetActive(false);
         Destroy(NewAgregatObject);
-        BuildingObject.usingBuildings = false;
+        BuildingObject.usingBuildings = true;
         
         //Если мы находимся на панели, где нас спрашивают о прохождении туториала, и нажимаем нет
         if (IsOnPreTutorialPanel)

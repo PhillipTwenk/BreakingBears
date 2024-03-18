@@ -56779,7 +56779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.15294118, g: 0.20392157, b: 0.24705882, a: 0.62352943}
+  m_Color: {r: 0.07791921, g: 0.12258404, b: 0.16037738, a: 0.62352943}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -65986,7 +65986,7 @@ MonoBehaviour:
   - {fileID: 1516006217}
   - {fileID: 1165524467}
   - {fileID: 2008911196}
-  HomeCheckPoint: {fileID: 0}
+  HomeCheckPoint: {fileID: 301154990}
 --- !u!114 &1574998018
 MonoBehaviour:
   m_ObjectHideFlags: 0

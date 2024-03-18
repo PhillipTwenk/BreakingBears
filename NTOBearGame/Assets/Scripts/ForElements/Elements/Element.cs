@@ -36,7 +36,7 @@ public class Element : MonoBehaviour
     }   
 
     private void AddItemToInventory(){
-        if(!TutorialClass.GetElementBool()){
+        if(!TutorialClass.GetElementBool() && TutorialClass.IsInTutorial){
             return;
         }
         Debug.Log(element_name_text.text);

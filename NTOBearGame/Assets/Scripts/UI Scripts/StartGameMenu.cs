@@ -77,6 +77,7 @@ public class StartGameMenu : MonoBehaviour
             //Запуск сообщений от профессора
             
             QuestClassInstance.TextChanger();
+            BuildingObject.usingBuildings = true;
         }
     }
 
