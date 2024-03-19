@@ -83,6 +83,7 @@ public class UIController : MonoBehaviour
         }
         PauseMenu.SetActive(!PauseMenu.activeSelf);
         StaticStorage.IsPause = !StaticStorage.IsPause;
+        Building.is_agregat_canvas_activated = false;
         if(BearOSPanel.activeSelf){
             BearOSPanel.SetActive(!BearOSPanel.activeSelf);
         }
