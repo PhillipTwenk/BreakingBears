@@ -94,14 +94,17 @@ public class UIController : MonoBehaviour
     //Активация/Дезактивация панели BearOS
     public void BearOS(){
         BearOSPanel.SetActive(!BearOSPanel.activeSelf);
-        if(DetailPanelObj.activeSelf){
-            DetailPanelObj.SetActive(!ProgressPanel.activeSelf);
+        if(DetailPanelObj.activeSelf && !ProgressPanel.activeSelf){
+            DetailPanelObj.SetActive(!DetailPanelObj.activeSelf);
         }
         if(BriefcaseObj.activeSelf){
             BriefcaseObj.SetActive(!BriefcaseObj.activeSelf);
         }
-        ProgressPanel.SetActive(!ProgressPanel.activeSelf);
-        
+        if (!ProgressPanel.activeSelf)
+        {
+            ProgressPanel.SetActive(!ProgressPanel.activeSelf);
+        }
+
         Building.is_agregat_canvas_activated = !Building.is_agregat_canvas_activated;
         
         QuestClassInstance.CheckQuest(1);
