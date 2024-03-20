@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class UIController : MonoBehaviour
@@ -16,10 +13,13 @@ public class UIController : MonoBehaviour
     public GameObject DetailPanelObj;
     public GameObject ProgressPanel;
     public GameObject PauseMenu;
+    public Transform TransformHelper;
     
     public Transform characterPosition;
     public Transform CameraPosition;
     public Transform[] CheckPointArrayPosition;
+    public List<Transform> HelperTeleportPosition;
+    public Transform HelperHomeTransform;
     public Transform HomeCheckPoint;
     
     private QuestClass QuestClassInstance;
@@ -145,10 +145,16 @@ public class UIController : MonoBehaviour
         if (!TutorialClass.IsInTutorial)
         {
             int CPNumber = PlayerPrefs.GetInt("CPNumber");
+
+            //Если в лабе
             if (StaticStorage.IsInLab){
                 Vector3 newPositionCharacter = new Vector3(CheckPointArrayPosition[CPNumber].position.x, CheckPointArrayPosition[CPNumber].position.y, CheckPointArrayPosition[CPNumber].position.z + 5);
                 characterPosition.position = newPositionCharacter;
                 TextTeleportButton.text = "В лабораторию";
+                
+                //Телепортация Стубуретки
+                TransformHelper.position = HelperTeleportPosition[CPNumber].position;
+                
                 switch (CPNumber)
                 {
                     // Телепортировались в 1 безопасную зону [квест 2]
@@ -189,10 +195,18 @@ public class UIController : MonoBehaviour
                     break;
                 }
             }
+            
+            //Если в локациях
             else{
                 Vector3 newPositionCharacter = new Vector3(HomeCheckPoint.position.x, HomeCheckPoint.position.y, HomeCheckPoint.position.z + 5);
                 characterPosition.position = newPositionCharacter;
                 TextTeleportButton.text = "В Контрольную точку";
+
+                //Телепортация стубуретки
+                TransformHelper.position = HelperHomeTransform.position;
+                
+                Debug.Log(1);
+                
                 QuestClassInstance.CheckQuest(6);
                 QuestClassInstance.CheckQuest(18);
                 QuestClassInstance.CheckQuest(27);
@@ -200,15 +214,15 @@ public class UIController : MonoBehaviour
                 StaticStorage.IsInLab = true;
                 MusicController.StartMusicInLab();
             }
+            
+            //Перемещение камеры
             Vector3 newCamPosition = new Vector3(characterPosition.position.x, characterPosition.position.y, characterPosition.position.z);
             CameraPosition.position = newCamPosition;
-            Debug.Log(StaticStorage.IsInLab);
 
+            //Активирование / Деактивирование нужного интерфейса
             BearOSPanel.SetActive(false);
             ProgressPanel.SetActive(true);
             DetailPanelObj.SetActive(false);
-
-            Debug.Log(CPNumber);
         }
         
     }

@@ -50,7 +50,7 @@ public class BuildingObject : MonoBehaviour
     [SerializeField] ElementsPrefabs EP; // Список префабов всех элементов
     [SerializeField] GameObject OutputPlace; // Место у текущего агрегата, куда выводится итог реакции (если цепочка алгоритмов закончилась)
     [SerializeField] GameObject InputPlace; // Место у текущего агрегата, куда вводится итог реакции (если существует цепочка алгоритмов)
-    [SerializeField] Text AlgorithmText; // Текст алгоритма в UI
+    [SerializeField] TextMeshProUGUI AlgorithmText; // Текст алгоритма в UI
     [SerializeField] GameObject PlayerMenu; // Основное меню игрока (отключаем при открытии канваса агрегата )
     [SerializeField] Text AgregatName; // Надпись (название алгоритма) в UI
     [SerializeField] TMP_Text ReactionStateText; // Надпись над объектом(состояние алгоритма)
