@@ -27912,7 +27912,7 @@ GameObject:
   - component: {fileID: 623300946}
   - component: {fileID: 623300945}
   m_Layer: 5
-  m_Name: PauseMenu
+  m_Name: SettingsPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66923,6 +66923,7 @@ MonoBehaviour:
   DetailPanelObj: {fileID: 271793479}
   ProgressPanel: {fileID: 1372162849}
   PauseMenu: {fileID: 1485207486}
+  SettingsPanel: {fileID: 1798096631}
   TransformHelper: {fileID: 295252144}
   characterPosition: {fileID: 543450652629658001}
   CameraPosition: {fileID: 1843387734}

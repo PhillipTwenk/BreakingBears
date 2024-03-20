@@ -13,6 +13,7 @@ public class UIController : MonoBehaviour
     public GameObject DetailPanelObj;
     public GameObject ProgressPanel;
     public GameObject PauseMenu;
+    public GameObject SettingsPanel;
     public Transform TransformHelper;
     
     public Transform characterPosition;
@@ -82,6 +83,7 @@ public class UIController : MonoBehaviour
             Time.timeScale = 0f;
         }
         PauseMenu.SetActive(!PauseMenu.activeSelf);
+        SettingsPanel.SetActive(false);
         StaticStorage.IsPause = !StaticStorage.IsPause;
         if(BearOSPanel.activeSelf){
             BearOSPanel.SetActive(!BearOSPanel.activeSelf);
