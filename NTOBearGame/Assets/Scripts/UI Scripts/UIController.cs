@@ -131,13 +131,19 @@ public class UIController : MonoBehaviour
 
     //Активация / деактивация панели инвентаря
     public void BriefcaseButtonOpen(){
+        
+        //Активация / деактивация панели инвентаря
         BriefcaseObj.SetActive(!BriefcaseObj.activeSelf);
+        
+        //Отключение панели BearOS, если она активна
         if(BearOSPanel.activeSelf){
             BearOSPanel.SetActive(!BearOSPanel.activeSelf);
         }
+        
+        //Если мы не в туториале, то отключается возможность взаимодействовать с агрегатами
         if (!TutorialClass.IsInTutorial)
         {
-            Building.is_agregat_canvas_activated = !Building.is_agregat_canvas_activated;
+            BuildingObject.usingBuildings = !BuildingObject.usingBuildings;
         }
         
         StaticStorage.TutorialClassStatic.ContinueTutorial(22);
@@ -149,6 +155,7 @@ public class UIController : MonoBehaviour
     public void TeleportMethod(){
         if (!TutorialClass.IsInTutorial)
         {
+            //Номер чекпоинта
             int CPNumber = PlayerPrefs.GetInt("CPNumber");
 
             //Если в лабе

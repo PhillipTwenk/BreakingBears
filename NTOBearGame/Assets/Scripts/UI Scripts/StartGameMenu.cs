@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class StartGameMenu : MonoBehaviour
 {
@@ -9,7 +6,7 @@ public class StartGameMenu : MonoBehaviour
     public GameObject PreTutorialPanel, CanvasTutorial;
     
     //Получение объектов холстов
-    public GameObject CanvasMain, CanvasMenus, CanvasStartGame, Buildings;
+    public GameObject CanvasMenus, CanvasStartGame, Buildings;
 
     //Ccылка на скрипт CameraController
     public CameraController CameraControllerScriptReference;
@@ -21,7 +18,6 @@ public class StartGameMenu : MonoBehaviour
     {
         QuestClassInstance = new QuestClass();
         CanvasStartGame.SetActive(true);
-        CanvasMain.SetActive(false);
         CanvasMenus.SetActive(false);
         Buildings.SetActive(false);
         StaticStorage.IsInStartMenu = true;
@@ -51,8 +47,7 @@ public class StartGameMenu : MonoBehaviour
 
 
         //Включение основого интерфейса
-
-        CanvasMain.SetActive(true);
+        
         CanvasMenus.SetActive(true);
         Buildings.SetActive(true);
 

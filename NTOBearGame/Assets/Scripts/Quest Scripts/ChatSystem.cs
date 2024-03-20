@@ -81,7 +81,8 @@ public class ChatSystem : MonoBehaviour
             string ChatQuery = $"SELECT Phrase FROM Chat_Phrases WHERE id = '{ProgressMessage + 1}'";
             string message = DBManager.ExecuteQuery(ChatQuery);
 
-
+            
+            //Создание сообщения и его отправка
             CreateMessage(message, true);
 
 
