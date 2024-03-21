@@ -55,36 +55,32 @@ public class HelperController : MonoBehaviour
         SmallPanel.SetActive(false);
         BearOSObject.SetActive(false);
         CaseMenuObject.SetActive(false);
+        EmptyTextsMeshPro.SetActive(false);
     }
 
     //Корутина мигания сообщений 
     private IEnumerator CoroutineFadeMessageNewQuest()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 6; i++)
         {
             if (i % 2 == 0)
             {
-                Debug.Log(0);
                 EmptyTextsMeshPro.SetActive(false);
             }
 
             if (i % 2 != 0)
             {
-                Debug.Log(1 );
-                EmptyTextsMeshPro.SetActive(false);
+                EmptyTextsMeshPro.SetActive(true);
             }
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
     //Метод для запуска корутины мигающий сообщений
     public void StartCoroutineFadeMessageNewQuest()
     {
+        EmptyTextsMeshPro.SetActive(true);
         StartCoroutine(CoroutineFadeMessageNewQuest());
     }
-    
-    
-    
-    
     
 }
