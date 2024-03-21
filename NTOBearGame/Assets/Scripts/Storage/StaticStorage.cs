@@ -4,6 +4,8 @@ using TMPro;
 
 public class StaticStorage : MonoBehaviour
 {
+    public HelperController HCReference;
+    public static HelperController HCReferenceStatic;
     public Text TextHelperST;
     public TextMeshProUGUI TextDetialPanelST;
     public static Text TextHelperSTstatic;
@@ -58,6 +60,7 @@ public class StaticStorage : MonoBehaviour
     public static AudioSource NewMessageSourceStatic;
     void Start()
     {
+        HCReferenceStatic = HCReference;
         NSSStatic = NSS;
         TextHelperSTstatic = TextHelperST;
         TextDetialPanelSTstatic = TextDetialPanelST;

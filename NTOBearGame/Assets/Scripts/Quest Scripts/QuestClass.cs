@@ -27,7 +27,8 @@ public class QuestClass
             StaticStorage.TextHelperQuestStatic.text = SmallPanelCurrentText;
             StaticStorage.TextHelperSTstatic.text = SmallPanelCurrentText;
             StaticStorage.TextDetialPanelSTstatic.text = DetailedPanelCurrentText;
-            
+
+            StaticStorage.HCReferenceStatic.StartCoroutineFadeMessageNewQuest(); 
             //Отправление сообщений от профессора
             SendQuestMessage(Progress);
         }

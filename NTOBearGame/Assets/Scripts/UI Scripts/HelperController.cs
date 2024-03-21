@@ -1,3 +1,5 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class HelperController : MonoBehaviour
@@ -6,14 +8,23 @@ public class HelperController : MonoBehaviour
     [SerializeField] private GameObject SmallPanel;
     [SerializeField] private GameObject BearOSObject;
     [SerializeField] private GameObject CaseMenuObject;
+    [SerializeField] private GameObject EmptyTextsMeshPro;
+    [SerializeField] private Transform MainCharacterTransform;
+    [SerializeField] private Transform HeadHelperTransform;
     private Outline HelperOutline;
 
     private void Start()
     {
-        HelperOutline = GetComponent<Outline>();
+        HelperOutline = gameObject.transform.GetChild(1).GetComponent<Outline>();
         HelperOutline.enabled = false;
     }
-    
+
+    private void Update()
+    {
+        //Стубуретка смотрит на игрока
+        
+        HeadHelperTransform.LookAt(MainCharacterTransform);
+    }
     //Включение / отключение обводки при навведении / убирании курсора мыши
     private void OnMouseEnter()
     {
@@ -27,10 +38,7 @@ public class HelperController : MonoBehaviour
     //Нажимаем на Стубуретку
     private void OnMouseDown()
     {
-        HelperEmptyForActivation.SetActive(true);
-        SmallPanel.SetActive(false);
-        BearOSObject.SetActive(false);
-        CaseMenuObject.SetActive(false);
+        StartWorkWithST();
     }
     
     //Выходим из меню Стубуретки
@@ -39,4 +47,44 @@ public class HelperController : MonoBehaviour
         HelperEmptyForActivation.SetActive(false);
         SmallPanel.SetActive(true);
     }
+
+    //Включение панели Стубуретки
+    public void StartWorkWithST()
+    {
+        HelperEmptyForActivation.SetActive(true);
+        SmallPanel.SetActive(false);
+        BearOSObject.SetActive(false);
+        CaseMenuObject.SetActive(false);
+    }
+
+    //Корутина мигания сообщений 
+    private IEnumerator CoroutineFadeMessageNewQuest()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (i % 2 == 0)
+            {
+                Debug.Log(0);
+                EmptyTextsMeshPro.SetActive(false);
+            }
+
+            if (i % 2 != 0)
+            {
+                Debug.Log(1 );
+                EmptyTextsMeshPro.SetActive(false);
+            }
+            yield return new WaitForSeconds(5f);
+        }
+    }
+
+    //Метод для запуска корутины мигающий сообщений
+    public void StartCoroutineFadeMessageNewQuest()
+    {
+        StartCoroutine(CoroutineFadeMessageNewQuest());
+    }
+    
+    
+    
+    
+    
 }
