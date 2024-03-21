@@ -14,6 +14,8 @@ public class UIController : MonoBehaviour
     public GameObject ProgressPanel;
     public GameObject PauseMenu;
     public GameObject SettingsPanel;
+    [SerializeField]private GameObject STPanel;
+    [SerializeField] private GameObject GLPanel;
     public Transform TransformHelper;
     
     public Transform characterPosition;
@@ -94,6 +96,8 @@ public class UIController : MonoBehaviour
     //Активация/Дезактивация панели BearOS
     public void BearOS(){
         BearOSPanel.SetActive(!BearOSPanel.activeSelf);
+        STPanel.SetActive(false);
+        GLPanel.SetActive(false);
         if(DetailPanelObj.activeSelf && !ProgressPanel.activeSelf){
             DetailPanelObj.SetActive(!DetailPanelObj.activeSelf);
         }
