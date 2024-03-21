@@ -30,7 +30,6 @@ public class EffectController : MonoBehaviour
         BackgroundEffect.color = new Color32(16,255,0,0);
     }
     private void Update(){
-        Debug.Log(PlayerState.is_changed);
         if(PlayerState.is_changed){
             NewEffect();
         }
