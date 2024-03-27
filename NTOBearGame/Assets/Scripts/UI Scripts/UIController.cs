@@ -14,13 +14,10 @@ public class UIController : MonoBehaviour
     public GameObject ProgressPanel;
     public GameObject PauseMenu;
     public GameObject SettingsPanel;
-    public Transform TransformHelper;
-    
+
     public Transform characterPosition;
     public Transform CameraPosition;
     public Transform[] CheckPointArrayPosition;
-    public List<Transform> HelperTeleportPosition;
-    public Transform HelperHomeTransform;
     public Transform HomeCheckPoint;
     
     private QuestClass QuestClassInstance;
@@ -153,10 +150,7 @@ public class UIController : MonoBehaviour
                 Vector3 newPositionCharacter = new Vector3(CheckPointArrayPosition[CPNumber].position.x, CheckPointArrayPosition[CPNumber].position.y, CheckPointArrayPosition[CPNumber].position.z + 5);
                 characterPosition.position = newPositionCharacter;
                 TextTeleportButton.text = "В лабораторию";
-                
-                //Телепортация Стубуретки
-                TransformHelper.position = HelperTeleportPosition[CPNumber].position;
-                
+
                 switch (CPNumber)
                 {
                     // Телепортировались в 1 безопасную зону [квест 2]
@@ -203,11 +197,6 @@ public class UIController : MonoBehaviour
                 Vector3 newPositionCharacter = new Vector3(HomeCheckPoint.position.x, HomeCheckPoint.position.y, HomeCheckPoint.position.z + 5);
                 characterPosition.position = newPositionCharacter;
                 TextTeleportButton.text = "В Контрольную точку";
-
-                //Телепортация стубуретки
-                TransformHelper.position = HelperHomeTransform.position;
-                
-                Debug.Log(1);
                 
                 QuestClassInstance.CheckQuest(6);
                 QuestClassInstance.CheckQuest(18);

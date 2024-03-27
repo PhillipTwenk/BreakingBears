@@ -14,7 +14,6 @@ public class QuestClass
 
             StaticStorage.ProgressPanelTextStatic.text = DBManager.ExecuteQuery(SmallPanelQuery);
             StaticStorage.DetailPanelTextStatic.text = DBManager.ExecuteQuery(DetailPanelQuery);
-            StaticStorage.TextHelperQuestStatic.text = DBManager.ExecuteQuery(SmallPanelQuery);
             SendQuestMessage(Progress);
         }
 

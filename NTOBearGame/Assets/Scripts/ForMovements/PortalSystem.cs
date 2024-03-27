@@ -9,8 +9,6 @@ public class PortalSystem : MonoBehaviour
     private Transform CharacterPosition;
     public Transform CameraPosition;
     private QuestClass QuestClassInstance;
-    public List<Transform> PortalPointHelperList;
-    public Transform TransformHelper;
     void Start()
     {
         CharacterPosition = GetComponent<Transform>();
@@ -31,9 +29,6 @@ public class PortalSystem : MonoBehaviour
             CharacterPosition.position = PointPortalTeleport[NumberTrigger + 1].position;
             Vector3 newCamPosition = new Vector3(CharacterPosition.position.x, CharacterPosition.position.y, CharacterPosition.position.z);
             CameraPosition.position = newCamPosition;
-
-            //Перемещение стубуретки
-            TransformHelper.position = PortalPointHelperList[NumberTrigger + 1].position;
 
             // Перебор номера триггера для закрытия квестов, в которых необходимо пройти в комнату
 
@@ -71,9 +66,6 @@ public class PortalSystem : MonoBehaviour
             CharacterPosition.position = PointPortalTeleport[NumberTrigger - 1].position;
             Vector3 newCamPosition = new Vector3(CharacterPosition.position.x, CharacterPosition.position.y, CharacterPosition.position.z);
             CameraPosition.position = newCamPosition;
-            
-            //Перемещение стубуретки
-            TransformHelper = PortalPointHelperList[NumberTrigger + 1];
         }
 
         // Игрок прошёл безопасную зону
