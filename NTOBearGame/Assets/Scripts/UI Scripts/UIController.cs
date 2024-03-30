@@ -64,13 +64,14 @@ public class UIController : MonoBehaviour
             }
             else if(!TutorialClass.IsNotEnterContinue){
                     StaticStorage.TutorialClassStatic.UpdateTutorialStage();
-                }
+            }
         }
     }
     #region Buttons Methods
     
     //Выполняется при нажатии на паузу(кнопка esc)
     public void PauseButton(){
+        BuildingObject.usingBuildings = !BuildingObject.usingBuildings;
         if (StaticStorage.IsPause)
         {
             Time.timeScale = 1f;
@@ -79,28 +80,41 @@ public class UIController : MonoBehaviour
         {
             Time.timeScale = 0f;
         }
-        PauseMenu.SetActive(!PauseMenu.activeSelf);
-        SettingsPanel.SetActive(false);
-        StaticStorage.IsPause = !StaticStorage.IsPause;
-        if(BearOSPanel.activeSelf){
-            BearOSPanel.SetActive(!BearOSPanel.activeSelf);
-        }
-        ProgressPanel.SetActive(true);
-    }
-    
-    //Активация/Дезактивация панели BearOS
-    public void BearOS(){
-        BearOSPanel.SetActive(!BearOSPanel.activeSelf);
         if(DetailPanelObj.activeSelf){
             DetailPanelObj.SetActive(!ProgressPanel.activeSelf);
         }
         if(BriefcaseObj.activeSelf){
             BriefcaseObj.SetActive(!BriefcaseObj.activeSelf);
+            BuildingObject.usingBuildings = false;
+        }
+        if(BearOSPanel.activeSelf){
+            BearOSPanel.SetActive(!BearOSPanel.activeSelf);
+            BuildingObject.usingBuildings = false;
+        }
+        PauseMenu.SetActive(!PauseMenu.activeSelf);
+        SettingsPanel.SetActive(false);
+        StaticStorage.IsPause = !StaticStorage.IsPause;
+        ProgressPanel.SetActive(true);
+    }
+    
+    //Активация/Дезактивация панели BearOS
+    public void BearOS(){
+        BuildingObject.usingBuildings = !BuildingObject.usingBuildings;
+        BearOSPanel.SetActive(!BearOSPanel.activeSelf);
+        if(DetailPanelObj.activeSelf){
+            DetailPanelObj.SetActive(!ProgressPanel.activeSelf);
+            BuildingObject.usingBuildings = false;
+        }
+        if(BriefcaseObj.activeSelf){
+            BriefcaseObj.SetActive(!BriefcaseObj.activeSelf);
+            BuildingObject.usingBuildings = false;
+        }
+        if (PauseMenu.activeSelf) {
+            PauseMenu.SetActive(!PauseMenu.activeSelf);
+            BuildingObject.usingBuildings = false;
         }
         ProgressPanel.SetActive(!ProgressPanel.activeSelf);
-        
-        Building.is_agregat_canvas_activated = !Building.is_agregat_canvas_activated;
-        
+
         QuestClassInstance.CheckQuest(1);
         QuestClassInstance.CheckQuest(7);
         
@@ -125,15 +139,25 @@ public class UIController : MonoBehaviour
 
     //Активация / деактивация панели инвентаря
     public void BriefcaseButtonOpen(){
+        if (!TutorialClass.IsInTutorial)
+        {
+            BuildingObject.usingBuildings = !BuildingObject.usingBuildings;
+        }
+
+        if (TutorialClass.TutorialCounter == 48)
+        {
+            BuildingObject.usingBuildings = !BuildingObject.usingBuildings;
+        }
         BriefcaseObj.SetActive(!BriefcaseObj.activeSelf);
         if(BearOSPanel.activeSelf){
             BearOSPanel.SetActive(!BearOSPanel.activeSelf);
+            BuildingObject.usingBuildings = false;
         }
-        if (!TutorialClass.IsInTutorial)
-        {
-            Building.is_agregat_canvas_activated = !Building.is_agregat_canvas_activated;
+        if (PauseMenu.activeSelf) {
+            PauseMenu.SetActive(!PauseMenu.activeSelf);
+            BuildingObject.usingBuildings = false;
         }
-        
+
         StaticStorage.TutorialClassStatic.ContinueTutorial(22);
         StaticStorage.TutorialClassStatic.ContinueTutorial(26);
         StaticStorage.TutorialClassStatic.ContinueTutorial(29);

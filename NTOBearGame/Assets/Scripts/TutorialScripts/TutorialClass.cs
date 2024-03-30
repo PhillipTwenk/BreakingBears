@@ -84,8 +84,7 @@ public class TutorialClass: MonoBehaviour
         
             //Обнуление перед следующим вводом текста
             StaticStorage.TextMProTutorialStatic.text = "";
-        
-        
+            
             //Запуск корутины ввода текста
             StartCoroutine(TextInputCoroutine(TutorialTextOnThisStage));
         }

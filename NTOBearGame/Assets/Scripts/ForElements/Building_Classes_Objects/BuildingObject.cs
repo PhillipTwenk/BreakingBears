@@ -73,6 +73,7 @@ public class BuildingObject : MonoBehaviour
         is_canvas_activated = false;
         Building.is_agregat_canvas_activated = false;
         PlayerMenu.SetActive(true); // отключаем интерфейс игрока, чтобы не было наслоения
+        StaticStorage.TutorialClassStatic.ContinueTutorial(47);
     }
     // Функция вызывается каждый кадр и предназначена для проверки закрытия интерфейса алгоритма на Esc
     // INPUT: -
@@ -96,14 +97,14 @@ public class BuildingObject : MonoBehaviour
         }
     }
     private void OnMouseEnter(){
-        if (usingBuildings)
+        if (usingBuildings && !is_canvas_activated)
         {
             outline.enabled = true; // если мы навелись на объект
         }
     }
 
     private void OnMouseExit(){
-        if (usingBuildings)
+        if (usingBuildings && !is_canvas_activated)
         {
             outline.enabled = false; // если мы навелись на объект
         }
@@ -144,6 +145,8 @@ public class BuildingObject : MonoBehaviour
             ExitsChoice.ClearOptions(); // очищаем опции выбора
             List<string> exitsInfo = Building.ExitsChoiceInfo(); // заносим в список через функцию все действия выхода
             ExitsChoice.AddOptions(exitsInfo);
+            
+            outline.enabled = false;
         }
     }
 
