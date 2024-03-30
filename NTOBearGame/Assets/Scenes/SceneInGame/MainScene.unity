@@ -18218,7 +18218,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1329260539}
+      - m_Target: {fileID: 7625620820729176123}
         m_TargetAssemblyTypeName: BuildingObject, Assembly-CSharp
         m_MethodName: BuildAlgorithm
         m_Mode: 1
@@ -53892,8 +53892,8 @@ MonoBehaviour:
   m_OnDidEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1329260539}
-        m_TargetAssemblyTypeName: Heater, Assembly-CSharp
+      - m_Target: {fileID: 7625620820729176123}
+        m_TargetAssemblyTypeName: BuildingObject, Assembly-CSharp
         m_MethodName: ParameterInputResult
         m_Mode: 1
         m_Arguments:
@@ -61044,17 +61044,6 @@ MonoBehaviour:
   NewMessage: {fileID: 8300000, guid: 3be3d5ad7677af843bf157b5f45e3f3a, type: 3}
   Walking: {fileID: 8300000, guid: 3bba38c2eb23a5440add60c41bf5c238, type: 3}
   Running: {fileID: 8300000, guid: d8502fe3d8b89bb429911a7010ee1dec, type: 3}
---- !u!114 &1329260539 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4740322022634733290, guid: 6b86ee1df96ffac4995f81c40b58265c, type: 3}
-  m_PrefabInstance: {fileID: 781370551}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6864d362d68b6f49bcd1c28f5ec635e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1329599202 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4882586880987565869, guid: b35960b2ef8e458418ea1348712c471e, type: 3}
@@ -62635,7 +62624,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1329260539}
+      - m_Target: {fileID: 7625620820729176123}
         m_TargetAssemblyTypeName: BuildingObject, Assembly-CSharp
         m_MethodName: DeleteAlgorithm
         m_Mode: 1
@@ -76200,8 +76189,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1329260539}
-        m_TargetAssemblyTypeName: Heater, Assembly-CSharp
+      - m_Target: {fileID: 7625620820729176123}
+        m_TargetAssemblyTypeName: BuildingObject, Assembly-CSharp
         m_MethodName: CheckChosenAction
         m_Mode: 1
         m_Arguments:

@@ -186,7 +186,10 @@ public class BuildingObject : MonoBehaviour
             AlgorithmText.text = $"{action} {element_names[0]} и {element_names[1]}, Параметр = {parameter}, Вывести в {exit}";
         }
 
-        ExitAgregatUI();
+        if (!TutorialClass.IsInTutorial)
+        {
+            ExitAgregatUI();
+        }
     }
 
     // Сохранение действия при выборе

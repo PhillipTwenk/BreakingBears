@@ -42,6 +42,10 @@ public class TutorialClass: MonoBehaviour
     {
         if (IsInTutorial)
         {
+            if (TutorialCounter == 50)
+            {
+                EndTutorial();
+            }
             TutorialCounter += 1;
             InputNewTextInProfTutorial();
         }
@@ -124,7 +128,7 @@ public class TutorialClass: MonoBehaviour
     }
 
     //Метод для окончания туториала
-    public void EndTutorial(bool IsOnPreTutorialPanel)
+    public void EndTutorial()
     {
         IsInTutorial = false;
         TutorialCounter = 1;
@@ -133,12 +137,13 @@ public class TutorialClass: MonoBehaviour
         CanvasTutorial.SetActive(false);
         Destroy(NewAgregatObject);
         BuildingObject.usingBuildings = true;
+        QuestClassInstance.TextChanger();
         
-        //Если мы находимся на панели, где нас спрашивают о прохождении туториала, и нажимаем нет
-        if (IsOnPreTutorialPanel)
-        {
-            QuestClassInstance.TextChanger();
-        }
+        // //Если мы находимся на панели, где нас спрашивают о прохождении туториала, и нажимаем нет
+        // if (IsOnPreTutorialPanel)
+        // {
+        //     QuestClassInstance.TextChanger();
+        // }
     }
     
     //Метод, перемещающий панель в нужные координаты в зависимости от квеста
