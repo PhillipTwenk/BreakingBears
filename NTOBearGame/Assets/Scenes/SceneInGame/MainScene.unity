@@ -49516,7 +49516,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2082178011}
         m_TargetAssemblyTypeName: TutorialClass, Assembly-CSharp
         m_MethodName: EndTutorial
-        m_Mode: 6
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -61044,6 +61044,11 @@ MonoBehaviour:
   NewMessage: {fileID: 8300000, guid: 3be3d5ad7677af843bf157b5f45e3f3a, type: 3}
   Walking: {fileID: 8300000, guid: 3bba38c2eb23a5440add60c41bf5c238, type: 3}
   Running: {fileID: 8300000, guid: d8502fe3d8b89bb429911a7010ee1dec, type: 3}
+--- !u!1 &1329260538 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8492160223253102734, guid: 6b86ee1df96ffac4995f81c40b58265c, type: 3}
+  m_PrefabInstance: {fileID: 781370551}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1329599202 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4882586880987565869, guid: b35960b2ef8e458418ea1348712c471e, type: 3}
@@ -91221,6 +91226,30 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3355963044359287492, guid: 37f6615d77ac7874d9f8eb5bd85e7a51, type: 3}
+      propertyPath: m_Size.x
+      value: 1.1803876
+      objectReference: {fileID: 0}
+    - target: {fileID: 3355963044359287492, guid: 37f6615d77ac7874d9f8eb5bd85e7a51, type: 3}
+      propertyPath: m_Size.y
+      value: 4.047328
+      objectReference: {fileID: 0}
+    - target: {fileID: 3355963044359287492, guid: 37f6615d77ac7874d9f8eb5bd85e7a51, type: 3}
+      propertyPath: m_Size.z
+      value: 2.9240668
+      objectReference: {fileID: 0}
+    - target: {fileID: 3355963044359287492, guid: 37f6615d77ac7874d9f8eb5bd85e7a51, type: 3}
+      propertyPath: m_Center.x
+      value: 2.2536733
+      objectReference: {fileID: 0}
+    - target: {fileID: 3355963044359287492, guid: 37f6615d77ac7874d9f8eb5bd85e7a51, type: 3}
+      propertyPath: m_Center.y
+      value: 3.179998
+      objectReference: {fileID: 0}
+    - target: {fileID: 3355963044359287492, guid: 37f6615d77ac7874d9f8eb5bd85e7a51, type: 3}
+      propertyPath: m_Center.z
+      value: 1.4076478
+      objectReference: {fileID: 0}
     - target: {fileID: 4058453517521748338, guid: 37f6615d77ac7874d9f8eb5bd85e7a51, type: 3}
       propertyPath: PlayerMenu
       value: 
@@ -92132,6 +92161,7 @@ MonoBehaviour:
   FirstParentObject: {fileID: 0}
   NewAgregatObject: {fileID: 6755560805423128159}
   ShadowPanel: {fileID: 1335686805}
+  TrueBuilding: {fileID: 1329260538}
   PositionsProfPanelList:
   - {fileID: 377523731}
   - {fileID: 1213218454}

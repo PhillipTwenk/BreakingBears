@@ -223,7 +223,7 @@ public class BuildingObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider coll){
         string element_name = coll.name.ToString().Split('(')[0]; // просмотр имени объекта (split сделан в случае такого названия - Na(Clone), которое наш алгоритм не засчитает за элемент впринципе)
-        if(!elements_info.Contains(coll.name) || !element_names.Contains(element_name)){ // если прикоснувшийся объект вообще не вещество или он не указан в списке элементов алгоритма
+        if((!elements_info.Contains(coll.name) || !element_names.Contains(element_name)) && !TutorialClass.IsInTutorial){ // если прикоснувшийся объект вообще не вещество или он не указан в списке элементов алгоритма
             return;
         }
 

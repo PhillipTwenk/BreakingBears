@@ -15,9 +15,9 @@ public class TutorialClass: MonoBehaviour
     public static bool IsTextingMessage;
     public static bool IsTextingMessageBreak;
     public static bool IsNotEnterContinue;
-    
+
     //Игровые объекты
-    public GameObject PreTutorialPanel, CanvasTutorial, ProfTutorialPanel, TMProHint, ForObjects, FirstParentObject, NewAgregatObject, ShadowPanel;
+    public GameObject PreTutorialPanel, CanvasTutorial, ProfTutorialPanel, TMProHint, ForObjects, FirstParentObject, NewAgregatObject, ShadowPanel, TrueBuilding;
 
     //Экземпляры классов
     private QuestClass QuestClassInstance;
@@ -121,6 +121,7 @@ public class TutorialClass: MonoBehaviour
         IsInTutorial = true;
         PreTutorialPanel.SetActive(false);
         ProfTutorialPanel.SetActive(true);
+        TrueBuilding.SetActive(false);
         TutorialCounter = 1;
         BuildingObject.usingBuildings = false;
         AddElementsToItem();
@@ -133,17 +134,12 @@ public class TutorialClass: MonoBehaviour
         IsInTutorial = false;
         TutorialCounter = 1;
         PreTutorialPanel.SetActive(false);
+        TrueBuilding.SetActive(true);
         ProfTutorialPanel.SetActive(false);
         CanvasTutorial.SetActive(false);
         Destroy(NewAgregatObject);
         BuildingObject.usingBuildings = true;
         QuestClassInstance.TextChanger();
-        
-        // //Если мы находимся на панели, где нас спрашивают о прохождении туториала, и нажимаем нет
-        // if (IsOnPreTutorialPanel)
-        // {
-        //     QuestClassInstance.TextChanger();
-        // }
     }
     
     //Метод, перемещающий панель в нужные координаты в зависимости от квеста
@@ -280,7 +276,7 @@ public class TutorialClass: MonoBehaviour
     //Можно ли брать элементы
     public static bool GetElementBool()
     {
-        if(TutorialCounter == 27)
+        if(TutorialCounter == 27 || TutorialCounter == 48)
         {
             return true;
         }
