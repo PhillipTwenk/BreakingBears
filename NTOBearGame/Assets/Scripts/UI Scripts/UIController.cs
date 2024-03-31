@@ -14,7 +14,7 @@ public class UIController : MonoBehaviour
     public GameObject ProgressPanel;
     public GameObject PauseMenu;
     public GameObject SettingsPanel;
-    [SerializeField]private GameObject STPanel;
+    [SerializeField] private GameObject STPanel;
     [SerializeField] private GameObject GLPanel;
     public Transform TransformHelper;
     
@@ -136,7 +136,11 @@ public class UIController : MonoBehaviour
 
     //Активация / деактивация панели инвентаря
     public void BriefcaseButtonOpen(){
-        
+
+        if(STPanel .activeSelf){
+            return;
+        }
+
         //Активация / деактивация панели инвентаря
         BriefcaseObj.SetActive(!BriefcaseObj.activeSelf);
         
@@ -150,7 +154,7 @@ public class UIController : MonoBehaviour
         {
             BuildingObject.usingBuildings = !BuildingObject.usingBuildings;
         }
-        
+
         StaticStorage.TutorialClassStatic.ContinueTutorial(22);
         StaticStorage.TutorialClassStatic.ContinueTutorial(26);
         StaticStorage.TutorialClassStatic.ContinueTutorial(29);

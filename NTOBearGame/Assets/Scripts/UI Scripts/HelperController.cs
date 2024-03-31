@@ -16,6 +16,7 @@ public class HelperController : MonoBehaviour
     [SerializeField] private Transform HeadHelperTransform;
     [SerializeField] private TextMeshProUGUI TextLabel;
     [SerializeField] private TextMeshProUGUI GLText;
+    [SerializeField] private GameObject PlayerMenu;
     public static bool IsMessageCoroutineBreak;
     private Outline HelperOutline;
 
@@ -32,6 +33,10 @@ public class HelperController : MonoBehaviour
         //Стубуретка смотрит на игрока
         
         HeadHelperTransform.LookAt(MainCharacterTransform);
+
+        if(HelperEmptyForActivation.activeSelf && Input.GetKeyDown(KeyCode.Escape)){
+            ReturnButton();
+        }
     }
     
     //Включение / отключение обводки при навведении / убирании курсора мыши
@@ -113,7 +118,7 @@ public class HelperController : MonoBehaviour
             }
             TMProMessage.text = MessageHelper;
 
-            yield return new WaitForSeconds(Random.Range(1f, 3f));
+            yield return new WaitForSeconds(Random.Range(40f, 60f));
         }
     }
     
