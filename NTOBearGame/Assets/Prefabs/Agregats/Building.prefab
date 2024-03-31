@@ -2078,6 +2078,7 @@ GameObject:
   - component: {fileID: 4389776297194733604}
   - component: {fileID: 3038765553812960146}
   - component: {fileID: 217172461422075680}
+  - component: {fileID: 6510515341799718937}
   m_Layer: 0
   m_Name: Building
   m_TagString: Untagged
@@ -2183,6 +2184,36 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &6510515341799718937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2177748060629126646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d79d4a96580e44c4f8d436b65c971ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TutorialClass: {fileID: 0}
+  NSS: {fileID: 11400000, guid: d8b712216f8ff471a8a479a6eaab907b, type: 2}
+  TextMProTutorial: {fileID: 0}
+  ProgressPanelText: {fileID: 0}
+  DetailPanelText: {fileID: 0}
+  textObjectB: {fileID: 5968880745781919296, guid: 75a657e14032a4d98925b127994b3945, type: 3}
+  textObjectL: {fileID: 855454355618658714, guid: 7d5a3e1348bc7504e99b6783bd1c21d5, type: 3}
+  TextingMessageAnimationObj: {fileID: 0}
+  ChatSystemRef: {fileID: 0}
+  StartGameMenuRef: {fileID: 0}
+  MusicInLab: {fileID: 0}
+  MusicInZone: {fileID: 0}
+  MusicInStartGameMenu: {fileID: 0}
+  HitHammer: {fileID: 8300000, guid: 48887ade102d10b4aa5a297641a9a16b, type: 3}
+  ThornHit: {fileID: 8300000, guid: 8b469ceb8c85c8f4ab920f22d6f8c696, type: 3}
+  NewMessage: {fileID: 8300000, guid: 3be3d5ad7677af843bf157b5f45e3f3a, type: 3}
+  Walking: {fileID: 8300000, guid: 3bba38c2eb23a5440add60c41bf5c238, type: 3}
+  Running: {fileID: 8300000, guid: d8502fe3d8b89bb429911a7010ee1dec, type: 3}
 --- !u!1 &2178043999016895220
 GameObject:
   m_ObjectHideFlags: 0
