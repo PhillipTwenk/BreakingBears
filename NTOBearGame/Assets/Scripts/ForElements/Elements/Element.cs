@@ -76,6 +76,7 @@ public class Element : MonoBehaviour
             }
         }
         if(gameObject.name.Split('(')[0] == "H₂O"){
+            StaticStorage.TutorialClassStatic.ContinueTutorial(48);
             QuestClassInstance.CheckQuest(5);
             if(Counter != 3)
             {

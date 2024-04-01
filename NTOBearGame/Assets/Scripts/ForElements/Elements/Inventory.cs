@@ -10,5 +10,14 @@ public static class Inventory
         SpawnElementChoice.AddOptions(Building.ElementsChoiceInfo(true));
         return SpawnElementChoice;
     }
+    
+    public static void CleanInventory()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            DBManager.ExecuteQueryWithoutAnswer($"UPDATE inventory SET element_id = 0 WHERE slot_id = {i + 1}"); 
+            is_changed = true;
+        }
+    }
 
 }

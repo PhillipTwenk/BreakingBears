@@ -65,7 +65,7 @@ public class BuildingObject : MonoBehaviour
         // обнуляем сохраненный алгоритм до этого
         DeleteAlgorithm();
         AgregatName.text = $"{building_name}";
-        ExitAgregatUI();
+        //ExitAgregatUI();
     }
     public void ExitAgregatUI(){
         ParameterInput.gameObject.SetActive(false); // отключаем поле ввода для параметра

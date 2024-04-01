@@ -30,20 +30,20 @@ public class UIController : MonoBehaviour
     {
         
         //Открытие инвентаря
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.E) && !TutorialClass.IsTextingMessage)
         {
             BriefcaseButtonOpen();
         }
         
         //Рабочая панель
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.Q) && !TutorialClass.IsTextingMessage)
         {
             BearOS();
             AntidotePanel();
         }
         
         //Пауза
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !TutorialClass.IsTextingMessage)
         {
             PauseButton();
         }

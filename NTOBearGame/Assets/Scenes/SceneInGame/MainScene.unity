@@ -3612,7 +3612,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2082178011}
+        m_TargetAssemblyTypeName: TutorialClass, Assembly-CSharp
+        m_MethodName: ContinueBuildingCanvas
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: H
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &80059482
 MonoBehaviour:
@@ -18230,6 +18242,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2082178011}
+        m_TargetAssemblyTypeName: TutorialClass, Assembly-CSharp
+        m_MethodName: Activation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &338489136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19992,7 +20016,8 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5247801662643467668, guid: d55ec77a4bc217d4a98d91a9f7bd78f8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d55ec77a4bc217d4a98d91a9f7bd78f8, type: 3}
 --- !u!1001 &385077232
 PrefabInstance:
@@ -31790,7 +31815,8 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6003502384676585279, guid: 1f7692b451a5a5d4a96c416287e53ef4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1f7692b451a5a5d4a96c416287e53ef4, type: 3}
 --- !u!1 &699181114 stripped
 GameObject:
@@ -34797,7 +34823,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3583497364525567329, guid: 6b86ee1df96ffac4995f81c40b58265c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6b86ee1df96ffac4995f81c40b58265c, type: 3}
 --- !u!1 &782051452 stripped
 GameObject:
@@ -40141,7 +40168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -91.53329, y: -117}
+  m_AnchoredPosition: {x: -91.53329, y: -98.19}
   m_SizeDelta: {x: 220.0235, y: 96.0459}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &910501718
@@ -40191,8 +40218,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.3
-  m_fontSizeBase: 22.3
+  m_fontSize: 13.83
+  m_fontSizeBase: 13.83
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -51378,7 +51405,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2082178011}
+        m_TargetAssemblyTypeName: TutorialClass, Assembly-CSharp
+        m_MethodName: ContinueBuildingCanvas
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: O
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1121923985
 MonoBehaviour:
@@ -53902,6 +53941,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2082178011}
+        m_TargetAssemblyTypeName: TutorialClass, Assembly-CSharp
+        m_MethodName: ContinueBuildingCanvas
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 2800
           m_BoolArgument: 0
         m_CallState: 2
   m_OnValueChanged:
@@ -57016,7 +57067,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2082178011}
+        m_TargetAssemblyTypeName: TutorialClass, Assembly-CSharp
+        m_MethodName: ContinueBuildingCanvas
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: "\u041F\u0435\u0447\u044C"
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1232107871
 MonoBehaviour:
@@ -70701,7 +70764,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1574998017}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: PauseButton
         m_Mode: 1
@@ -71309,7 +71372,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1574998016}
-  - component: {fileID: 1574998017}
   - component: {fileID: 1574998018}
   m_Layer: 5
   m_Name: CanvasEmpty
@@ -71341,36 +71403,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1574998017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1574998015}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0708329f9ad0276448f1fb717be9a784, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TextTeleportButton: {fileID: 433414546}
-  AntidotePanelObj: {fileID: 1183187010}
-  BriefcaseObj: {fileID: 2065556107}
-  BearOSPanel: {fileID: 43514176}
-  DetailPanelObj: {fileID: 271793479}
-  ProgressPanel: {fileID: 1372162849}
-  PauseMenu: {fileID: 1485207486}
-  SettingsPanel: {fileID: 1798096631}
-  characterPosition: {fileID: 543450652629658001}
-  CameraPosition: {fileID: 1843387734}
-  CheckPointArrayPosition:
-  - {fileID: 1220500817}
-  - {fileID: 1320038043}
-  - {fileID: 1432528441}
-  - {fileID: 1516006217}
-  - {fileID: 1165524467}
-  - {fileID: 2008911196}
-  HomeCheckPoint: {fileID: 301154990}
 --- !u!114 &1574998018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76194,6 +76226,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2082178011}
+        m_TargetAssemblyTypeName: TutorialClass, Assembly-CSharp
+        m_MethodName: ContinueBuildingCanvas
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: "\u041D\u0430\u0433\u0440\u0435\u0442\u044C"
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 7625620820729176123}
         m_TargetAssemblyTypeName: BuildingObject, Assembly-CSharp
         m_MethodName: CheckChosenAction
@@ -86696,7 +86740,8 @@ PrefabInstance:
       propertyPath: PlayerMenu
       value: 
       objectReference: {fileID: 1574998015}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2223786682912303664, guid: db09d5a3e2e0be34aa624de4ca38862f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: db09d5a3e2e0be34aa624de4ca38862f, type: 3}
 --- !u!1 &1951740491
 GameObject:
@@ -91310,7 +91355,8 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5197338580486419193, guid: 37f6615d77ac7874d9f8eb5bd85e7a51, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 37f6615d77ac7874d9f8eb5bd85e7a51, type: 3}
 --- !u!1 &2065556107
 GameObject:
@@ -92162,6 +92208,11 @@ MonoBehaviour:
   NewAgregatObject: {fileID: 6755560805423128159}
   ShadowPanel: {fileID: 1335686805}
   TrueBuilding: {fileID: 1329260538}
+  TextInCanvasBuildingTutorialChoice1: {fileID: 1557090759}
+  TextInCanvasBuildingTutorialChoice2: {fileID: 2081182116}
+  TextInCanvasBuildingTutorialAction: {fileID: 1321960005}
+  TextInCanvasBuildingTutorialEnd: {fileID: 484622338}
+  TextInCanvasBuildingTutorialParam: {fileID: 1770437813}
   PositionsProfPanelList:
   - {fileID: 377523731}
   - {fileID: 1213218454}
@@ -92444,7 +92495,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2093593369}
   - component: {fileID: 2093593368}
-  - component: {fileID: 2093593370}
   m_Layer: 0
   m_Name: UIController
   m_TagString: Untagged
@@ -92497,36 +92547,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2093593370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2093593367}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d79d4a96580e44c4f8d436b65c971ee0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TutorialClass: {fileID: 2082178011}
-  NSS: {fileID: 11400000, guid: d8b712216f8ff471a8a479a6eaab907b, type: 2}
-  TextMProTutorial: {fileID: 1396725336}
-  ProgressPanelText: {fileID: 2080090597}
-  DetailPanelText: {fileID: 1459752153}
-  textObjectB: {fileID: 5968880745781919296, guid: 75a657e14032a4d98925b127994b3945, type: 3}
-  textObjectL: {fileID: 855454355618658714, guid: 7d5a3e1348bc7504e99b6783bd1c21d5, type: 3}
-  TextingMessageAnimationObj: {fileID: 595052682}
-  ChatSystemRef: {fileID: 356401168}
-  StartGameMenuRef: {fileID: 2099301554}
-  MusicInLab: {fileID: 216282550}
-  MusicInZone: {fileID: 1133998070}
-  MusicInStartGameMenu: {fileID: 577396101}
-  HitHammer: {fileID: 8300000, guid: 48887ade102d10b4aa5a297641a9a16b, type: 3}
-  ThornHit: {fileID: 8300000, guid: 8b469ceb8c85c8f4ab920f22d6f8c696, type: 3}
-  NewMessage: {fileID: 8300000, guid: 3be3d5ad7677af843bf157b5f45e3f3a, type: 3}
-  Walking: {fileID: 8300000, guid: 3bba38c2eb23a5440add60c41bf5c238, type: 3}
-  Running: {fileID: 8300000, guid: d8502fe3d8b89bb429911a7010ee1dec, type: 3}
 --- !u!1001 &2096768294
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class TutorialClass: MonoBehaviour
 {
@@ -18,7 +19,8 @@ public class TutorialClass: MonoBehaviour
 
     //Игровые объекты
     public GameObject PreTutorialPanel, CanvasTutorial, ProfTutorialPanel, TMProHint, ForObjects, FirstParentObject, NewAgregatObject, ShadowPanel, TrueBuilding;
-
+    [SerializeField] private Text TextInCanvasBuildingTutorialChoice1, TextInCanvasBuildingTutorialChoice2, TextInCanvasBuildingTutorialAction, TextInCanvasBuildingTutorialEnd, TextInCanvasBuildingTutorialParam;
+    
     //Экземпляры классов
     private QuestClass QuestClassInstance;
 
@@ -139,6 +141,7 @@ public class TutorialClass: MonoBehaviour
         CanvasTutorial.SetActive(false);
         Destroy(NewAgregatObject);
         BuildingObject.usingBuildings = true;
+        Inventory.CleanInventory(); 
         QuestClassInstance.TextChanger();
     }
     
@@ -158,11 +161,11 @@ public class TutorialClass: MonoBehaviour
     //Методы для продолжения туториала при нажатии какой - либо кнопки
     public void ContinueTutorial(int WhichStage)
     {
-        if (TutorialCounter == WhichStage && IsNotEnterContinue && IsInTutorial)
+        if (TutorialCounter == WhichStage && IsNotEnterContinue && IsInTutorial && !IsTextingMessage)
         {
             IsNotEnterContinue = false;
-            UpdateTutorialStage();
             TMProHint.SetActive(false);
+            UpdateTutorialStage();
         }
     }
     
@@ -182,7 +185,6 @@ public class TutorialClass: MonoBehaviour
             TMProHint.SetActive(true);
             TMProHint.GetComponent<TextMeshProUGUI>().text = WhichPhrase;
             IsNotEnterContinue = true;
-            Debug.Log(TutorialClass.IsNotEnterContinue);
             if (TutorialCounter == 36)
             {
                 BuildingObject.usingBuildings = true;
@@ -283,6 +285,53 @@ public class TutorialClass: MonoBehaviour
         else
         {
             return false;
+        }
+    }
+    
+    //Продолжение туториала при работе с холстом агрегатов
+    public void ContinueBuildingCanvas(string WhichData)
+    {
+        switch (WhichData)
+        {
+            case "H":
+                if (TextInCanvasBuildingTutorialChoice1.text == WhichData)
+                {
+                    ContinueTutorial(39);
+                }
+                break;
+            case "O":
+                if (TextInCanvasBuildingTutorialChoice2.text == WhichData)
+                {
+                    ContinueTutorial(40);
+                }
+                break;
+            case "Нагреть":
+                if (TextInCanvasBuildingTutorialAction.text == WhichData)
+                {
+                    ContinueTutorial(42);
+                }
+                break;
+            case "Печь":
+                if (TextInCanvasBuildingTutorialEnd.text == WhichData)
+                {
+                    ContinueTutorial(43);
+                }
+                break;
+            case "2800":
+                if (TextInCanvasBuildingTutorialParam.text == WhichData)
+                {
+                    ContinueTutorial(45);
+                }
+                break;
+        }
+    }
+    
+    //При нажатии на кнопку "Активировать"
+    public void Activation()
+    {
+        if (IsInTutorial)
+        {
+            ContinueTutorial(46);
         }
     }
     
