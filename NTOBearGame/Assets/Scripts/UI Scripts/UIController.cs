@@ -25,6 +25,7 @@ public class UIController : MonoBehaviour
     {
         AntidoteTextMPro = AntidotePanelObj.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         QuestClassInstance = new QuestClass();
+        //Debug.Log(DBManager.path);
     }
     void Update()
     {
