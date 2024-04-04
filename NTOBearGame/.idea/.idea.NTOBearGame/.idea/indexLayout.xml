@@ -65,7 +65,6 @@
       <Path>Logs</Path>
       <Path>MonoBleedingEdge</Path>
       <Path>NTOBearGame_Data</Path>
-      <Path>Temp</Path>
       <Path>UserSettings</Path>
       <Path>obj</Path>
     </explicitExcludes>
