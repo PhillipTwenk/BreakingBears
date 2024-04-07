@@ -73,6 +73,10 @@ public class UIController : MonoBehaviour
     //Выполняется при нажатии на паузу(кнопка esc)
     public void PauseButton(){
         BuildingObject.usingBuildings = !BuildingObject.usingBuildings;
+        if (SettingsPanel.activeSelf)
+        {
+            StaticStorage.IsPause = false;
+        }
         if (StaticStorage.IsPause)
         {
             Time.timeScale = 1f;
@@ -100,6 +104,11 @@ public class UIController : MonoBehaviour
     
     //Активация/Дезактивация панели BearOS
     public void BearOS(){
+        if (StaticStorage.IsPause)
+        {
+            return;
+        }
+        
         BuildingObject.usingBuildings = !BuildingObject.usingBuildings;
         BearOSPanel.SetActive(!BearOSPanel.activeSelf);
         if(DetailPanelObj.activeSelf){
@@ -115,7 +124,7 @@ public class UIController : MonoBehaviour
             BuildingObject.usingBuildings = false;
         }
         ProgressPanel.SetActive(!ProgressPanel.activeSelf);
-
+        
         QuestClassInstance.CheckQuest(1);
         QuestClassInstance.CheckQuest(7);
         
@@ -140,6 +149,10 @@ public class UIController : MonoBehaviour
 
     //Активация / деактивация панели инвентаря
     public void BriefcaseButtonOpen(){
+        if (StaticStorage.IsPause)
+        {
+            return;
+        }
         if (!TutorialClass.IsInTutorial)
         {
             BuildingObject.usingBuildings = !BuildingObject.usingBuildings;
@@ -158,6 +171,8 @@ public class UIController : MonoBehaviour
             PauseMenu.SetActive(!PauseMenu.activeSelf);
             BuildingObject.usingBuildings = false;
         }
+
+        StaticStorage.IsPause = false;
 
         StaticStorage.TutorialClassStatic.ContinueTutorial(22);
         StaticStorage.TutorialClassStatic.ContinueTutorial(26);

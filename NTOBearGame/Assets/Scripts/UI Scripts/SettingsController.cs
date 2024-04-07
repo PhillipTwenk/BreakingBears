@@ -28,7 +28,6 @@ public class SettingsController : MonoBehaviour
             PauseMenu.SetActive(true);
         }
     }
-
     public void ChangeScreenResolution()
     {
         if (!Screen.fullScreen)
