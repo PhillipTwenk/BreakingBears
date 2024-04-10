@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class TutorialClass: MonoBehaviour
 {
+    //Экземпляр скрипта
+    public static TutorialClass instance = null;
+    
     //Обычные переменные
     private int MaxValueTutorial;
 
@@ -34,6 +37,12 @@ public class TutorialClass: MonoBehaviour
 
     private void Start()
     {
+        if (instance == null) { 
+            instance = this;
+        } else if(instance == this){ 
+            Destroy(gameObject); 
+        }
+
         QuestClassInstance = new QuestClass();
         MaxValueTutorial = 50;
         IsNotEnterContinue = false;

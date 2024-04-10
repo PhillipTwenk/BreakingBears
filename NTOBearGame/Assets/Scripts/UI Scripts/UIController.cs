@@ -64,7 +64,8 @@ public class UIController : MonoBehaviour
                 TutorialClass.IsTextingMessageBreak = true;
             }
             else if(!TutorialClass.IsNotEnterContinue){
-                    StaticStorage.TutorialClassStatic.UpdateTutorialStage();
+                TutorialClass.instance.ContinueTutorial(1);
+                TutorialClass.instance.UpdateTutorialStage();
             }
         }
     }
@@ -128,10 +129,10 @@ public class UIController : MonoBehaviour
         QuestClassInstance.CheckQuest(1);
         QuestClassInstance.CheckQuest(7);
         
-        StaticStorage.TutorialClassStatic.ContinueTutorial(4);
-        StaticStorage.TutorialClassStatic.ContinueTutorial(14);
-        StaticStorage.TutorialClassStatic.ContinueTutorial(31);
-        StaticStorage.TutorialClassStatic.ContinueTutorial(35);
+        TutorialClass.instance.ContinueTutorial(4);
+        TutorialClass.instance.ContinueTutorial(14);
+        TutorialClass.instance.ContinueTutorial(31);
+        TutorialClass.instance.ContinueTutorial(35);
     }
 
     //Метод, отвечающий за Изменение антидота на соответствующей панели
@@ -174,9 +175,9 @@ public class UIController : MonoBehaviour
 
         StaticStorage.IsPause = false;
 
-        StaticStorage.TutorialClassStatic.ContinueTutorial(22);
-        StaticStorage.TutorialClassStatic.ContinueTutorial(26);
-        StaticStorage.TutorialClassStatic.ContinueTutorial(29);
+        TutorialClass.instance.ContinueTutorial(22);
+        TutorialClass.instance.ContinueTutorial(26);
+        TutorialClass.instance.ContinueTutorial(29);
     }
     
     //Метод, отвечающий за телепортацию

@@ -73,7 +73,7 @@ public class BuildingObject : MonoBehaviour
         is_canvas_activated = false;
         Building.is_agregat_canvas_activated = false;
         PlayerMenu.SetActive(true); // отключаем интерфейс игрока, чтобы не было наслоения
-        StaticStorage.TutorialClassStatic.ContinueTutorial(47);
+        TutorialClass.instance.ContinueTutorial(47);
     }
     // Функция вызывается каждый кадр и предназначена для проверки закрытия интерфейса алгоритма на Esc
     // INPUT: -
@@ -116,8 +116,8 @@ public class BuildingObject : MonoBehaviour
         if(!Building.is_agregat_canvas_activated && !is_canvas_activated && usingBuildings){
             
             if(TutorialClass.IsInTutorial){
-                StaticStorage.TutorialClassStatic.ContinueTutorial(36);
-                StaticStorage.TutorialClassStatic.ContinueTutorial(47);
+                TutorialClass.instance.ContinueTutorial(36);
+                TutorialClass.instance.ContinueTutorial(47);
             }
 
             PlayerMenu.SetActive(false);

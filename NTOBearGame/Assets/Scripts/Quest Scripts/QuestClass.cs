@@ -1,9 +1,10 @@
+using TMPro;
 using UnityEngine;
 
 
 public class QuestClass
-    {
-        public void TextChanger(){
+{
+    public void TextChanger(){
             
             // Получение значения, отображающего наше продвижение в квесте и продвижение в сообщениях
 
@@ -34,7 +35,7 @@ public class QuestClass
                 string MessageQueryNumber = $"SELECT MessageNumber FROM QuestsWithMessages WHERE QuestNumber = '{progress}'";
 
                 //Запуск корутины с отправкой сообщений
-                StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(int.Parse(DBManager.ExecuteQuery(MessageQueryNumber)));
+                ChatSystem.instance.StartCoroutineMethod(int.Parse(DBManager.ExecuteQuery(MessageQueryNumber)));
             }
         }
         

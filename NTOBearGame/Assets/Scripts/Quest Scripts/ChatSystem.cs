@@ -8,13 +8,25 @@ using System.Data;
 using System;
 public class ChatSystem : MonoBehaviour
 {
+    //Экземпляр скрипта
+    public static ChatSystem instance = null;
+    
     List<Message> messageList = new List<Message>();
     public RectTransform newObjectTransform;
     public Scrollbar scrollbar;
     public ScrollRect scrollrect;
     public RectTransform contentPanel;
     public GameObject ChatPanel;
-    //public GameObject ButtonDownObj;
+
+    private void Start()
+    {
+        if (instance == null) { 
+            instance = this;
+        } else if(instance == this){ 
+            Destroy(gameObject); 
+        }
+
+    }
 
     //Создание сообщения
     public void CreateMessage(string text, bool IsBigMessage)

@@ -42,7 +42,7 @@ public class Element : MonoBehaviour
         Debug.Log(element_name_text.text);
         if (gameObject.name.Split('(')[0] == "H")
         {
-            StaticStorage.TutorialClassStatic.ContinueTutorial(27);
+            TutorialClass.instance.ContinueTutorial(27);
         }
         if(gameObject.name.Split('(')[0] == "NaOCl"){
             QuestClassInstance.CheckQuest(10);
@@ -76,7 +76,7 @@ public class Element : MonoBehaviour
             }
         }
         if(gameObject.name.Split('(')[0] == "H₂O"){
-            StaticStorage.TutorialClassStatic.ContinueTutorial(48);
+            TutorialClass.instance.ContinueTutorial(48);
             QuestClassInstance.CheckQuest(5);
             if(Counter != 3)
             {

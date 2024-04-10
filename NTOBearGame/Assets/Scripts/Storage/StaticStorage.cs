@@ -4,10 +4,6 @@ using TMPro;
 
 public class StaticStorage : MonoBehaviour
 {
-    public TutorialClass TutorialClass;
-    public static TutorialClass TutorialClassStatic;
-    public NewStaticStorage NSS;
-    public static NewStaticStorage NSSStatic;
     public TextMeshProUGUI TextMProTutorial;
     public static TextMeshProUGUI TextMProTutorialStatic;
     public static Text ProgressPanelTextStatic;
@@ -19,14 +15,7 @@ public class StaticStorage : MonoBehaviour
     public GameObject TextingMessageAnimationObj;
     public static GameObject TextingMessageAnimationObjStatic;
     public static GameObject textObjectPrefabB, textObjectPrefabL;
-    public ChatSystem ChatSystemRef;
 
-    public StartGameMenu StartGameMenuRef;
-
-    public static StartGameMenu StartGameMenuRefStatic;
-
-    public static ChatSystem ChatSystemRefStatic;
-    
     public static bool IsInStartMenu;
     public static bool IsInLab;
     public static bool IsInZone;
@@ -52,8 +41,6 @@ public class StaticStorage : MonoBehaviour
     public static AudioSource NewMessageSourceStatic;
     void Start()
     {
-        NSSStatic = NSS;
-        TutorialClassStatic = TutorialClass;
         TextMProTutorialStatic = TextMProTutorial;
         WalkingStatic = Walking;
         RunningStatic = Running;
@@ -66,13 +53,11 @@ public class StaticStorage : MonoBehaviour
         IsInStartMenu = true;
         IsInLab = false;
         IsInZone = false;
-        ChatSystemRefStatic = ChatSystemRef;
         TextingMessageAnimationObjStatic = TextingMessageAnimationObj;
         ProgressPanelTextStatic = ProgressPanelText;
         DetailPanelTextStatic = DetailPanelText;
         textObjectPrefabB = textObjectB;
         textObjectPrefabL = textObjectL;
-        StartGameMenuRefStatic = StartGameMenuRef;
         IsPause = false;
     }
 }

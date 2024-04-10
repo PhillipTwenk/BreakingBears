@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class StartGameMenu : MonoBehaviour
 {
+    //Экземпляр скрипта
+    public static StartGameMenu instance = null;
+    
     //Объект содержащий панель для запроса прохождения туториала + Холст туториала
     public GameObject PreTutorialPanel, CanvasTutorial;
     
@@ -19,6 +19,12 @@ public class StartGameMenu : MonoBehaviour
 
     void Start()
     {
+        if (instance == null) { 
+            instance = this;
+        } else if(instance == this){ 
+            Destroy(gameObject); 
+        }
+        
         QuestClassInstance = new QuestClass();
         CanvasStartGame.SetActive(true);
         CanvasMain.SetActive(false);

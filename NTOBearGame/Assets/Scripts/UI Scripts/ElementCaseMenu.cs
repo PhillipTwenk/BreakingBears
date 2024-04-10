@@ -29,7 +29,7 @@ public class ElementCaseMenu : MonoBehaviour
         Debug.Log(selected_element_name);
         if (selected_element_name == "H")
         {
-            StaticStorage.TutorialClassStatic.ContinueTutorial(25);
+            TutorialClass.instance.ContinueTutorial(25);
         }
         Instantiate(EP.elements_prefabs[element_id], SpawnPoint.transform.position, transform.rotation);
         DBManager.ExecuteQueryWithoutAnswer($"UPDATE inventory SET element_id = 0 WHERE slot_id = {SpawnElementChoice.value+1}");
