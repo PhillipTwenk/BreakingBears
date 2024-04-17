@@ -57,15 +57,19 @@ public class UIController : MonoBehaviour
         }
 
         //Проверка на нажатие кнопки Enter во время туториала
-        if (Input.GetKeyDown(KeyCode.Return) && TutorialClass.IsInTutorial  && !TutorialClass.IsNotEnterContinue)
+        if (Input.GetKeyDown(KeyCode.Return) && TutorialClass.IsInTutorial)
         {
             if (TutorialClass.IsTextingMessage)
             {
                 TutorialClass.IsTextingMessageBreak = true;
             }
             else if(!TutorialClass.IsNotEnterContinue){
-                TutorialClass.instance.ContinueTutorial(1);
                 TutorialClass.instance.UpdateTutorialStage();
+            }
+
+            if (TutorialClass.IsNotEnterContinue)
+            {
+                TutorialClass.instance.ContinueTutorial(1);
             }
         }
     }
