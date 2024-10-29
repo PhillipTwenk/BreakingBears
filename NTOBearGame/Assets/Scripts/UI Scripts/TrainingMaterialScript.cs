@@ -14,6 +14,8 @@ public class TrainingMaterialScript : MonoBehaviour
     public GameObject TutorialMain;
     public GameObject TutorialEquipment;
     public GameObject CloseButton;
+    public GameObject ButtonMainTutorial;
+    public GameObject ButtonSettings;
     public void ClickMainTutorial(){
         TutorialMain.SetActive(true);
         TutorialEquipment.SetActive(false);
@@ -60,26 +62,7 @@ public class TrainingMaterialScript : MonoBehaviour
                     SlidesMainTutorial[OnWhichSlide].SetActive(true);
                 }
             }
-            if (OnWhichSlide == 6)
-            {
-                Next.SetActive(false);
-            }
-            if (OnWhichSlide == 1)
-            {
-                Back.SetActive(true);
-            }
-        }
-        if (!IsWhichTutorialActive)
-        {
-            foreach (GameObject item in SlidesEquipmentTutorial)
-            {
-                item.SetActive(false);
-                if(SlidesEquipmentTutorial[OnWhichSlide].activeSelf == false)
-                {
-                    SlidesEquipmentTutorial[OnWhichSlide].SetActive(true);
-                }
-            }
-            if (OnWhichSlide == 7)
+            if (OnWhichSlide == 14)
             {
                 Next.SetActive(false);
             }
@@ -105,26 +88,7 @@ public class TrainingMaterialScript : MonoBehaviour
             {
                 Back.SetActive(false);
             }
-            if (OnWhichSlide == 5)
-            {
-                Next.SetActive(true);
-            }
-        }
-        if (!IsWhichTutorialActive)
-        {
-            foreach (GameObject item in SlidesEquipmentTutorial)
-            {
-                item.SetActive(false);
-                if(SlidesEquipmentTutorial[OnWhichSlide].activeSelf == false)
-                {
-                    SlidesEquipmentTutorial[OnWhichSlide].SetActive(true);
-                }
-            }
-            if (OnWhichSlide == 0)
-            {
-                Back.SetActive(false);
-            }
-            if (OnWhichSlide == 6)
+            if (OnWhichSlide == 13)
             {
                 Next.SetActive(true);
             }

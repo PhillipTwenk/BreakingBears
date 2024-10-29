@@ -11,10 +11,8 @@ public class Element : MonoBehaviour
     private bool is_mouse_on_object = false;
     [SerializeField] TMP_Text element_name_text;
     private QuestClass QuestClassInstance;
-    private int Counter;
 
     private void Start(){
-        Counter = 1;
         element_info = Building.ElementInfo(element_name: gameObject.name.Split('(')[0]);
         gameObject.name = gameObject.name.Split('(')[0];
         element_name_text.text = gameObject.name.Split('(')[0];
@@ -47,91 +45,94 @@ public class Element : MonoBehaviour
             QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
         }
         if(gameObject.name.Split('(')[0] == "Na" && PlayerPrefs.GetInt("ProgressInt") == 5){
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-            if(Counter != 3)
+            if(StaticStorage.Counter < 3)
             {
-                Counter += 1;
+                StaticStorage.Counter += 1;
+                Debug.Log($"Взят {StaticStorage.Counter} элемент");
             }
-            else
+            if(StaticStorage.Counter == 3)
             {
-                Counter = 1;
+                QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+                StaticStorage.Counter = 0;
             }
         }
-        if(gameObject.name.Split('(')[0] == "Сl" && PlayerPrefs.GetInt("ProgressInt") == 5){
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-            if(Counter != 3)
+        if(gameObject.name.Split('(')[0] == "Cl" && PlayerPrefs.GetInt("ProgressInt") == 5){
+            if(StaticStorage.Counter < 3)
             {
-                Counter += 1;
+                StaticStorage.Counter += 1;
+                Debug.Log($"Взят {StaticStorage.Counter} элемент");
             }
-            else
+            if(StaticStorage.Counter == 3)
             {
-                Counter = 1;
+                QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+                StaticStorage.Counter = 0;
             }
         }
         if(gameObject.name.Split('(')[0] == "H₂O" && PlayerPrefs.GetInt("ProgressInt") == 5){
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-            if(Counter != 3)
+            if(StaticStorage.Counter < 3)
             {
-                Counter += 1;
+                StaticStorage.Counter += 1;
+                Debug.Log($"Взят {StaticStorage.Counter} элемент");
             }
-            else
+            if(StaticStorage.Counter == 3)
             {
-                Counter = 1;
+                QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+                StaticStorage.Counter = 0;
             }
         }
         if(gameObject.name.Split('(')[0] == "S" && PlayerPrefs.GetInt("ProgressInt") == 17){
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-            if(Counter != 3)
+            if(StaticStorage.Counter < 3)
             {
-                Counter += 1;
+                StaticStorage.Counter += 1;
             }
-            else
+            if(StaticStorage.Counter == 3)
             {
-                Counter = 1;
+                QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+                StaticStorage.Counter = 0;
             }
         }
         if(gameObject.name.Split('(')[0] == "Na₂O" && PlayerPrefs.GetInt("ProgressInt") == 17){
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-            if(Counter != 3)
+            if(StaticStorage.Counter < 3)
             {
-                Counter += 1;
+                StaticStorage.Counter += 1;
             }
-            else
+            if(StaticStorage.Counter == 3)
             {
-                Counter = 1;
+                QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+                StaticStorage.Counter = 0;
             }
         }
         if(gameObject.name.Split('(')[0] == "S" && PlayerPrefs.GetInt("ProgressInt") == 17){
-            QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-            if(Counter != 3)
+            if(StaticStorage.Counter < 3)
             {
-                Counter += 1;
+                StaticStorage.Counter += 1;
             }
-            else
+            if(StaticStorage.Counter == 3)
             {
-                Counter = 1;
+                QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
+                StaticStorage.Counter = 0;
             }
         }
         if(gameObject.name.Split('(')[0] == "CO₂" && PlayerPrefs.GetInt("ProgressInt") == 26){
             QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-            if(Counter != 3)
+            if(StaticStorage.Counter != 3)
             {
-                Counter += 1;
+                StaticStorage.Counter += 1;
             }
             else
             {
-                Counter = 1;
+                StaticStorage.Counter = 1;
             }
         }
         if(gameObject.name.Split('(')[0] == "NaOH" && PlayerPrefs.GetInt("ProgressInt") == 26){
             QuestClassInstance.StartNewQuest(PlayerPrefs.GetInt("ProgressInt"));
-            if(Counter != 3)
+            if(StaticStorage.Counter != 3)
             {
-                Counter += 1;
+                StaticStorage.Counter += 1;
             }
             else
             {
-                Counter = 1;
+                StaticStorage.Counter = 1;
             }
         }
         DBManager.ExecuteQueryWithoutAnswer($"UPDATE elements_info SET studied_state = 1 WHERE name = '{element_name_text.text}' AND studied_state = 0");

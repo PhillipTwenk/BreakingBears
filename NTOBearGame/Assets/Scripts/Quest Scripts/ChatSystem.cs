@@ -49,29 +49,51 @@ public class ChatSystem : MonoBehaviour
             NewMessage.SetActive(false);
         }
     }
+    
+    //Запуск корутины для печатания серии сообщений
     public void StartCoroutineMethod(int NumberOfMessage)
     {
+        Debug.Log("Запуск серии сообщений");
         StartCoroutine(CoroutineSendMessage(NumberOfMessage));
     }
+    
+    //Корутина для печатания серии сообщений
+    //Принимает в параметры номер сообщения, до которого включительно нужно дойти
     public IEnumerator CoroutineSendMessage(int NumberOfMessageC)
     {
+        //Анимация печатания
         StaticStorage.TextingMessageAnimationObjStatic.SetActive(true);
+        
+        //Получение Прогресса сообщений
         int ProgressMessage = PlayerPrefs.GetInt("ProgressMessage");
+        
+        //Пока прогресс не дошел до нужного значения, печатаем сообщения
         while(ProgressMessage <= NumberOfMessageC)
         {
             GetMessage(StaticStorage.AllMessagesArray[ProgressMessage], true);
-
+            
+            Debug.Log($"Сообщение {ProgressMessage}: {StaticStorage.AllMessagesArray[ProgressMessage]}");
+            //Если последнее сообщение отправлено, отключаем анимацию печатания
+            if(ProgressMessage == NumberOfMessageC)
+            {
+                Debug.Log("Последнее сообщение в серии доставлено");
+                StaticStorage.TextingMessageAnimationObjStatic.SetActive(false);
+            }
+            
             ProgressMessage +=1;
             PlayerPrefs.SetInt("ProgressMessage", ProgressMessage);
 
             ButtonDownObj.SetActive(true);
-
-            if(ProgressMessage == NumberOfMessageC)
+            
+            //МОООООООООДДДДДДД УДАЛИТЬ ПОТОМ
+            if (StaticStorage.IsSpeedChatMOD)
             {
-                Debug.Log(1);
-                StaticStorage.TextingMessageAnimationObjStatic.SetActive(false);
+                yield return new WaitForSeconds(1);
             }
-            yield return new WaitForSeconds(Random.Range(7, 10));
+            else
+            {
+                yield return new WaitForSeconds(Random.Range(7, 10));
+            }
         }
     }
     public void ClickDownButton()

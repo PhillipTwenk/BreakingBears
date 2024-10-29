@@ -41,11 +41,11 @@ using TMPro;
                 case 5:
                     StaticStorage.ProgressPanelTextStatic.text = "Взять содержимое хранилищ";
                     StaticStorage.DetailPanelTextStatic.text = "Нажмите на сундуки, стоящие в комнатах, и подберите выпавшие элементы";
-                    StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(13);
-                break;
+                    break;
                 case 6:
                     StaticStorage.ProgressPanelTextStatic.text = "Вернуться назад";
                     StaticStorage.DetailPanelTextStatic.text = "Откройте карту и нажмите маркер лаборатории в правой части карты";
+                    StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(13);
                 break;
                 case 7:
                     StaticStorage.ProgressPanelTextStatic.text = "Узнать противоядие";
@@ -64,21 +64,23 @@ using TMPro;
                 case 10:
                     StaticStorage.ProgressPanelTextStatic.text = "Получить противоядие";
                     StaticStorage.DetailPanelTextStatic.text = "Используя возможности лаборатории, создайте нужный элемент по составленной цепочке";
-                    StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(26);
+                    //StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(26);
                 break;
                 case 11:
                     StaticStorage.ProgressPanelTextStatic.text = "Вернуться в комнату";
                     StaticStorage.DetailPanelTextStatic.text = "Зайдите в меню карты и нажмите на недавно открытый маркер(Второй снизу)";
+                    StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(25);
                 break;
                 case 12:
                     StaticStorage.ProgressPanelTextStatic.text = "Употребить вещество";
                     StaticStorage.DetailPanelTextStatic.text = "Выкиньте вещество из инвентаря, и нажмите на него Правой кнопкой мыши - начнётся эффект противоядия";
+                    StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(26);
                 break;
                 case 13:
                     StaticStorage.ProgressPanelTextStatic.text = "Пройти ядовитую зону";
                     StaticStorage.DetailPanelTextStatic.text = "Прыгайте по грибам, стараясь успеть до конца действия противоядия";
-                    StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(28);
-                break;
+                    StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(27);
+                    break;
                 case 14:
                     StaticStorage.ProgressPanelTextStatic.text = "Пройти в комнату";
                     StaticStorage.DetailPanelTextStatic.text = "Пройдите в портал";
@@ -86,6 +88,7 @@ using TMPro;
                 case 15:
                     StaticStorage.ProgressPanelTextStatic.text = "Пройти руины";
                     StaticStorage.DetailPanelTextStatic.text = "Пройдите в следующий портал, и пройдите новою полосу препятствий";
+                    StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(29);
                 break;
                 case 16:
                     StaticStorage.ProgressPanelTextStatic.text = "Пройти в комнату";
@@ -98,53 +101,17 @@ using TMPro;
                 case 18:
                     StaticStorage.ProgressPanelTextStatic.text = "Вернуться назад";
                     StaticStorage.DetailPanelTextStatic.text = "Откройте карту и вернитесь в лабораторию";
-                    StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(32);
-                break;
+                    break;
                 case 19:
                     StaticStorage.ProgressPanelTextStatic.text = "Получить противоядие";
                     StaticStorage.DetailPanelTextStatic.text = "По карте узнайте новое противоядие и создайте его";
+                    StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(33);
 
                 break;
                 case 20:
-                    StaticStorage.ProgressPanelTextStatic.text = "Вернуться в комнату";
-                    StaticStorage.DetailPanelTextStatic.text = "Откройте карту и нажмите на последний открытый маркер";
-                break;
-                case 21:
-                    StaticStorage.ProgressPanelTextStatic.text = "Употребить вещество";
-                    StaticStorage.DetailPanelTextStatic.text = "Выкиньте вещество из инвентаря, и нажмите на него Правой кнопкой мыши - начнётся эффект противоядия";
-                break;
-                case 22:
-                    StaticStorage.ProgressPanelTextStatic.text = "Пройти ядовитую зону";
-                    StaticStorage.DetailPanelTextStatic.text = "Прыгайте по грибам, стараясь успеть до конца действия противоядия";
-                break;
-                case 23:
-                    StaticStorage.ProgressPanelTextStatic.text = "Пройти в комнату";
-                    StaticStorage.DetailPanelTextStatic.text = "Пройдите в портал";
-                break;
-                case 24:
-                    StaticStorage.ProgressPanelTextStatic.text = "Пройти руины";
-                    StaticStorage.DetailPanelTextStatic.text = "Пройдите в следующий портал, и пройдите новою полосу препятствий";
-                break;
-                case 25:
-                    StaticStorage.ProgressPanelTextStatic.text = "Пройти в комнату";
-                    StaticStorage.DetailPanelTextStatic.text = "Пройдите в портал";
-                break;
-                case 26:
-                    StaticStorage.ProgressPanelTextStatic.text = "Взять содержимое хранилищ";
-                    StaticStorage.DetailPanelTextStatic.text = "Нажмите на хранилища и получите элементы";
-                break;
-                case 27:
-                    StaticStorage.ProgressPanelTextStatic.text = "Вернуться назад";
-                    StaticStorage.DetailPanelTextStatic.text = "Откройте карту и вернитесь в лабораторию";
-                break;
-                case 28:
-                    StaticStorage.ProgressPanelTextStatic.text = "Получить вещество";
-                    StaticStorage.DetailPanelTextStatic.text = "Используя возможности лаборатории, создайте нужный элемент по составленной цепочке";
-                    StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(35);
-                break;
-                case 29:
                     StaticStorage.ProgressPanelTextStatic.text = "На сегодня всё! До связи";
                     StaticStorage.DetailPanelTextStatic.text = "Задач на сегодня больше нет";
+                    StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(36);
                 break;
             }
         }

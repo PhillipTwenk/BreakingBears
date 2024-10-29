@@ -26,9 +26,11 @@ public class UIController : MonoBehaviour
     public GameObject ProgressPanel;
     public GameObject Tutorials;
     public GameObject TutorialMain;
-    public GameObject TutorialEquipment;
+    public GameObject Settings;
     public GameObject Next;
     public GameObject Back;
+    public GameObject ButtonMainTutorial;
+    public GameObject ButtonSettings;
     private void Start()
     {
         QuestClassInstance = new QuestClass();
@@ -55,6 +57,15 @@ public class UIController : MonoBehaviour
         {
             CloseButton();
         }
+
+        if (Input.GetKey(KeyCode.Alpha0))
+        {
+            StaticStorage.IsSpeedChatMOD = true;
+        }
+        if (Input.GetKeyUp(KeyCode.Alpha0))
+        {
+            StaticStorage.IsSpeedChatMOD = false;
+        }
     }
     #region Buttons Methods
     public void MapButtonOpen(){
@@ -67,6 +78,10 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[4].SetActive(false);
         ArrayButtonsMain[6].SetActive(false);
         ArrayButtonsMain[7].SetActive(false);
+        TutorialMain.SetActive(false);
+        Settings.SetActive(false);
+        Next.SetActive(false);
+        Back.SetActive(false);
         //ProgressPanel.SetActive(false);
         Building.is_agregat_canvas_activated = true;
         if (PlayerPrefs.GetInt("ProgressInt") == 1)
@@ -90,6 +105,10 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[6].SetActive(false);
         ArrayButtonsMain[7].SetActive(false);
         ArrayButtonsMain[8].SetActive(false);
+        TutorialMain.SetActive(false);
+        Settings.SetActive(false);
+        Next.SetActive(false);
+        Back.SetActive(false);
         //ProgressPanel.SetActive(false);
         Building.is_agregat_canvas_activated = true;
     }
@@ -104,6 +123,10 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[6].SetActive(false);
         ArrayButtonsMain[7].SetActive(false);
         ArrayButtonsMain[8].SetActive(false);
+        TutorialMain.SetActive(false);
+        Settings.SetActive(false);
+        Next.SetActive(false);
+        Back.SetActive(false);
         //ProgressPanel.SetActive(false);
         Building.is_agregat_canvas_activated = true;
         if (PlayerPrefs.GetInt("ProgressInt") == 8)
@@ -126,6 +149,10 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[6].SetActive(false);
         ArrayButtonsMain[7].SetActive(false);
         ArrayButtonsMain[8].SetActive(false);
+        TutorialMain.SetActive(false);
+        Settings.SetActive(false);
+        Next.SetActive(false);
+        Back.SetActive(false);
         //ProgressPanel.SetActive(false);
         Building.is_agregat_canvas_activated = true;
     }
@@ -146,10 +173,12 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[8].SetActive(true);
         DetailPanelObj.SetActive(false);
         ProgressPanel.SetActive(true);
-        TutorialEquipment.SetActive(false);
+        Settings.SetActive(false);
         TutorialMain.SetActive(false);
         Next.SetActive(false);
         Back.SetActive(false);
+        ButtonMainTutorial.SetActive(true);
+        ButtonSettings.SetActive(true);
     }
     public void OpenDetailPanel(){
 
@@ -162,6 +191,10 @@ public class UIController : MonoBehaviour
         ArrayButtonsMain[7].SetActive(false);
         ArrayButtonsMain[8].SetActive(false);
         ProgressPanel.SetActive(false);
+        TutorialMain.SetActive(false);
+        Settings.SetActive(false);
+        Next.SetActive(false);
+        Back.SetActive(false);
         Building.is_agregat_canvas_activated = true;
     }
 
