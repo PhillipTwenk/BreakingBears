@@ -80,7 +80,7 @@ public class Element : MonoBehaviour
                 StaticStorage.Counter = 0;
             }
         }
-        if(gameObject.name.Split('(')[0] == "S" && PlayerPrefs.GetInt("ProgressInt") == 17){
+        if(gameObject.name.Split('(')[0] == "H₂O" && PlayerPrefs.GetInt("ProgressInt") == 17){
             if(StaticStorage.Counter < 3)
             {
                 StaticStorage.Counter += 1;

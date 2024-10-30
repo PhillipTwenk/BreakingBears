@@ -41,6 +41,7 @@ using TMPro;
                 case 5:
                     StaticStorage.ProgressPanelTextStatic.text = "Взять содержимое хранилищ";
                     StaticStorage.DetailPanelTextStatic.text = "Нажмите на сундуки, стоящие в комнатах, и подберите выпавшие элементы";
+                    StaticStorage.ChatSystemRefStatic.StartCoroutineMethod(12);
                     break;
                 case 6:
                     StaticStorage.ProgressPanelTextStatic.text = "Вернуться назад";
