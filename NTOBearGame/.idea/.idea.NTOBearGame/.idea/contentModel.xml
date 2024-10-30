@@ -88,6 +88,7 @@
             <e p="EffectController.cs" t="Include" />
             <e p="ElementCaseMenu.cs" t="Include" />
             <e p="ElementListMenu.cs" t="Include" />
+            <e p="SettingsController.cs" t="Include" />
             <e p="StartGameMenu.cs" t="Include" />
             <e p="StaticStorage.cs" t="Include" />
             <e p="TrainingMaterialScript.cs" t="Include" />

@@ -20,14 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be321cea-6059-4087-841b-9bf72a3df92c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NTOBearGame/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NTOBearGame/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NTOBearGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NTOBearGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Enviroment/portal/portal.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Enviroment/portal/portal.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SceneForWorkOnLevels.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SceneForWorkOnLevels.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ForElements/Elements/Element.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ForElements/Elements/Element.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quest Scripts/QuestClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quest Scripts/QuestClass.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/elements.bytes" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/elements.bytes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI Scripts/UIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI Scripts/UIController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Ресурс 47.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Ресурс 47.png.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,15 +34,19 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI Scripts/SettingsController.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/UI Scripts/StaticStorage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Quest Scripts/ChatSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI Scripts/UIController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI Scripts/TrainingMaterialScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Quest Scripts/QuestClass.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ForElements/Elements/Element.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI Scripts/UIController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI Scripts/SettingsController.cs" />
       </list>
     </option>
   </component>
@@ -92,7 +93,7 @@
       <workItem from="1730147346995" duration="1175000" />
       <workItem from="1730196778972" duration="2336000" />
       <workItem from="1730199159459" duration="7769000" />
-      <workItem from="1730286258684" duration="1598000" />
+      <workItem from="1730286258684" duration="5951000" />
     </task>
     <servers />
   </component>

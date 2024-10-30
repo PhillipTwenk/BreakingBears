@@ -30,7 +30,7 @@ public class UIController : MonoBehaviour
     public GameObject Next;
     public GameObject Back;
     public GameObject ButtonMainTutorial;
-    public GameObject ButtonSettings;
+    public GameObject PausePanel;
     private void Start()
     {
         QuestClassInstance = new QuestClass();
@@ -58,6 +58,7 @@ public class UIController : MonoBehaviour
             CloseButton();
         }
 
+        //читы
         if (Input.GetKey(KeyCode.Alpha0))
         {
             StaticStorage.IsSpeedChatMOD = true;
@@ -65,6 +66,12 @@ public class UIController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Alpha0))
         {
             StaticStorage.IsSpeedChatMOD = false;
+        }
+
+        
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            PauseMethod();
         }
     }
     #region Buttons Methods
@@ -157,6 +164,8 @@ public class UIController : MonoBehaviour
         Building.is_agregat_canvas_activated = true;
     }
     public void CloseButton(){
+        
+        Time.timeScale = 1f;
         // Close All
         Building.is_agregat_canvas_activated = false;
         ArrayMenus[0].SetActive(false);
@@ -178,7 +187,7 @@ public class UIController : MonoBehaviour
         Next.SetActive(false);
         Back.SetActive(false);
         ButtonMainTutorial.SetActive(true);
-        ButtonSettings.SetActive(true);
+        PausePanel.SetActive(false);
     }
     public void OpenDetailPanel(){
 
@@ -198,7 +207,32 @@ public class UIController : MonoBehaviour
         Building.is_agregat_canvas_activated = true;
     }
 
-
+    public void PauseMethod()
+    {
+        Time.timeScale = 0f;
+        PausePanel.SetActive(true);
+        
+        ArrayMenus[0].SetActive(false);
+        ArrayMenus[1].SetActive(false);
+        ArrayMenus[2].SetActive(false);
+        ArrayMenus[3].SetActive(false);
+        ArrayButtonsMain[0].SetActive(false);
+        ArrayButtonsMain[1].SetActive(false);
+        ArrayButtonsMain[2].SetActive(false);
+        ArrayButtonsMain[3].SetActive(false);
+        ArrayButtonsMain[4].SetActive(false);
+        ArrayButtonsMain[5].SetActive(false);
+        ArrayButtonsMain[6].SetActive(false);
+        ArrayButtonsMain[7].SetActive(false);
+        ArrayButtonsMain[8].SetActive(false);
+        ProgressPanel.SetActive(false);
+        TutorialMain.SetActive(false);
+        Settings.SetActive(false);
+        Next.SetActive(false);
+        Back.SetActive(false);
+        //ProgressPanel.SetActive(false);
+        
+    }
     public void MarksMethod(GameObject ButtonObj){
 
         // Определение номера метки
