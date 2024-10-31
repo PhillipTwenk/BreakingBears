@@ -13,13 +13,13 @@ public class SettingsController : MonoBehaviour
     
     public void FullScreen()
     {
-        Screen.SetResolution(Screen.width, Screen.height, false);
+        Screen.SetResolution(Screen.width, Screen.height, true, 60);
         PlayerPrefs.SetString("ScreenMode", "Оконный");
         Debug.Log("Оконный");
     }
     public void WindowScreen()
     {
-        Screen.SetResolution(Screen.width, Screen.height, true, 60);
+        Screen.SetResolution(Screen.width, Screen.height, false);
         PlayerPrefs.SetString("ScreenMode", "Полноэкранный");
         Debug.Log("Полноэкранный");
     }

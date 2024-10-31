@@ -62,7 +62,7 @@ public class TrainingMaterialScript : MonoBehaviour
                     SlidesMainTutorial[OnWhichSlide].SetActive(true);
                 }
             }
-            if (OnWhichSlide == 14)
+            if (OnWhichSlide == 15)
             {
                 Next.SetActive(false);
             }
@@ -88,7 +88,7 @@ public class TrainingMaterialScript : MonoBehaviour
             {
                 Back.SetActive(false);
             }
-            if (OnWhichSlide == 13)
+            if (OnWhichSlide == 14)
             {
                 Next.SetActive(true);
             }
